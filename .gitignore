@@ -2,4 +2,6 @@ asuite/
 bin/
 libexec/
 share/
-
+LICENSE.TXT
+lib/
+pulse
