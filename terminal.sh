@@ -62,6 +62,7 @@ export DFT_DISPLAY=side-by-side-show-both
 
 # system PATH
 source  /usr/share/bash-completion/completions/git
+source $HOME/.config/lib/git-core/git-sh-prompt
 source  ~/.config/rg.bash
 source  ~/.config/fzf.bash
 
