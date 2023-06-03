@@ -23,6 +23,7 @@ ripgrep_all
 mdcat
 #rm-improved
 starship
+tree-rs
 tealdeer # tldr
 git-delta # delta
 difftastic #difft
@@ -33,4 +34,5 @@ cargo install  ${tools[*]}
 
 # from git install
 #cargo install -f --git https://github.com/starship/starship
-#cargo install ipgrep_all --locked
+#cargo install ripgrep_all --locked
+#cargo install --locked zellij

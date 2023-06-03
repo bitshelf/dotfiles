@@ -9,6 +9,9 @@ source ~/.config/fzf-git.sh
 # cargo  
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+
+#CUR_PATH=`readlink -f "${BASH_SOURCE:-$0}"`
+#export ConfigFolder=`dirname $CUR_PATH`
 #CARGO_HOME=$ConfigFolder
 #CARGO_INSTALL_ROOT=$ConfigFolder
 #export PATH=$CARGO_HOME/.cargo/bin:$PATH
@@ -70,7 +73,10 @@ source  ~/.config/fzf.bash
 source <(procs --gen-completion-out bash)
 
 export PATH="$HOME/.config/bin/:$PATH"
-export PATH="$HOME/.vscode-server/data/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/:$PATH"
 if [ -f ~/.config/git-completion.bash ]; then
 	source ~/.config/git-completion.bash
 fi
+
+with_proxy(){
+   HTTPS_PROXY=socks5://192.168.0.14:7890 HTTP_PROXY=socks5://192.168.0.14:7890 "$@"
+}
