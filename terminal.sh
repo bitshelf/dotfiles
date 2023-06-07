@@ -3,9 +3,6 @@
 export LANGUAGE=en_US
 export LANG=en_US.UTF-8
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-source ~/.config/fzf-git.sh
-
 # cargo  
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
@@ -50,7 +47,6 @@ eval "$(mcfly init bash)"
 export MCFLY_FUZZY=2
 export MCFLY_RESULTS_SORT=LAST_RUN
 export MCFLY_HISTORY_LIMIT=10000
-export MCFLY_KEY_SCHEME=vim
 export MCFLY_RESULTS=30
 export MCFLY_DISABLE_MENU=true
 export MCFLY_PROMPT='→'
@@ -68,6 +64,7 @@ source  /usr/share/bash-completion/completions/git
 source $HOME/.config/lib/git-core/git-sh-prompt
 source  ~/.config/rg.bash
 source  ~/.config/fzf.bash
+source ~/.config/fzf-git.sh
 
 # Completion settings
 source <(procs --gen-completion-out bash)
