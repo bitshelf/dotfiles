@@ -44,6 +44,14 @@ set spelllang+=cjk
 set path=./**
 set nobackup
 set hidden
+set signcolumn=yes
+
+" tab key
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 if v:version >= 900
   set wildoptions=pum
@@ -122,6 +130,7 @@ call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.

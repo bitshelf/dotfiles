@@ -17,6 +17,7 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 # alias
 alias ls='lsd'
 alias cat='bat'
+alias vi='nvim'
 #alias cp='xcp'
 
 alias l='ls -l'
@@ -41,6 +42,21 @@ fi
 # prompt settings
 eval "$(starship init bash)"
 #eval "$(zoxide init bash)"
+
+# delta
+export DELTA_FEATURES=+side-by-side
+
+# difft
+export DFT_DISPLAY=side-by-side-show-both
+
+
+# system PATH
+source  /usr/share/bash-completion/completions/git
+source $HOME/.local/lib/git-core/git-sh-prompt
+source  ~/.config/rg.bash
+source  ~/.config/fzf.bash
+source ~/.config/fzf-git.sh
+
 # mcfly
 #export MCFLY_HISTORY="$ConfigFolder/.bash_history"
 eval "$(mcfly init bash)"
@@ -52,24 +68,19 @@ export MCFLY_DISABLE_MENU=true
 export MCFLY_PROMPT='→'
 #readonly PROMPT_COMMAND
 
-# delta
-export DELTA_FEATURES=+side-by-side
-
-# difft
-export DFT_DISPLAY=side-by-side-show-both
-
-
-# system PATH
-source  /usr/share/bash-completion/completions/git
-source $HOME/.config/lib/git-core/git-sh-prompt
-source  ~/.config/rg.bash
-source  ~/.config/fzf.bash
-source ~/.config/fzf-git.sh
-
 # Completion settings
 source <(procs --gen-completion-out bash)
 
-export PATH="$HOME/.config/bin/:$PATH"
+#export PATH="$HOME/.config/bin/:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/gettext/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/gettext/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+
+# JDK
+export JAVA_HOME="$HOME/.local/jdk-17.0.7+7"
+export PATH="$JAVA_HOME/bin:$PATH"
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
 if [ -f ~/.config/git-completion.bash ]; then
 	source ~/.config/git-completion.bash
 fi
