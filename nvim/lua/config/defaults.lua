@@ -40,10 +40,10 @@ vim.o.list = false
 vim.o.cmdheight = 0
 vim.o.scrolloff = 2
 
+--colorscheme habamax
 vim.cmd([[
 set mouse=v
 set encoding=utf-8
-colorscheme habamax
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
 silent !mkdir -p $HOME/.config/nvim/tmp/undo
 "silent !mkdir -p $HOME/.config/nvim/tmp/sessions

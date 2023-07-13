@@ -11,9 +11,6 @@ M.config = {
 				"LukasPietzschmann/telescope-tabs",
 				config = function()
 					local tstabs = require('telescope-tabs')
-					tstabs.setup({
-					})
-					vim.keymap.set('n', '<c-t>', tstabs.list_tabs, {})
 				end
 			},
 			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -23,24 +20,12 @@ M.config = {
 		},
 		config = function()
 			local builtin = require('telescope.builtin')
-			vim.keymap.set('n', '<c-p>', builtin.find_files, m)
-			-- vim.keymap.set('n', '<c-f>', function()
-			-- 	builtin.grep_string({ search = "" })
-			-- end, m)
-			vim.keymap.set('n', '<leader>rs', builtin.resume, m)
-			vim.keymap.set('n', '<c-w>', builtin.buffers, m)
-			vim.keymap.set('n', '<c-h>', builtin.oldfiles, m)
-			vim.keymap.set('n', '<c-_>', builtin.current_buffer_fuzzy_find, m)
-			vim.keymap.set('n', 'z=', builtin.spell_suggest, m)
 
-			vim.keymap.set('n', '<leader>d', builtin.diagnostics, m)
-			-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
-			-- vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
-			vim.keymap.set('n', 'gi', builtin.git_status, m)
-			vim.keymap.set("n", ":", builtin.commands, m)
-
-			local trouble = require("trouble.providers.telescope")
-
+			local builtin = require('telescope.builtin')
+			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+			vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+			vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+			vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 			local ts = require('telescope')
 			local actions = require('telescope.actions')
 			M.ts = ts
@@ -60,16 +45,6 @@ M.config = {
 					layout_config = {
 						width = 0.9,
 						height = 0.9,
-					},
-					mappings = {
-						i = {
-							["<C-h>"] = "which_key",
-							["<C-u>"] = "move_selection_previous",
-							["<C-e>"] = "move_selection_next",
-							["<C-l>"] = "preview_scrolling_up",
-							["<C-y>"] = "preview_scrolling_down",
-							["<esc>"] = "close",
-						}
 					},
 					color_devicons = true,
 					prompt_prefix = "🔍 ",
@@ -112,24 +87,14 @@ M.config = {
 				}
 			})
 
-			ts.load_extension("yank_history")
-			ts.load_extension('dap')
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('fzf')
-			ts.load_extension('simulators')
 			ts.load_extension("command_center")
 
 			require("simulators").setup({
 				android_emulator = false,
 				apple_simulator = true,
 			})
-			-- ts.load_extension("ui-select")
-			ts.load_extension("flutter")
-			local tsdap = ts.extensions.dap;
-			vim.keymap.set("n", "<leader>'v", tsdap.variables, m)
-			vim.keymap.set("n", "<leader>'a", tsdap.commands, m)
-			vim.keymap.set("n", "<leader>'b", tsdap.list_breakpoints, m)
-			vim.keymap.set("n", "<leader>'f", tsdap.frames, m)
 		end
 	},
 	{
