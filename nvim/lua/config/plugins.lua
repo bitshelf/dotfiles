@@ -12,8 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	--require("config.plugins.telescope").config,
-	--require("config.plugins.coc"),
+	require("config.plugins.telescope").config,
+	require("config.plugins.coc"),
 	require("config.plugins.colorscheme"),
 	--require("config.plugins.scrollbar"),
 	require("config.plugins.treesitter"),
