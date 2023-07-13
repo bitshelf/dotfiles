@@ -1,0 +1,18 @@
+numbered_command = false
+
+use_trash = true
+watch_files = true
+xdg_open = false
+xdg_open_fork = false
+
+[display]
+collapse_preview = true
+scroll_offset    = 8
+show_icons       = true
+column_ratio     = [ 1, 4, 3 ]
+
+[preview]
+max_preview_size = 2097152  # 2MB
+preview_script              = "~/.config/joshuto/scripts/preview_file.sh"
+#preview_shown_hook_script   = "~/.config/joshuto/scripts/show_image.sh"
+#preview_removed_hook_script = "~/.config/joshuto/scripts/remove_image.sh"
