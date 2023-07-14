@@ -291,13 +291,13 @@ tmap <Leader>T <c-w>:tab term ++close<cr>
   set fillchars+=stl:\ ,stlnc:\
 
 
-  let g:c_space_errors = 1 " hightlight space
-  let g:c_gnu = 1
-  let g:c_no_cformat = 1
-  let g:c_no_curly_error = 1
-  if exists('g:c_comment_strings')
-    unlet g:c_comment_strings
-  endif
+"  let g:c_space_errors = 1 " hightlight space
+"  let g:c_gnu = 1
+"  let g:c_no_cformat = 1
+"  let g:c_no_curly_error = 1
+"  if exists('g:c_comment_strings')
+"    unlet g:c_comment_strings
+"  endif
 
 if has('autocmd')
   function! GnuIndent()
