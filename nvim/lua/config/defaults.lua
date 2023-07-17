@@ -39,11 +39,10 @@ vim.o.virtualedit = 'block'
 vim.o.list = false
 vim.o.cmdheight = 0
 vim.o.scrolloff = 2
+vim.opt.mouse = "v"
+vim.opt.encoding = "utf-8"
 
---colorscheme habamax
 vim.cmd([[
-set mouse=v
-set encoding=utf-8
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
 silent !mkdir -p $HOME/.config/nvim/tmp/undo
 "silent !mkdir -p $HOME/.config/nvim/tmp/sessions
@@ -60,12 +59,24 @@ vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", command = "silent! lcd 
 
 vim.cmd([[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
 
---vim.cmd([[autocmd TermOpen term://* startinsert]])
---vim.cmd([[
---augroup NVIMRC
---    autocmd!
---    autocmd BufWritePost .vim.lua exec ":so %"
---augroup END
---tnoremap <C-N> <C-\><C-N>
---tnoremap <C-O> <C-\><C-N><C-O>
---]])
+-- Highlight yanked text
+local au = vim.api.nvim_create_autocmd
+local ag = vim.api.nvim_create_augroup
+---Highlight the texts when you yanked
+au("TextYankPost", {
+	group = ag("yank_highlight", {}),
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
+	end,
+})
+
+vim.cmd([[autocmd TermOpen term://* startinsert]])
+vim.cmd([[
+augroup NVIMRC
+    autocmd!
+    autocmd BufWritePost .vim.lua exec ":so %"
+augroup END
+tnoremap <C-N> <C-\><C-N>
+tnoremap <C-O> <C-\><C-N><C-O>
+]])

@@ -5,12 +5,22 @@ return {
 		lazy = false,
 		priority = 1000,
 		build = ":TSUpdate",
+		auto_install = true,
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "query", "typescript", "dart", "java", "c", "prisma", "bash", "go", "lua", "html", "vim" },
+				ensure_installed = { "cpp", "bash", "lua","vim" },
 				highlight = {
-					enable = true,
-					disable = {}, -- list of language that will be disabled
+					enable = false,
+					disable = { "devicetree",}, -- list of language that will be disabled
+				-- 	lang = {"dts","dtsi"}, -- list of language that will be disabled
+				-- 	disable = function(lang, buf)
+				-- 		local max_filesize = 50 * 1024 -- 100 KB
+				-- 		local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+				-- 		if ok and stats and stats.size > max_filesize then
+				-- 				return true
+				-- 	end
+				-- end,
+				additional_vim_regex_highlighting = false,
 				},
 				indent = {
 					enable = false
