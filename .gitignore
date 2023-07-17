@@ -5,3 +5,6 @@ share/
 LICENSE.TXT
 lib/
 pulse
+nvim/lazy-lock.json
+nvim/package-lock.json
+nvim/tmp/

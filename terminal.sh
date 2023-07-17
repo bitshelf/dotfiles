@@ -18,7 +18,7 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 alias ls='lsd'
 alias cat='bat'
 alias vi='nvim'
-#alias vim='nvim'
+alias vim='nvim'
 #alias cp='xcp'
 
 alias l='ls -l'
