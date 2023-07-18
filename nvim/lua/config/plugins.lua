@@ -12,10 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	-- require("config.plugins.autocomplete").config,
 	require("config.plugins.telescope").config,
+	-- require("config.plugins.lspconfig").config,
 	require("config.plugins.coc"),
 	require("config.plugins.comment"),
 	require("config.plugins.colorscheme"),
+	--require("config.plugins.copilot"),
 	require("config.plugins.treesitter"),
 	require("config.plugins.project"),
 	require("config.plugins.fzf"),
@@ -29,5 +32,5 @@ require("lazy").setup({
 	require("config.plugins.jump"),
 	require("config.plugins.undo"),
 	{ "dstein64/vim-startuptime" },
-}, {
+	{},
 })

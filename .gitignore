@@ -8,3 +8,4 @@ pulse
 nvim/lazy-lock.json
 nvim/package-lock.json
 nvim/tmp/
+coc
