@@ -1,0 +1,11 @@
+Diagnostics:
+  Suppress: "*"
+  Remove: modernize-use-trailing-return-type
+  CheckOptions:
+      WarnOnFloatingPointNarrowingConversion: false
+  ClangTidy:
+    CheckOptions:
+      IgnoreMacros: true
+      example-check.ExampleOption: 0
+CompileFlags:
+  Add: -ferror-limit=0
