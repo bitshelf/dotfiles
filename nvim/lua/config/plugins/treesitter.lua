@@ -8,10 +8,10 @@ return {
 		auto_install = true,
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "cpp", "bash", "lua","vim" },
+				ensure_installed = { "cpp", "bash", "lua","vim","devicetree"},
 				highlight = {
-					enable = false,
-					disable = { "devicetree",}, -- list of language that will be disabled
+					enable = true,
+					--disable = { "devicetree",}, -- list of language that will be disabled
 				-- 	lang = {"dts","dtsi"}, -- list of language that will be disabled
 				-- 	disable = function(lang, buf)
 				-- 		local max_filesize = 50 * 1024 -- 100 KB
@@ -28,8 +28,8 @@ return {
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection    = "<c-n>",
-						node_incremental  = "<c-n>",
+						init_selection    = "<cr>",
+						node_incremental  = "<cr>",
 						node_decremental  = "<c-h>",
 						scope_incremental = "<c-l>",
 					},
