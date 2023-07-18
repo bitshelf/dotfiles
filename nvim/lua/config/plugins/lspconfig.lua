@@ -50,9 +50,6 @@ M.config = {
 			M.lsp = lsp
 
 			lsp.ensure_installed({
-				'tsserver',
-				'eslint',
-				'gopls',
 				'jsonls',
 			})
 
@@ -110,9 +107,8 @@ M.config = {
 
 			local lspconfig = require('lspconfig')
 
-			require("config.lsp.lua").setup(lspconfig, lsp)
-			require("config.lsp.json").setup(lspconfig, lsp)
-			require("config.lsp.flutter").setup(lsp)
+			-- require("config.lsp.lua").setup(lspconfig, lsp)
+			-- require("config.lsp.json").setup(lspconfig, lsp)
 			-- require("config.lsp.html").setup(lspconfig, lsp)
 
 			lsp.setup()
@@ -125,15 +121,12 @@ M.config = {
 				require('cmp_nvim_lsp').default_capabilities()
 			)
 
-			require('nvim-dap-projects').search_project_config()
 
 			F.configureDocAndSignature()
 			F.configureKeybinds()
 
 			local format_on_save_filetypes = {
-				dart = true,
 				json = true,
-				go = true,
 				lua = true,
 			}
 

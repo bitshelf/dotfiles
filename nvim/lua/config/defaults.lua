@@ -11,18 +11,17 @@ vim.o.listchars = 'tab:|\\ ,trail:▫'
 vim.o.cursorline = true
 vim.o.signcolumn="yes"
 vim.o.expandtab = false
-vim.o.tabstop = 2
+vim.o.tabstop = 4
 vim.o.smarttab = true
 vim.o.shiftwidth = 2
 vim.o.autoindent = true
-vim.o.list = true
 vim.o.ttimeoutlen = 0
 vim.o.timeout = false
 vim.o.viewoptions = 'cursor,folds,slash,unix'
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.textwidth = 0
 vim.o.indentexpr = ''
--- vim.o.foldmethod = 'indent'
+vim.o.foldmethod = 'indent'
 vim.o.formatoptions = vim.o.formatoptions:gsub('tc', '')
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -39,8 +38,9 @@ vim.o.virtualedit = 'block'
 vim.o.list = false
 vim.o.cmdheight = 0
 vim.o.scrolloff = 2
-vim.opt.mouse = "v"
-vim.opt.encoding = "utf-8"
+vim.o.mouse = "v"
+vim.o.encoding = "utf-8"
+vim.g.indent_blankline_enabled = 0
 
 vim.cmd([[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup

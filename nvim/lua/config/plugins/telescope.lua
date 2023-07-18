@@ -19,7 +19,6 @@ M.config = {
 			'dimaportenko/telescope-simulators.nvim',
 		},
 		config = function()
-			local builtin = require('telescope.builtin')
 
 			local builtin = require('telescope.builtin')
 			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
