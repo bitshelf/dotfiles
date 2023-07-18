@@ -1,6 +1,6 @@
 Diagnostics:
-  # Suppress: "*"
-  Suppress: [undeclared_var_use, pp_file_not_found]
+  Suppress: "*"
+  # Suppress: [undeclared_var_use, pp_file_not_found]
   Remove: modernize-use-trailing-return-type
   CheckOptions:
       WarnOnFloatingPointNarrowingConversion: false
