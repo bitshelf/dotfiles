@@ -25,6 +25,8 @@ require("lazy").setup({
 	require("config.plugins.tabline"),
 	require("config.plugins.notify"),
 	require("config.plugins.statusline"),
+	require("config.plugins.scrollbar"),
+	require("config.plugins.tagbar"),
 	require("config.plugins.git"),
 	require("config.plugins.wilder"),
 	require("config.plugins.winbar"),
