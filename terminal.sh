@@ -72,10 +72,9 @@ export MCFLY_PROMPT='→'
 # Completion settings
 source <(procs --gen-completion-out bash)
 
-#export PATH="$HOME/.config/bin/:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/gettext/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/.local/gettext/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+#export PATH="$HOME/.local/gettext/bin:$PATH"
+#export LD_LIBRARY_PATH="$HOME/.local/gettext/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 
 # JDK
 export JAVA_HOME="$HOME/.local/jdk-17.0.7+7"
