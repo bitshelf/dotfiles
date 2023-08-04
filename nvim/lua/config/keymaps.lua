@@ -5,7 +5,6 @@ local mode_i = { "i" }
 local nmappings = {
 	-- Movement
 	{ from = "J",             to = "8j",                                                                   mode = mode_nv },
-	{ from = "K",             to = "8k",                                                                   mode = mode_nv },
 }
 
 for _, mapping in ipairs(nmappings) do

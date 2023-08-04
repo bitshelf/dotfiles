@@ -26,18 +26,6 @@ return {
 		end
 	},
 	{
-		"dkarter/bullets.vim",
-		lazy = false,
-		ft = { "markdown", "txt" },
-	},
-	-- {
-	-- 	"psliwka/vim-smoothie",
-	-- 	init = function()
-	-- 		vim.cmd([[nnoremap <unique> <C-e> <cmd>call smoothie#do("\<C-D>") <CR>]])
-	-- 		vim.cmd([[nnoremap <unique> <C-u> <cmd>call smoothie#do("\<C-U>") <CR>]])
-	-- 	end
-	-- },
-	{
 		"NvChad/nvim-colorizer.lua",
 		opts = {
 			filetypes = { "*" },
@@ -63,7 +51,6 @@ return {
 			buftypes = {},
 		}
 	},
-	{ 'theniceboy/antovim', lazy = false, },
 	{ 'gcmt/wildfire.vim',  lazy = false, },
 	{
 		"fedepujol/move.nvim",
@@ -77,30 +64,6 @@ return {
 			vim.keymap.set('v', '<c-e>', ':MoveBlock(1)<CR>', opts)
 			vim.keymap.set('v', '<c-u>', ':MoveBlock(-1)<CR>', opts)
 		end
-	},
-	{
-		"gbprod/substitute.nvim",
-		config = function()
-			local substitute = require("substitute")
-			substitute.setup({
-				on_substitute = require("yanky.integration").substitute(),
-				highlight_substituted_text = {
-					enabled = true,
-					timer = 200,
-				},
-			})
-			vim.keymap.set("n", "s", substitute.operator, { noremap = true })
-			vim.keymap.set("n", "sh", function() substitute.operator({ motion = "e" }) end, { noremap = true })
-			vim.keymap.set("x", "s", require('substitute.range').visual, { noremap = true })
-			vim.keymap.set("n", "ss", substitute.line, { noremap = true })
-			vim.keymap.set("n", "sI", substitute.eol, { noremap = true })
-			vim.keymap.set("x", "s", substitute.visual, { noremap = true })
-		end
-	},
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = { "kevinhwang91/promise-async", },
-		config = function() require('ufo').setup() end
 	},
 	{
 		"windwp/nvim-autopairs",
