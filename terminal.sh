@@ -56,7 +56,6 @@ source  /usr/share/bash-completion/completions/git
 source $HOME/.local/lib/git-core/git-sh-prompt
 source  ~/.config/rg.bash
 source  ~/.config/fzf.bash
-source ~/.config/fzf-git.sh
 
 # mcfly
 #export MCFLY_HISTORY="$ConfigFolder/.bash_history"
