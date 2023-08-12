@@ -1,12 +1,12 @@
 Diagnostics:
   Suppress: "*"
+  UnusedIncludes: "None"
   # Suppress: [undeclared_var_use, pp_file_not_found]
-  Remove: modernize-use-trailing-return-type
-  CheckOptions:
-      WarnOnFloatingPointNarrowingConversion: false
   ClangTidy:
+    Add: [modernize*, 'bugprone-*']
+    Remove: modernize-use-trailing-return-type
     CheckOptions:
       IgnoreMacros: true
-      example-check.ExampleOption: 0
-CompileFlags:
-  Add: -ferror-limit=0
+
+# Index:
+#   Background: Skip
