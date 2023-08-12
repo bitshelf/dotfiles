@@ -53,12 +53,11 @@ export DFT_DISPLAY=side-by-side-show-both
 
 # system PATH
 source  /usr/share/bash-completion/completions/git
-source $HOME/.local/lib/git-core/git-sh-prompt
+#source $HOME/.local/lib/git-core/git-sh-prompt
 source  ~/.config/rg.bash
 source  ~/.config/fzf.bash
 
 # mcfly
-#export MCFLY_HISTORY="$ConfigFolder/.bash_history"
 eval "$(mcfly init bash)"
 export MCFLY_FUZZY=2
 export MCFLY_RESULTS_SORT=LAST_RUN
