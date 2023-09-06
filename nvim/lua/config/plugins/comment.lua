@@ -1,5 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
+	event = "VeryLazy",
 	config = function()
 		local api = require("Comment.api")
 		vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"))

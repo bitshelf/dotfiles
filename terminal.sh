@@ -71,7 +71,10 @@ export MCFLY_PROMPT='→'
 # Completion settings
 source <(procs --gen-completion-out bash)
 
-export PATH="$HOME/.local/bin:$PATH"
+# set PATH so it includes user's private ~/.local/bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 #export PATH="$HOME/.local/gettext/bin:$PATH"
 #export LD_LIBRARY_PATH="$HOME/.local/gettext/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 

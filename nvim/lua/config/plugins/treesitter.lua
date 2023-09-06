@@ -8,7 +8,7 @@ return {
 		auto_install = true,
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "cpp", "bash", "lua","vim","devicetree"},
+				ensure_installed = { "cpp", "kotlin", "bash", "lua", "vim", "devicetree"},
 				highlight = {
 					enable = true,
 					--disable = { "devicetree",}, -- list of language that will be disabled

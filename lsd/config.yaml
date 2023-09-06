@@ -24,7 +24,7 @@ color:
   # XDG Base Directory if relative, e.g. ~/.config/lsd/themes/<theme-file-name>.yaml,
   # The file path if absolute
   #date: '+%d %b %y'
-  theme: theme
+  theme: custom
 
 date: '+%Y-%m-%d %X'
 #date: '+%Y-%m-%d %H:%M'

@@ -26,7 +26,6 @@ starship
 tree-rs
 tealdeer # tldr
 git-delta # delta
-difftastic #difft
 #xcp
 )
 
