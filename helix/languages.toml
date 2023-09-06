@@ -1,0 +1,11 @@
+#use-grammars = { only = [ "rust", "c", "cpp","java","bash","json","devicetree","make","python","kotlin","git-commit"] }                                               ┆
+use-grammars = { only = [ "rust", "c", "cpp", "java", "bash", "json", "devicetree", "make", "python", "kotlin", "git-commit"] }
+# in <config_dir>/helix/languages.toml
+
+[[language]]
+name = "rust"
+auto-format = false
+
+[[language]]
+name = "c"
+auto-format = false
