@@ -88,7 +88,7 @@ M.config = {
 
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('fzf')
-			ts.load_extension("command_center")
+			ts.load_extension("commander")
 
 			require("simulators").setup({
 				android_emulator = false,
@@ -97,12 +97,12 @@ M.config = {
 		end
 	},
 	{
-		"FeiyouG/command_center.nvim",
+		"FeiyouG/commander.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
 		config = function()
-			local command_center = require("command_center")
-			vim.keymap.set('n', '<c-q>', ":Telescope command_center<CR>", m)
-			command_center.add({
+			local commander = require("commander")
+			vim.keymap.set('n', '<c-q>', ":Telescope commander<CR>", m)
+			commander.add({
 				{
 					desc = "Run Simulator",
 					cmd = "<CMD>Telescope simulators run<CR>",
