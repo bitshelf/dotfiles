@@ -34,6 +34,7 @@ require("lazy").setup({
 	require("config.plugins.indent"),
 	require("config.plugins.jump"),
 	require("config.plugins.undo"),
+	require("config.plugins.aosp"),
 	{ "dstein64/vim-startuptime" },
 	{},
 })
