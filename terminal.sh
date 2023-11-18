@@ -68,7 +68,7 @@ export MCFLY_PROMPT='→'
 #readonly PROMPT_COMMAND
 
 # Completion settings
-source <(procs --gen-completion-out bash)
+#source <(procs --gen-completion-out bash)
 
 # set PATH so it includes user's private ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then

@@ -16,7 +16,7 @@ fd-find
 igrep
 lsd
 mcfly
-procs
+#procs
 #peep
 ripgrep
 ripgrep_all
