@@ -1,3 +1,7 @@
+" Install
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 "set runtimepath-=$ConfigFolder/.vim
 "    \ runtimepath^=$ConfigFolder/.local/share/nvim/site runtimepath^=$ConfigFolder/.vim
 "    \ runtimepath-=$ConfigFolder/.vim/after
@@ -306,6 +310,7 @@ if has('autocmd')
     setlocal tabstop=8
   endfunction
 
+  let g:coc_disable_startup_warning = 1
 " 用于 YouCompleteMe 的设定
   let g:ycm_enable_diagnostic_highlighting = 0
   let g:ycm_enable_diagnostic_signs = 0
