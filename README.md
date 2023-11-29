@@ -2,4 +2,5 @@
 ```shell
 ln config ~/.cargo/config
 ln vimrc ~/.vimrc
+ln gitconfig ~/.gitconfig
 ```
