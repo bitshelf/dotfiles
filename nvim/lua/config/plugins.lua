@@ -17,6 +17,7 @@ require("lazy").setup({
 	-- require("config.plugins.lspconfig").config,
 	require("config.plugins.coc"),
 	require("config.plugins.comment"),
+	require("config.plugins.colonize"),
 	require("config.plugins.editor"),
 	require("config.plugins.colorscheme"),
 	--require("config.plugins.copilot"),
