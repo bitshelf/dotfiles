@@ -14,6 +14,7 @@ cargo-update
 du-dust
 fd-find
 igrep
+joshuto
 lsd
 mcfly
 #procs
