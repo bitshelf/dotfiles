@@ -9,7 +9,7 @@ M.config = {
 	},
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v3.x',
 		dependencies = {
 			{
 				"folke/trouble.nvim",
@@ -46,11 +46,26 @@ M.config = {
 		},
 
 		config = function()
-			local lsp = require('lsp-zero').preset({})
+			-- local lsp = require('lsp-zero').preset({})
+			local lsp = require('lsp-zero')
 			M.lsp = lsp
 
-			lsp.ensure_installed({
-				'jsonls',
+			require('mason').setup({})
+			require('mason-lspconfig').setup({
+			  ensure_installed = {
+				'tsserver', 
+				'clangd',
+				'dockerls',
+				'pyright',
+				'rust_analyzer'
+			  },
+			 handlers = {
+			    lsp.default_setup,
+				lua_ls = function()
+				  local lua_opts = lsp.nvim_lua_ls()
+				  require('lspconfig').lua_ls.setup(lua_opts)
+				end,
+				}
 			})
 
 			-- F.configureInlayHints()
@@ -97,19 +112,9 @@ M.config = {
 				end,
 			})
 
-			lsp.format_on_save({
-				format_opts = {
-					-- async = false,
-					-- timeout_ms = 10000,
-				},
-			})
-
-
 			local lspconfig = require('lspconfig')
 
-			-- require("config.lsp.lua").setup(lspconfig, lsp)
-			-- require("config.lsp.json").setup(lspconfig, lsp)
-			-- require("config.lsp.html").setup(lspconfig, lsp)
+			require("config.lsp.html").setup(lspconfig, lsp)
 
 			lsp.setup()
 			require("fidget").setup({})
@@ -121,25 +126,10 @@ M.config = {
 				require('cmp_nvim_lsp').default_capabilities()
 			)
 
+			require('nvim-dap-projects').search_project_config()
 
 			F.configureDocAndSignature()
 			F.configureKeybinds()
-
-			local format_on_save_filetypes = {
-				json = true,
-				lua = true,
-			}
-
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = "*",
-				callback = function()
-					if format_on_save_filetypes[vim.bo.filetype] then
-						local lineno = vim.api.nvim_win_get_cursor(0)
-						vim.lsp.buf.format({ async = false })
-						vim.api.nvim_win_set_cursor(0, lineno)
-					end
-				end,
-			})
 		end
 	},
 }
@@ -178,9 +168,10 @@ end
 F.configureDocAndSignature = function()
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 		vim.lsp.handlers.signature_help, {
-			silent = true,
+			-- silent = true,
 			focusable = false,
 			border = "rounded",
+			zindex = 60,
 		}
 	)
 	local group = vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
@@ -190,12 +181,15 @@ F.configureDocAndSignature = function()
 			vim.diagnostic.open_float(0, {
 				scope = "cursor",
 				focusable = false,
+				zindex = 10,
 				close_events = {
 					"CursorMoved",
 					"CursorMovedI",
 					"BufHidden",
 					"InsertCharPre",
+					"InsertEnter",
 					"WinLeave",
+					"ModeChanged",
 				},
 			})
 		end,

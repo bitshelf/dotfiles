@@ -3,7 +3,7 @@ return {
 	'neoclide/coc.nvim',
 	branch='release',
 
-	ft = { "c","cpp" },
+	ft = { "c","cpp","dts","rust" },
 	config = function()
 		local keyset = vim.keymap.set
 		-- Autocomplete
@@ -14,13 +14,8 @@ return {
 
 		local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 
-		vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
-		vim.opt.backup = false
-		vim.opt.writebackup = false
-
 		-- Always show the signcolumn, otherwise it would shift the text each time
 		-- diagnostics appeared/became resolved
-		vim.opt.signcolumn = "yes"
 
 		-- Make <CR> to accept selected completion item or notify coc.nvim to format
 		-- <C-g>u breaks current undo, please make your own choice
@@ -28,7 +23,6 @@ return {
 
 		keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
 		keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
-
 
 		-- Use <c-space> to trigger completion
 		keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
@@ -55,7 +49,7 @@ return {
 				vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
 			end
 		end
-		keyset("n", "D", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+		keyset("n", "H", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
 		-- Highlight the symbol and its references on a CursorHold event(cursor is idle)
 		vim.api.nvim_create_augroup("CocGroup", {})

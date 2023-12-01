@@ -19,7 +19,7 @@ M.config = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-calc",
-		-- "andersevenrud/cmp-tmux",
+		"hrsh7th/nvim-cmp",
 		{
 			"onsails/lspkind.nvim",
 			lazy = false,
@@ -132,18 +132,6 @@ M.configfunc = function()
 		}),
 		mapping = cmp.mapping.preset.insert({
 			['<C-o>'] = cmp.mapping.complete(),
-			["<c-e>"] = cmp.mapping(
-				function()
-					cmp_ultisnips_mappings.compose { "expand", "jump_forwards" } (function() end)
-				end,
-				{ "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-			),
-			["<c-n>"] = cmp.mapping(
-				function(fallback)
-					cmp_ultisnips_mappings.jump_backwards(fallback)
-				end,
-				{ "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-			),
 			['<c-f>'] = cmp.mapping({
 				i = function(fallback)
 					cmp.close()
@@ -183,6 +171,5 @@ M.configfunc = function()
 		}),
 	})
 end
-
 
 return M
