@@ -123,11 +123,12 @@ M.configfunc = function()
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "buffer" },
-		}, {
 			{ name = "path" },
 			{ name = "nvim_lua" },
 			{ name = "calc" },
 			-- { name = "luasnip" },
+			{ name = "treesitter" },
+			{ name = "spell" },
 			-- { name = 'tmux',    option = { all_panes = true, } },  -- this is kinda slow
 		}),
 		mapping = cmp.mapping.preset.insert({
