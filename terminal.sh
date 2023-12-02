@@ -33,7 +33,7 @@ alias lt='ls --tree'
 # starship
 export STARSHIP_LOG=error
 
-export EDITOR=vim
+export EDITOR=nvim
 if [ "x$TERM_PROGRAM" = "xvscode" ]; then
         export EDITOR=code
 fi
