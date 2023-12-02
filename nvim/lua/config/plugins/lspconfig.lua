@@ -46,18 +46,19 @@ M.config = {
 		},
 
 		config = function()
-			-- local lsp = require('lsp-zero').preset({})
 			local lsp = require('lsp-zero')
 			M.lsp = lsp
 
 			require('mason').setup({})
 			require('mason-lspconfig').setup({
+			  automatic_installation = true,
 			  ensure_installed = {
 				'tsserver', 
 				'clangd',
 				'dockerls',
 				'pyright',
 				'luau_lsp',
+				'bashls',
 				'rust_analyzer'
 			  },
 			 handlers = {
@@ -66,7 +67,7 @@ M.config = {
 				  local lua_opts = lsp.nvim_lua_ls()
 				  require('lspconfig').lua_ls.setup(lua_opts)
 				end,
-				}
+			  }
 			})
 
 			-- F.configureInlayHints()
@@ -115,7 +116,9 @@ M.config = {
 
 			local lspconfig = require('lspconfig')
 
-			require("config.lsp.html").setup(lspconfig, lsp)
+			-- require("config.lsp.lua").setup(lspconfig, lsp)
+			-- require("config.lsp.html").setup(lspconfig, lsp)
+			-- require("config.lsp.json").setup(lspconfig, lsp)
 
 			lsp.setup()
 			require("fidget").setup({})
