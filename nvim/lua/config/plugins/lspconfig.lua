@@ -57,6 +57,7 @@ M.config = {
 				'clangd',
 				'dockerls',
 				'pyright',
+				'luau_lsp',
 				'rust_analyzer'
 			  },
 			 handlers = {

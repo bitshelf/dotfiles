@@ -47,6 +47,8 @@ require("lazy").setup({
 	require("config.plugins.aosp"),
 	require("config.plugins.vista"),
 	require("config.plugins.terminal"),
+	require("config.plugins.outline"),
+	require("config.plugins.calltree"),
 	{ "dstein64/vim-startuptime" },
 }, {
 })
