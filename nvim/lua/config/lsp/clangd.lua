@@ -12,5 +12,6 @@ return {
 			};
 			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto","dts", },
 		})
-	end
+	end,
+		single_file_support = true,
 }
