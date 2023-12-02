@@ -44,6 +44,8 @@ vim.g.indent_blankline_enabled = 0
 vim.opt.signcolumn = "yes"
 vim.opt.backup = false
 vim.opt.writebackup = false
+-- vim.opt.autochdir = false
+vim.opt.swapfile = false
 
 vim.cmd([[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
