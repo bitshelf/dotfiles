@@ -113,7 +113,7 @@ call plug#begin()
   " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
   " Using a non-default branch
-  Plug 'ycm-core/YouCompleteMe'
+  " Plug 'ycm-core/YouCompleteMe'
   "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
   " customs
@@ -134,7 +134,7 @@ call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
