@@ -33,7 +33,6 @@ M.config = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{
 				'j-hui/fidget.nvim',
-				tag = "legacy"
 			},
 			"folke/neodev.nvim",
 			"ray-x/lsp_signature.nvim",
@@ -51,13 +50,13 @@ M.config = {
 
 			require('mason').setup({})
 			require('mason-lspconfig').setup({
-			  automatic_installation = true,
+			  automatic_installation = false,
 			  ensure_installed = {
-				'tsserver', 
+				--'tsserver',
 				'clangd',
-				'dockerls',
+				--'dockerls',
 				'pyright',
-				'luau_lsp',
+				--'luau_lsp',
 				'bashls',
 				'rust_analyzer'
 			  },
@@ -70,27 +69,12 @@ M.config = {
 			  }
 			})
 
-			-- F.configureInlayHints()
 
 			lsp.on_attach(function(client, bufnr)
 				lsp.default_keymaps({ buffer = bufnr })
 				client.server_capabilities.semanticTokensProvider = nil
 				require("config.plugins.autocomplete").configfunc()
-				-- require("lsp_signature").on_attach(F.signature_config, bufnr)
-				-- require("lsp-inlayhints").on_attach(client, bufnr)
-				-- vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
-				-- vim.api.nvim_create_autocmd("InsertEnter", {
-				-- 	buffer = bufnr,
-				-- 	callback = function() vim.lsp.inlay_hint(bufnr, false) end,
-				-- 	group = "lsp_augroup",
-				-- })
-				-- vim.lsp.inlay_hint(bufnr, true)
-				-- vim.api.nvim_create_autocmd("InsertLeave", {
-				-- 	buffer = bufnr,
-				-- 	callback = function() vim.lsp.inlay_hint(bufnr, true) end,
-				-- 	group = "lsp_augroup",
-				-- })
-				-- vim.cmd('highlight! link LspInlayHint Comment')
+
 				vim.diagnostic.config({
 					severity_sort = true,
 					underline = true,
@@ -116,8 +100,8 @@ M.config = {
 
 			local lspconfig = require('lspconfig')
 
-			-- require("config.lsp.lua").setup(lspconfig, lsp)
-			-- require("config.lsp.html").setup(lspconfig, lsp)
+			require("config.lsp.clangd").setup(lspconfig, lsp)
+			require("config.lsp.ts").setup(lspconfig, lsp)
 			-- require("config.lsp.json").setup(lspconfig, lsp)
 
 			lsp.setup()
@@ -226,7 +210,8 @@ F.configureKeybinds = function()
 
 			vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-			vim.keymap.set('n', 'gD', ':tab sp<CR><cmd>lua vim.lsp.buf.definition()<cr>', opts)
+			-- vim.keymap.set('n', 'gD', ':tab sp<CR><cmd>lua vim.lsp.buf.definition()<cr>', opts)
+			vim.keymap.set('n', 'gD', vim.lsp.buf.definition, opts)
 			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 			vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
 			vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
