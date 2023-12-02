@@ -12,3 +12,15 @@ for _, mapping in ipairs(nmappings) do
 end
 
 vim.keymap.set('n', "<F2>", ":nohlsearch<CR>", { silent = true })
+
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+
+-- save buffer
+keymap("n", "<leader>w", ":w<cr>", opts)
+
+-- Resize with arrows
+keymap("n", "<A-Up>", ":resize -2<CR>", opts)
+keymap("n", "<A-Down>", ":resize +2<CR>", opts)
+keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
