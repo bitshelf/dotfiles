@@ -126,6 +126,7 @@ M.config = {
 			ts.load_extension('dap')
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('fzf')
+			ts.load_extension('projects')
 			-- ts.load_extension("commander")
 		end
 	},
