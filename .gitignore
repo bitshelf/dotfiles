@@ -10,3 +10,4 @@ nvim/package-lock.json
 nvim/tmp/
 configstore/
 coc
+lazygit/state.yml
