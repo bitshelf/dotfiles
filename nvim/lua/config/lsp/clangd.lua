@@ -5,6 +5,7 @@ return {
 			end,
 			cmd = {
 			  "clangd",
+			  "--background-index",
 			  "--header-insertion=never",
 			  "--all-scopes-completion",
 			  "--completion-style=detailed",
