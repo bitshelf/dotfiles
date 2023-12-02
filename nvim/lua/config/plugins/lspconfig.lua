@@ -52,7 +52,7 @@ M.config = {
 			require('mason-lspconfig').setup({
 			  automatic_installation = false,
 			  ensure_installed = {
-				--'tsserver',
+				'tsserver',
 				'clangd',
 				--'dockerls',
 				'pyright',

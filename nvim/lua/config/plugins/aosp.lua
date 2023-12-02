@@ -5,7 +5,13 @@ return {
 	  -- enabled = false,
 	},
 	{
-	  "rubberduck203/aosp-vim",
+	  "bitshelf/aosp-vim",
 	  ft = {"bp","hal" },
 	},
+	{
+	  'google/vim-maktaba'
+	},
+	-- {
+	--   'bazelbuild/vim-bazel'
+	-- },
 }
