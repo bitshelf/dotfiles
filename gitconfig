@@ -2,7 +2,7 @@
 	email = luojianzhi@industio.com
 	name = JZ Loh
 [core]
-    editor = vim
+    editor = nvim
     quotepath = false
 [log]
     date = format-local:%Y-%m-%d
