@@ -34,11 +34,11 @@
 	required = true
 
 [http]
-	;proxy = socks5://192.168.0.36:7890
-	proxy = socks5://localhost:7890
+	proxy = socks5://192.168.0.36:7890
+	; proxy = socks5://localhost:7890
 [https]
-	;proxy = socks5://192.168.0.36:7890
-	proxy = socks5://localhost:7890
+	proxy = socks5://192.168.0.36:7890
+	; proxy = socks5://localhost:7890
 ; git clone proxy 
 ; add this in ~/.ssh/config
 ; ### github.com
