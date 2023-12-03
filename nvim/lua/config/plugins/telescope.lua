@@ -17,7 +17,7 @@ M.config = {
 				end
 			},
 			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-		  	"nvim-telescope/telescope-ui-select.nvim",
+			-- "nvim-telescope/telescope-ui-select.nvim",
 			'stevearc/dressing.nvim',
 		},
 		config = function()
@@ -29,6 +29,7 @@ M.config = {
 			-- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 			vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 			vim.keymap.set('n', '<leader>rs', builtin.resume, m)
+			vim.keymap.set('n', '<leader>ch', builtin.command_history, m)
 			vim.keymap.set('n', '<leader>fb', builtin.buffers, m)
 			vim.keymap.set('n', '<c-h>', builtin.oldfiles, m)
 			vim.keymap.set('n', '<c-_>', builtin.current_buffer_fuzzy_find, m)
