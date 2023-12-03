@@ -1,3 +1,4 @@
+HOST_CONFIG=hostConfig
 
 . "$HOME/.cargo/env"
 export LANGUAGE=en_US
@@ -54,8 +55,8 @@ export DFT_DISPLAY=side-by-side-show-both
 # system PATH
 source  /usr/share/bash-completion/completions/git
 #source $HOME/.local/lib/git-core/git-sh-prompt
-source  ~/.config/rg.bash
-source  ~/.config/fzf.bash
+source  ~/.config/${HOST_CONFIG}/rg.bash
+source  ~/.config/${HOST_CONFIG}/fzf.bash
 
 # mcfly
 eval "$(mcfly init bash)"

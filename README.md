@@ -1,11 +1,9 @@
 ## This is a Linux config
 ```shell
-ln config ~/.cargo/config
-ln vimrc ~/.vimrc
-ln gitconfig ~/.gitconfig
+git clone --recursive https://gitee.com/bitshelf/linuxconfig.git
 ```
 
-### proxy
+### apt proxy
 ```shell
-cp proxy.conf /etc/apt/apt.conf.d/proxy.conf
+cp hostConfig/proxy.conf /etc/apt/apt.conf.d/proxy.conf
 ```
