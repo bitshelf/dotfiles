@@ -91,5 +91,5 @@ if [ -f ~/.config/git-completion.bash ]; then
 fi
 
 with_proxy(){
-   HTTPS_PROXY=socks5://192.168.0.36:7890 HTTP_PROXY=socks5://192.168.0.36:7890 "$@"
+   HTTPS_PROXY=socks5://localhost:7890 HTTP_PROXY=socks5://localhost:7890 "$@"
 }
