@@ -11,3 +11,4 @@ nvim/tmp/
 configstore/
 coc
 lazygit/state.yml
+github-copilot/versions.json
