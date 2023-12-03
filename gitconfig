@@ -23,8 +23,8 @@
     pathnameencoding = utf-8
 [i18n "commit"]
     encoding = utf-8
-[interactive]
-    diffFilter = delta --color-only
+; [interactive]
+;     diffFilter = delta --color-only
 [merge]
     conflictstyle = diff3
 [filter "lfs"]
