@@ -38,6 +38,7 @@ require("lazy").setup({
 	require("config.plugins.markdown"),
 	require("config.plugins.git"),
 	require("config.plugins.go"),
+	require("config.plugins.rust"),
 	require("config.plugins.indent"),
 	require("config.plugins.yank"),
 	require("config.plugins.undo"),
