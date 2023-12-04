@@ -35,7 +35,7 @@ require("lazy").setup({
 	require("config.plugins.comment"),
 	require("config.plugins.wilder"),
 	require("config.plugins.multi-cursor"),
-	require("config.plugins.markdown"),
+	-- require("config.plugins.markdown"),
 	require("config.plugins.git"),
 	require("config.plugins.go"),
 	require("config.plugins.rust"),
