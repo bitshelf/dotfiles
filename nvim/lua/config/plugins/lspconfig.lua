@@ -36,7 +36,7 @@ M.config = {
 			},
 			"folke/neodev.nvim",
 			"ray-x/lsp_signature.nvim",
-			"ldelossa/nvim-dap-projects",
+			-- "ldelossa/nvim-dap-projects",
 			{
 				"lvimuser/lsp-inlayhints.nvim",
 				branch = "anticonceal",
@@ -114,7 +114,7 @@ M.config = {
 				require('cmp_nvim_lsp').default_capabilities()
 			)
 
-			require('nvim-dap-projects').search_project_config()
+			-- require('nvim-dap-projects').search_project_config()
 
 			F.configureDocAndSignature()
 			F.configureKeybinds()

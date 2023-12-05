@@ -1,4 +1,4 @@
 return {
   funcs = require('utils.funcs'),
-  static = require('utils.static'),
+  -- static = require('utils.static'),
 }
