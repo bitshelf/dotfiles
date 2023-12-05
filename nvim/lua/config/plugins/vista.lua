@@ -2,14 +2,14 @@ return {
  --  {
 	-- "preservim/tagbar",
 	-- config = function()
-	--    vim.keymap.set('n', '<LEADER>tb', ":TagbarToggle<cr>" )
+	--    vim.keymap.set('n', '<leader>tb', ":TagbarToggle<cr>" )
 	-- end,
  --  }
  {
   "liuchengxu/vista.vim",
    event = "VeryLazy",
 	config = function()
-	   vim.keymap.set('n', '<LEADER>tb', ":Vista!!<cr>" )
+	   vim.keymap.set('n', '<leader>tb', ":Vista!!<cr>" )
 	   vim.g.vista_default_executive = 'ctags'
 	   -- vim.g.vista_icon_indent = {'╰─▸ ', '├─▸ '}
 
