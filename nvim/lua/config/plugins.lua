@@ -28,7 +28,7 @@ require("lazy").setup({
 	require("config.plugins.scrollbar"),
 	require("config.plugins.tabline"),
 	require("config.plugins.autocomplete").config,
-	require("config.plugins.debugger"),
+	-- require("config.plugins.debugger"),
 	require("config.plugins.lspconfig").config,
 	require("config.plugins.treesitter"),
 	require("config.plugins.joshuto"),
