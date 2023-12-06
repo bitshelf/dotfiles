@@ -15,7 +15,7 @@ return {
 			  "--log=verbose",
 			  "-j=20",
 			};
-			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto","dts", },
+			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 		})
 	end,
 		single_file_support = true,
