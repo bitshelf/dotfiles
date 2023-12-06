@@ -49,6 +49,24 @@ vim.opt.swapfile = false
 vim.opt.guicursor:append('n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50')
 vim.opt.guicursor:append('a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor')
 vim.opt.guicursor:append('sm:block-blinkwait175-blinkoff150-blinkon175')
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = false,
+    virtual_text = false,
+    signs = false,
+    update_in_insert = false,
+  }
+)
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics, {
+--     signs = {
+--       severity_limit = "Hint",
+--     },
+--     virtual_text = {
+--       severity_limit = "Warning",
+--     },
+--   }
+-- )
 
 vim.cmd([[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
