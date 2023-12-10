@@ -1,6 +1,8 @@
 return {
   {
     "ldelossa/litee-calltree.nvim",
+	ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+	event = "VeryLazy",
 	dependencies = {
 	  "ldelossa/litee.nvim",
 	  config = function()
@@ -18,7 +20,7 @@ return {
 	},
 
     config = function()
-	  vim.keymap.set("n", "<leader>in", "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", {noremap = true, silent = true})
+	  vim.keymap.set("n", "<A-H>", "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", {noremap = true, silent = true})
       require("litee.calltree").setup({
         -- When retrieving Call Hierarchy items some language servers will respond with
         -- different symbol names then when a document symbol or workspace symbol request

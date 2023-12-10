@@ -51,6 +51,7 @@ return {
 	-- },
 	{
 		"github/copilot.vim",
+		event = "VeryLazy",
 		ft = { "make","hal","lua","dts" },
 		config = function()
 			vim.g.copilot_enabled = true
