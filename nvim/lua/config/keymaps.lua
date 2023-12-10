@@ -18,6 +18,7 @@ local keymap = vim.api.nvim_set_keymap
 
 -- save buffer
 keymap("n", "<leader>w", ":w<cr>", opts)
+keymap("n", "<C-s>", ":w<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<A-Up>", ":resize +2<CR>", opts)
