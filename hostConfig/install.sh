@@ -5,6 +5,7 @@ function install_host {
 	ln -sf ${PWD}/vimrc ~/.vimrc
 	ln -sf ${PWD}/gitconfig ~/.gitconfig
 	ln -sf ${PWD}/rustconfig ~/.cargo/config
+	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
 }
 
 function install_rs {
