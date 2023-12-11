@@ -24,6 +24,13 @@ function install_nvim {
 	popd
 }
 
+function install_vim {
+	git clone https://github.com/vim/vim.git
+	pushd vim
+	./configure --with-features=huge --enable-python3interp --enable-pythoninterp --prefix=$HOME/.local/ --enable-luainterp --enable-cscope --enable-multibyte
+	popd
+}
+
 OPTIONS="$@"
 for option in ${OPTIONS:-all}; do
 	echo "start install: $option"
