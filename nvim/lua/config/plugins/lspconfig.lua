@@ -55,7 +55,7 @@ M.config = {
 				'tsserver',
 				'clangd',
 				--'dockerls',
-				'pyright',
+				-- 'pyright',
 				--'luau_lsp',
 				'bashls',
 				'rust_analyzer'
