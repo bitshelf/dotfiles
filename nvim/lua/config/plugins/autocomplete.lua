@@ -13,7 +13,7 @@ local M = {}
 M.config = {
 	"hrsh7th/nvim-cmp",
 	event = "VeryLazy",
-	--after = "SirVer/ultisnips",
+	-- after = "SirVer/ultisnips",
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -21,6 +21,7 @@ M.config = {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-calc",
 		"hrsh7th/nvim-cmp",
+		"SirVer/ultisnips",
 		{
 			"onsails/lspkind.nvim",
 			lazy = false,
