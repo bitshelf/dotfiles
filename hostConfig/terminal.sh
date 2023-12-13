@@ -77,6 +77,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 	export LD_LIBRARY_PATH="$HOME/.local/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 fi
+
+if [ -d "$HOME/miniconda3/bin" ] ; then
+	export PATH="$HOME/miniconda3//bin/:$PATH"
+fi
 #export PATH="$HOME/.local/gettext/bin:$PATH"
 #export LD_LIBRARY_PATH="$HOME/.local/gettext/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 #export LD_LIBRARY_PATH="$HOME/.local/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
