@@ -35,6 +35,7 @@ M.config = {
 				'j-hui/fidget.nvim',
 			},
 			"folke/neodev.nvim",
+			"simrat39/rust-tools.nvim",
 			"ray-x/lsp_signature.nvim",
 			-- "ldelossa/nvim-dap-projects",
 			{
@@ -102,6 +103,7 @@ M.config = {
 
 			require("config.lsp.clangd").setup(lspconfig, lsp)
 			require("config.lsp.ts").setup(lspconfig, lsp)
+			require("config.lsp.rust").setup(lspconfig, lsp)
 			-- require("config.lsp.json").setup(lspconfig, lsp)
 
 			lsp.setup()
