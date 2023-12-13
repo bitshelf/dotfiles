@@ -8,7 +8,13 @@ function install_host {
 	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
 }
 
-function install_rs {
+function install_rust {
+	# install rust
+	curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
+
+	cargo install -f --git https://github.com/starship/starship
+	cargo install ripgrep_all --locked
+	cargo install --locked zellij
 	./cargo.sh
 }
 
