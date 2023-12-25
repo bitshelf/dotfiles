@@ -11,6 +11,7 @@ continuation_prompt = "[▶▶](green)"
 
 format = """
 $hostname\
+$conda\
 $memory_usage\
 $directory\
 $git_branch\
@@ -42,6 +43,9 @@ disabled = true
 
 [c]
 disabled = true
+
+[conda]
+format = '[$environment](dimmed green) '
 
 [git_status]
 conflicted = "🚩"
