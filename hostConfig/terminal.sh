@@ -75,7 +75,7 @@ export MCFLY_PROMPT='→'
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/usr/bin:$PATH"
     PATH="$HOME/.local/bin:$PATH"
-	export LD_LIBRARY_PATH="$HOME/.local/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+	#export LD_LIBRARY_PATH="$HOME/.local/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 fi
 
 if [ -d "$HOME/miniconda3/bin" ] ; then
@@ -86,9 +86,9 @@ fi
 #export LD_LIBRARY_PATH="$HOME/.local/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 
 # JDK
-export JAVA_HOME="$HOME/.local/jdk-17.0.7+7"
-export PATH="$JAVA_HOME/bin:$PATH"
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+#export JAVA_HOME="$HOME/.local/jdk-17.0.7+7"
+#export PATH="$JAVA_HOME/bin:$PATH"
+#export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
 if [ -f ~/.config/git-completion.bash ]; then
 	source ~/.config/git-completion.bash
