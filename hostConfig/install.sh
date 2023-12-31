@@ -24,7 +24,8 @@ function install_all {
 }
 
 function install_nvim {
-	pushd ../neovim/
+	git clone https://github.com/neovim/neovim.git
+	pushd neovim/
 	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/
 	make install
 	popd
