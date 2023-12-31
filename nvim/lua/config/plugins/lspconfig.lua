@@ -23,6 +23,7 @@ M.config = {
 				},
 			},
 			{ 'neovim/nvim-lspconfig' },
+			{ 'mfussenegger/nvim-jdtls' },
 			{
 				'williamboman/mason.nvim',
 				build = function()
@@ -58,6 +59,7 @@ M.config = {
 				-- 'pyright',
 				--'luau_lsp',
 				'bashls',
+				'jdtls',
 				'rust_analyzer'
 			  },
 			 handlers = {
