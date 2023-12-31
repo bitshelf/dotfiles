@@ -20,11 +20,11 @@ function install_rust {
 
 function install_all {
 	install_host
-	install_rs
+	install_rust
 }
 
 function install_nvim {
-	git clone https://github.com/neovim/neovim.git
+	git clone https://github.com/neovim/neovim.git --depth=1 --branch=stable
 	pushd neovim/
 	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/
 	make install
@@ -32,7 +32,7 @@ function install_nvim {
 }
 
 function install_vim {
-	git clone https://github.com/vim/vim.git
+	git clone https://github.com/vim/vim.git --depth=1
 	pushd vim
 	./configure --with-features=huge --enable-python3interp --enable-pythoninterp --prefix=$HOME/.local/ --enable-luainterp --enable-cscope --enable-multibyte
 	popd
