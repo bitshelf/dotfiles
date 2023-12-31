@@ -86,7 +86,7 @@ fi
 #export LD_LIBRARY_PATH="$HOME/.local/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 
 # JDK
-#export JAVA_HOME="$HOME/.local/jdk-17.0.7+7"
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64/"
 #export PATH="$JAVA_HOME/bin:$PATH"
 #export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
