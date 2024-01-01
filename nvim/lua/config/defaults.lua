@@ -81,7 +81,6 @@ endif
 ]])
 
 -- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.md", command = "setlocal spell", })
--- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.bp", command = "setfiletype hal", })
 vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", command = "silent! lcd %:p:h", })
 
 vim.cmd([[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
@@ -99,6 +98,7 @@ au("TextYankPost", {
 })
 
 vim.cmd([[autocmd TermOpen term://* startinsert]])
+vim.cmd([[autocmd FileType * set formatoptions-=o]])
 vim.cmd([[
 augroup NVIMRC
     autocmd!
