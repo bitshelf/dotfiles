@@ -29,6 +29,7 @@ function install_nvim {
 	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/
 	make install
 	popd
+	conda install -c conda-forge neovim # pip3 install --user --upgrade neovim
 }
 
 function install_vim {
