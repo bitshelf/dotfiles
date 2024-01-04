@@ -36,7 +36,10 @@ function install_vim {
 	git clone https://github.com/vim/vim.git --depth=1
 	pushd vim
 	./configure --with-features=huge --enable-python3interp --enable-pythoninterp --prefix=$HOME/.local/ --enable-luainterp --enable-cscope --enable-multibyte
+	make  -j${nproc}
+	make install
 	popd
+	rm -rf vim
 }
 
 OPTIONS="$@"
