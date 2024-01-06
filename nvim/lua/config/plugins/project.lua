@@ -2,7 +2,8 @@ return {
   "ahmedkhalf/project.nvim",
     config = function()
 	local opts = {silent = true, nowait = true}
-	vim.keymap.set('n', '<leader>..', ':ProjectRoot<cr>', opts)
+	vim.keymap.set('n', '<leader>gi', ':ProjectRoot<cr>', opts)
+	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", opts)
 
     require("project_nvim").setup {
 		-- Manual mode doesn't automatically change your root directory, so you have
