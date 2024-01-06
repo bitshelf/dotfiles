@@ -2,7 +2,6 @@ vim.o.termguicolors = true
 vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 vim.o.ttyfast = true
-vim.o.autochdir = true
 vim.o.exrc = true
 vim.o.secure = false
 vim.o.listchars = 'tab:|\\ ,trail:▫'
@@ -47,7 +46,7 @@ vim.o.autoread = true
 vim.bo.autoread = true
 vim.opt.backup = false
 vim.opt.writebackup = false
--- vim.opt.autochdir = false
+vim.opt.autochdir = false
 vim.opt.swapfile = false
 vim.opt.guicursor:append('n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50')
 vim.opt.guicursor:append('a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor')
@@ -84,7 +83,7 @@ endif
 ]])
 
 -- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.md", command = "setlocal spell", })
-vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", command = "silent! lcd %:p:h", })
+-- vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", command = "silent! lcd %:p:h", })
 
 vim.cmd([[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
 

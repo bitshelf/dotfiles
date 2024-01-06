@@ -1,5 +1,7 @@
 local m = { noremap = true, nowait = true }
+local is_inside_work_tree = {}
 local M = {}
+local G = {}
 
 M.config = {
 	{
@@ -24,10 +26,11 @@ M.config = {
 		config = function()
 
 			local builtin = require('telescope.builtin')
-			vim.keymap.set('n', '<c-p>', builtin.find_files, m)
-			-- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+			-- vim.keymap.set('n', '<c-p>', builtin.find_files, m)
+			vim.keymap.set('n', '<c-p>', G.project_files, m)
+			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 			vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-			vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+			-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 			vim.keymap.set('n', '<leader>rs', builtin.resume, m)
 			vim.keymap.set('n', '<leader>ch', builtin.command_history, m)
 			vim.keymap.set('n', '<leader>fb', builtin.buffers, m)
@@ -64,8 +67,13 @@ M.config = {
 						"--trim",
 					},
 					layout_config = {
-						width = 0.9,
-						height = 0.9,
+				        horizontal = {
+						  -- prompt_position = 'top',
+						  preview_width = 0.55,
+						  results_width = 0.8,
+						},
+						width = 0.95,
+						height = 0.95,
 					},
 					color_devicons = true,
 					prompt_prefix = "🔍 ",
@@ -85,7 +93,19 @@ M.config = {
 						}
 					},
 					find_files = {
+					 --  mappings = {
+						-- n = {
+						--   ["cd"] = function(prompt_bufnr)
+						-- 	local selection = require("telescope.actions.state").get_selected_entry()
+						-- 	local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+						-- 	require("telescope.actions").close(prompt_bufnr)
+						-- 	-- Depending on what you want put `cd`, `lcd`, `tcd`
+						-- 	vim.cmd(string.format("silent lcd %s", dir))
+						--   end
+						-- }
+					 --  },
 					  theme = "ivy",
+					  cwd = vim.fn.expand('%:p:h'),
 					},
 				},
 				extensions = {
@@ -134,5 +154,42 @@ M.config = {
 	-- 	end
 	-- }
 }
+
+G.project_files = function()
+  local builtin = require('telescope.builtin')
+
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local file_path = vim.api.nvim_buf_get_name(bufnr)
+--   local cwd = vim.fn.fnamemodify(file_path.path, ":p:h")
+  local cwd = vim.fn.getcwd()
+  local opts = {
+			git_command = {
+			  "git",
+			  "-C",
+			  cwd,
+			  "ls-files",
+			  "--exclude-standard",
+			  "--cached",
+			  "--",
+			  cwd,
+		  },
+  } -- define here if you want to define something
+
+  if is_inside_work_tree[cwd] == nil then
+    vim.fn.system("git rev-parse --is-inside-work-tree")
+    is_inside_work_tree[cwd] = vim.v.shell_error == 0
+  end
+
+  if is_inside_work_tree[cwd] then
+	-- builtin.find_files({
+	--   hidden = true,
+	--   find_command = { "git", "ls-files","--", cwd,},
+ --    })
+    builtin.git_files(opts)
+  else
+    builtin.find_files(opts)
+  end
+
+end
 
 return M
