@@ -1,6 +1,7 @@
 return {
 	{
 		"gbprod/yanky.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			"kkharji/sqlite.lua",
 		},
