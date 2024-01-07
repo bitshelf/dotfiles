@@ -50,7 +50,7 @@ _fzf_comprun() {
 }
 
 # for large git repo
-export FZF_DEFAULT_COMMAND='(fd --type f --hidden --follow --strip-cwd-prefix --color=auto ${EXCLUDE_DIRS[@]} || git ls-tree -r --name-only HEAD ) 2> /dev/null'
+export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hidden --follow --strip-cwd-prefix --color=auto ${EXCLUDE_DIRS[@]} ) 2> /dev/null'
 
 # fd
 #export FZF_DEFAULT_COMMAND='(fd ${EXCLUDE_DIRS[@]}
