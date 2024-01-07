@@ -40,8 +40,8 @@ M.config = {
 					severity_sort = true,
 				})
 			end, m)
-			-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
-			-- vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
+			vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
+			vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
 			vim.keymap.set('n', 'gi', builtin.git_status, m)
 			-- vim.keymap.set("n", ":", builtin.commands, m)
 
@@ -66,18 +66,6 @@ M.config = {
 					layout_config = {
 						width = 0.9,
 						height = 0.9,
-					},
-					mappings = {
-						i = {
-							["<C-h>"] = "which_key",
-							["<C-u>"] = "move_selection_previous",
-							["<C-e>"] = "move_selection_next",
-							["<C-l>"] = "preview_scrolling_up",
-							["<C-y>"] = "preview_scrolling_down",
-							["<esc>"] = "close",
-							["<C-n>"] = require('telescope.actions').cycle_history_next,
-							["<C-p>"] = require('telescope.actions').cycle_history_prev,
-						}
 					},
 					color_devicons = true,
 					prompt_prefix = "🔍 ",
