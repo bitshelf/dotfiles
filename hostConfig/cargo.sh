@@ -34,6 +34,7 @@ vivid
 cargo install  ${tools[*]}
 
 # from git install
-#cargo install -f --git https://github.com/starship/starship
-#cargo install ripgrep_all --locked
-#cargo install --locked zellij
+# cargo install -f --git https://github.com/starship/starship
+# cargo install ripgrep_all --locked
+# cargo install --locked zellij
+# cargo install ripgrep --features 'pcre2'
