@@ -3,7 +3,7 @@
 
 HOST_CONFIG=hostConfig
 
-. "$HOME/.cargo/env"
+[ -r $HOME/.cargo/env ] && . "$HOME/.cargo/env"
 export LANGUAGE=en_US
 export LANG=en_US.UTF-8
 
@@ -58,10 +58,10 @@ export DFT_DISPLAY=side-by-side-show-both
 
 
 # system PATH
-source  /usr/share/bash-completion/completions/git
+[ -r /usr/share/bash-completion/completions/git ] && source  /usr/share/bash-completion/completions/git
 #source $HOME/.local/lib/git-core/git-sh-prompt
-source  ~/.config/${HOST_CONFIG}/rg.bash
-source  ~/.config/${HOST_CONFIG}/fzf.bash
+[ -r ~/.config/${HOST_CONFIG}/rg.bash ] && source  ~/.config/${HOST_CONFIG}/rg.bash
+[ -r ~/.config/${HOST_CONFIG}/fzf.bash ] && source  ~/.config/${HOST_CONFIG}/fzf.bash
 
 # mcfly
 eval "$(mcfly init bash)"
