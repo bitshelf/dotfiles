@@ -46,6 +46,7 @@ disabled = true
 
 [conda]
 format = '[$environment](dimmed green) '
+ignore_base = true
 
 [git_status]
 conflicted = "🚩"
