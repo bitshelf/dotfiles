@@ -27,6 +27,7 @@ starship
 tree-rs
 tealdeer # tldr
 git-delta # delta
+vivid
 #xcp
 )
 

@@ -6,6 +6,8 @@ HOST_CONFIG=hostConfig
 [ -r $HOME/.cargo/env ] && . "$HOME/.cargo/env"
 export LANGUAGE=en_US
 export LANG=en_US.UTF-8
+shopt -s checkwinsize
+shopt -s autocd
 
 # cargo  
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
@@ -31,6 +33,14 @@ alias l='ls -l'
 alias la='ls -a'
 alias ll='ls -la'
 alias lt='ls --tree'
+# export LS_COLORS="$(vivid generate molokai)"
+
+# prevent Ctrl-S from freezing the terminal to use the shortcut in vim.
+# only in interactive shells
+if [[ -n "$PS1" ]]; then
+    bind -r '\C-s'
+    stty -ixon
+fi
 
 #
 # broot
@@ -43,8 +53,6 @@ export EDITOR=nvim
 if [ "x$TERM_PROGRAM" = "xvscode" ]; then
         export EDITOR=code
 fi
-
-
 
 # prompt settings
 eval "$(starship init bash)"
