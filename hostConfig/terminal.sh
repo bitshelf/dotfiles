@@ -15,7 +15,9 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 #export PATH=$CARGO_HOME/.cargo/bin:$PATH
 #export XDG_CONFIG_HOME=$(dirname "$CUR_PATH")
 
-# alias
+# essentials alias
+alias ..='cd ..'
+alias cp='cp -v'
 alias ls='lsd'
 alias cat='bat'
 alias vi='nvim'
