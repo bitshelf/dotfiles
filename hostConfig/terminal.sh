@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 HOST_CONFIG=hostConfig
 
 . "$HOME/.cargo/env"
