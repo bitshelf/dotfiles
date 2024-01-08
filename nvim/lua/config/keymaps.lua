@@ -11,7 +11,7 @@ for _, mapping in ipairs(nmappings) do
 	vim.keymap.set(mapping.mode or "n", mapping.from, mapping.to, { noremap = true })
 end
 
-vim.keymap.set('n', "<F2>", ":nohlsearch<CR>", { silent = true })
+vim.keymap.set('n', "<C-l>", ":nohlsearch<CR>", { silent = true })
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
