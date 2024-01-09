@@ -4,12 +4,38 @@
 [core]
     editor = nvim
     quotepath = false
+[color]
+	ui = auto
+[color "diff-highlight"]
+	oldNormal = red
+	oldHighlight = red 52
+	newNormal = green
+	newHighlight = green 22
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	commit = yellow
+	old = red bold
+	new = green
+	whitespace = red reverse
 [log]
     date = format-local:%Y-%m-%d
 	date = iso-local
 	#date = auto:human
 [alias]
     lg = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s %Cred%d%Creset %Cblue[%an]\" --date=short
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	di = diff
+	dis = diff --staged
+[push]
+	default = simple
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false
@@ -49,5 +75,3 @@
 ;      ProxyCommand nc -x localhost:1085 %h %p
 ;     # git-for-windows 下可以用 connect 代替 nc
 ;     # ProxyCommand connect -S localhost:1085 %h %p
-[color]
-	ui = auto
