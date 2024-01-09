@@ -134,7 +134,7 @@ M.configfunc = function()
 			-- { name = 'tmux',    option = { all_panes = true, } },  -- this is kinda slow
 		}),
 		mapping = cmp.mapping.preset.insert({
-			['<C-o>'] = cmp.mapping.complete(),
+			['<A-o>'] = cmp.mapping.complete(),
 			['<c-f>'] = cmp.mapping({
 				i = function(fallback)
 					cmp.close()

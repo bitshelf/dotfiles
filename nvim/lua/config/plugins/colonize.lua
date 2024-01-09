@@ -1,6 +1,7 @@
 return {
 	  "celediel/poiekolon.nvim",
 	  event = "VeryLazy",
+	  enable = false,
 
 	  config = function()
 		require("poiekolon").setup({
