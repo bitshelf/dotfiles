@@ -250,8 +250,8 @@ set splitbelow
 set splitright
 
 " 停止搜索高亮的键映射
-nnoremap <silent> <F2>      :nohlsearch<CR>
-inoremap <silent> <F2> <C-O>:nohlsearch<CR>
+nnoremap <silent> <C-l>      :nohlsearch<CR>
+inoremap <silent> <C-l> <C-O>:nohlsearch<CR>
 
 " vim-powered terminal in split window
 map <Leader>te :term ++close<cr>
