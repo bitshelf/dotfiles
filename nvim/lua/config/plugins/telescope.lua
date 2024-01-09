@@ -19,7 +19,12 @@ M.config = {
 					vim.keymap.set('n', '<c-t>', tstabs.list_tabs, {})
 				end
 			},
-			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+			-- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+			{
+			  "nvim-telescope/telescope-fzy-native.nvim",
+			  build = "make",
+			  event = "BufRead",
+			},
 			-- "nvim-telescope/telescope-ui-select.nvim",
 			'stevearc/dressing.nvim',
 		},
@@ -109,12 +114,16 @@ M.config = {
 					},
 				},
 				extensions = {
-					fzf = {
-						fuzzy = true,
-						override_generic_sorter = true,
-						override_file_sorter = true,
-						case_mode = "smart_case",
-					},
+					-- fzf = {
+					-- 	fuzzy = true,
+					-- 	override_generic_sorter = true,
+					-- 	override_file_sorter = true,
+					-- 	case_mode = "smart_case",
+					-- },
+				        fzy_native = {
+						  override_generic_sorter = false,
+						  override_file_sorter = true,
+					  },
 					command_palette = command_palette,
 				}
 			})
@@ -134,7 +143,8 @@ M.config = {
 			ts.load_extension("yank_history")
 			-- ts.load_extension('dap') -- telescope debug extensions
 			ts.load_extension('telescope-tabs')
-			ts.load_extension('fzf')
+			-- ts.load_extension('fzf')
+			ts.load_extension('fzy_native')
 			ts.load_extension('projects')
 			-- ts.load_extension("commander")
 		end
