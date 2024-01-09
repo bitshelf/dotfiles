@@ -8,6 +8,7 @@ export LANGUAGE=en_US
 export LANG=en_US.UTF-8
 shopt -s checkwinsize
 shopt -s autocd
+shopt -s cdspell
 
 # cargo  
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
