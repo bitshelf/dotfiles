@@ -31,6 +31,7 @@ M.config = {
 		},
 		{
 			"quangnguyen30192/cmp-nvim-ultisnips",
+			enable = false,
 			config = function()
 				-- optional call to setup (see customization section)
 				require("cmp_nvim_ultisnips").setup {}
