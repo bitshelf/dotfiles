@@ -15,6 +15,8 @@ return {
 		-- the 'curved' border is a custom border type
 		-- not natively supported but implemented in this plugin.
 		border = 'single',
+		-- width = 100,
+		height = 80,
 	  },
   },
 }
