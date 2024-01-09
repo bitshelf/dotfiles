@@ -12,6 +12,7 @@ for _, mapping in ipairs(nmappings) do
 end
 
 vim.keymap.set('n', "<F2>", ":nohlsearch<CR>", { silent = true })
+vim.keymap.set('x', "ZQ", "<Esc>:quit<CR>", { silent = true })
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap

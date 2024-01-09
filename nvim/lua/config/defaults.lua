@@ -31,6 +31,7 @@ vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.inccommand = 'split'
 vim.o.completeopt = 'longest,noinsert,menuone,noselect,preview'
 vim.o.completeopt = 'menuone,noinsert,noselect,preview'
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.lazyredraw = true
 vim.o.updatetime = 100
 vim.o.virtualedit = 'block'
