@@ -36,6 +36,7 @@ return {
     },
 	{
 		"NvChad/nvim-colorizer.lua",
+		enable = false,
 		opts = {
 			filetypes = { "*" },
 			user_default_options = {
