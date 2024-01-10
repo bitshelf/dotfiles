@@ -24,7 +24,7 @@ require("lazy").setup({
 	require("config.plugins.tabline"),
 	require("config.plugins.notify"),
 	require("config.plugins.statusline"),
-	require("config.plugins.scrollbar"),
+	-- require("config.plugins.scrollbar"),
 	require("config.plugins.surround"),
 	require("config.plugins.autocomplete").config,
 	-- require("config.plugins.debugger"),
