@@ -89,20 +89,7 @@ export MCFLY_PROMPT='→'
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/usr/bin:$PATH"
     PATH="$HOME/.local/bin:$PATH"
-	#export LD_LIBRARY_PATH="$HOME/.local/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 fi
-
-if [ -d "$HOME/miniconda3/bin" ] ; then
-	export PATH="$HOME/miniconda3//bin/:$PATH"
-fi
-#export PATH="$HOME/.local/gettext/bin:$PATH"
-#export LD_LIBRARY_PATH="$HOME/.local/gettext/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
-#export LD_LIBRARY_PATH="$HOME/.local/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
-
-# JDK
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64/"
-#export PATH="$JAVA_HOME/bin:$PATH"
-#export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
 if [ -f ~/.config/git-completion.bash ]; then
 	source ~/.config/git-completion.bash
@@ -110,4 +97,35 @@ fi
 
 with_proxy(){
    HTTPS_PROXY=socks5://localhost:7890 HTTP_PROXY=socks5://localhost:7890 "$@"
+}
+
+rehash(){
+	if [ -d "$HOME/miniconda3/bin" ] ; then
+		export PATH="$HOME/miniconda3//bin/:$PATH"
+	fi
+
+	export PATH="$HOME/.local/gettext/bin:$PATH"
+	export LD_LIBRARY_PATH="$HOME/.local/gettext/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+	export LD_LIBRARY_PATH="$HOME/.local/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+	export LD_LIBRARY_PATH="$HOME/.local/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+
+	# JDK
+	export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64/"
+	export PATH="$JAVA_HOME/bin:$PATH"
+	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('/home/loh/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+		eval "$__conda_setup"
+	else
+		if [ -f "/home/loh/miniconda3/etc/profile.d/conda.sh" ]; then
+			. "/home/loh/miniconda3/etc/profile.d/conda.sh"
+		else
+			export PATH="/home/loh/miniconda3/bin:$PATH"
+		fi
+	fi
+	unset __conda_setup
+	# <<< conda initialize <<<
 }
