@@ -1,6 +1,6 @@
 return {
   'akinsho/toggleterm.nvim', 
-  event = "VeryLazy",
+  event = "VimEnter",
   opts = {
 	  open_mapping = [[<c-\>]],
 	  direction = 'float',

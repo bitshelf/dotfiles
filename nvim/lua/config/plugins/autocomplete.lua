@@ -13,7 +13,6 @@ local M = {}
 M.config = {
 	"hrsh7th/nvim-cmp",
 	event = "VeryLazy",
-	-- after = "SirVer/ultisnips",
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
