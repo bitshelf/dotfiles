@@ -32,6 +32,11 @@ function install_nvim {
 	#conda install -c conda-forge neovim # pip3 install --user --upgrade neovim
 }
 
+function install_fzf {
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/.fzf
+	~/.local/.fzf/install --all
+}
+
 function install_vim {
 	git clone https://github.com/vim/vim.git --depth=1
 	pushd vim

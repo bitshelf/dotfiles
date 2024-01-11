@@ -110,7 +110,7 @@ call plug#begin()
   "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
   " customs
-  Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf', { 'dir': '~/.local/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   "Plug 'liuchengxu/vista.vim'
   Plug 'majutsushi/tagbar'
