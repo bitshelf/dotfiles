@@ -8,7 +8,6 @@ vim.o.listchars = 'tab:|\\ ,trail:▫'
 --vim.o.number = true
 --vim.o.relativenumber = true
 vim.o.cursorline = true
-vim.o.showcmd = false
 vim.o.signcolumn="yes"
 vim.o.expandtab = false
 vim.o.tabstop = 4

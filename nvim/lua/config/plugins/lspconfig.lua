@@ -9,6 +9,7 @@ M.config = {
 	},
 	{
 		'VonHeikemen/lsp-zero.nvim',
+		event = { "UiEnter", "BufReadPost" },
 		branch = 'v3.x',
 		dependencies = {
 			{
@@ -54,7 +55,7 @@ M.config = {
 			require('mason-lspconfig').setup({
 			  automatic_installation = false,
 			  ensure_installed = {
-				'tsserver',
+				-- 'tsserver',
 				'clangd',
 				--'dockerls',
 				-- 'pyright',

@@ -1,7 +1,8 @@
 return {
   {
 	'gelguy/wilder.nvim',
-	enabled = false,
+	-- enabled = false,
+	event = "UiEnter",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -39,6 +40,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+	enabled = false,
 
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

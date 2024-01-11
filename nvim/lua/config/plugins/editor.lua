@@ -18,9 +18,15 @@ return {
 			require('illuminate').configure({
 				providers = {
 					-- 'lsp',
-					-- 'treesitter',
+					'treesitter',
 					'regex',
 				},
+				delay = 200,
+			    large_file_cutoff = 2000,
+
+			    large_file_overrides = {
+					providers = { "lsp" },
+				 },
 			})
 			vim.cmd("hi IlluminatedWordText guibg=#393E4D gui=none")
 		end
@@ -38,7 +44,7 @@ return {
 	{
 	  "goolord/alpha-nvim",
 	  event = "VimEnter",
-	  enabled = true,
+	  enabled = false,
 	  init = false,
 	  opts = function()
 		local dashboard = require("alpha.themes.dashboard")
@@ -137,16 +143,16 @@ return {
 	},
   {
     "nvimdev/dashboard-nvim",
-	enabled = false,
+	-- enabled = false,
     event = "VimEnter",
     opts = function()
       local logo = [[
-							   ██╗      █████╗ ███████╗██╗   ██╗
-							   ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝
-							   ██║     ███████║  ███╔╝  ╚████╔╝ 
-							   ██║     ██╔══██║ ███╔╝    ╚██╔╝  
-							   ███████╗██║  ██║███████╗   ██║   
-							   ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   
+		   ██╗      █████╗ ███████╗██╗   ██╗
+		   ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝
+		   ██║     ███████║  ███╔╝  ╚████╔╝ 
+		   ██║     ██╔══██║ ███╔╝    ╚██╔╝  
+		   ███████╗██║  ██║███████╗   ██║   
+		   ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   
       ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
