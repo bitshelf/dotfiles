@@ -1,5 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+command -v rg  >/dev/null 2>&1 &&  return
 
 HOST_CONFIG=hostConfig
 
