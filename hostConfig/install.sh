@@ -14,6 +14,7 @@ function install_rust {
 
 	cargo install -f --git https://github.com/starship/starship
 	cargo install ripgrep_all --locked
+	cargo install ripgrep --features 'pcre2'
 	cargo install --locked zellij
 	./cargo.sh
 }
