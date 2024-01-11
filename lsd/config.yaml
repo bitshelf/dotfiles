@@ -26,5 +26,5 @@ color:
   #date: '+%d %b %y'
   theme: custom
 
-date: '+%Y-%m-%d %X'
+date: '+%Y-%m-%d %H:%M'
 #date: '+%Y-%m-%d %H:%M'
