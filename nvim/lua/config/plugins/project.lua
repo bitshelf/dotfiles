@@ -5,6 +5,11 @@ return {
 	vim.keymap.set('n', '<leader>gi', ':ProjectRoot<cr>', opts)
 	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", opts)
 
+	-- Open new file adjacent to current file
+	vim.cmd([[
+		nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+	]])
+
     require("project_nvim").setup {
 		-- Manual mode doesn't automatically change your root directory, so you have
 		-- the option to manually do so using `:ProjectRoot` command.
