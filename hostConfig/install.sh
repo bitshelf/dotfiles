@@ -20,7 +20,10 @@ function install_rust {
 
 function install_all {
 	install_host
+	install_fzf
 	install_rust
+	install_vim
+	install_nvim
 }
 
 function install_nvim {
