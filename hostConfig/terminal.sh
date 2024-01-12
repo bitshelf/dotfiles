@@ -96,9 +96,9 @@ if [ -f ~/.config/git-completion.bash ]; then
 	source ~/.config/git-completion.bash
 fi
 
-with_proxy(){
-   HTTPS_PROXY=socks5://192.168.0.36:7890 HTTP_PROXY=socks5://192.168.0.36:7890 "$@"
-}
+# with_proxy(){
+#    HTTPS_PROXY=socks5://192.168.0.36:7890 HTTP_PROXY=socks5://192.168.0.36:7890 "$@"
+# }
 
 rehash(){
 	if [ -d "$HOME/miniconda3/bin" ] ; then
