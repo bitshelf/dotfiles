@@ -4,8 +4,8 @@
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
--- vim.o.termguicolors = true
--- vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
+vim.o.termguicolors = true
+vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 vim.o.ttyfast = true
 vim.o.exrc = true
