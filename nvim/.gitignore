@@ -1,3 +1,11 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
 *.swp
 .DS_Store
 view/
@@ -9,5 +17,4 @@ tmp/
 _machine_specific.vim
 .vim-bookmarks
 _local_plugins/
-
-lua/config/machine_specific.lua
+lazyvim.json
