@@ -35,6 +35,7 @@ M.config = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{
 				'j-hui/fidget.nvim',
+				enabled = false,
 			},
 			"folke/neodev.nvim",
 			"simrat39/rust-tools.nvim",
@@ -110,7 +111,7 @@ M.config = {
 			-- require("config.lsp.json").setup(lspconfig, lsp)
 
 			lsp.setup()
-			require("fidget").setup({})
+			-- require("fidget").setup({})
 
 			local lsp_defaults = lspconfig.util.default_config
 			lsp_defaults.capabilities = vim.tbl_deep_extend(

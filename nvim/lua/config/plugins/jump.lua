@@ -1,7 +1,7 @@
 return {
 	{
 	  "folke/flash.nvim",
-	  event = "VeryLazy",
+	  event = "VimEnter",
 	  ---@type Flash.Config
 	  opts = {
 		  label = {

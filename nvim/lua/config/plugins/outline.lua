@@ -1,7 +1,7 @@
 return {
 	"simrat39/symbols-outline.nvim",
     lazy = true,
-	event = "VeryLazy",
+	event = "VimEnter",
     cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
     config = function()
 	  vim.keymap.set("n", "<leader>oo", ":SymbolsOutline<CR>", { noremap = true, silent = true })

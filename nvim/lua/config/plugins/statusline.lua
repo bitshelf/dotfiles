@@ -8,6 +8,7 @@ return {
 	-- "theniceboy/eleline.vim",
 	-- branch = "no-scrollbar",
 	"nvim-lualine/lualine.nvim",
+	event = "VimEnter",
 	-- You can optionally lazy-load heirline on UiEnter
 	-- to make sure all required plugins and colorschemes are loaded before setup
 	-- event = "UiEnter",
