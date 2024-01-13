@@ -12,7 +12,7 @@ end
 local M = {}
 M.config = {
 	"hrsh7th/nvim-cmp",
-	event = "VeryLazy",
+	-- event = "VeryLazy",
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -20,7 +20,8 @@ M.config = {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-calc",
 		"hrsh7th/nvim-cmp",
-		"SirVer/ultisnips",
+		"L3MON4D3/LuaSnip",
+		-- "SirVer/ultisnips",
 		{
 			"onsails/lspkind.nvim",
 			lazy = false,
@@ -30,13 +31,12 @@ M.config = {
 		},
 		{
 			"quangnguyen30192/cmp-nvim-ultisnips",
-			enable = false,
+			-- enable = false,
 			config = function()
 				-- optional call to setup (see customization section)
 				require("cmp_nvim_ultisnips").setup {}
 			end,
 		}
-		-- "L3MON4D3/LuaSnip",
 	},
 }
 
@@ -87,7 +87,7 @@ M.configfunc = function()
 	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 	local cmp = require("cmp")
 	local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-	-- local luasnip = require("luasnip")
+	local luasnip = require("luasnip")
 
 	setCompHL()
 	cmp.setup({
