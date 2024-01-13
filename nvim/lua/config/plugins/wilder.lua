@@ -1,6 +1,6 @@
 return {{
     'gelguy/wilder.nvim',
-    -- enabled = false,
+    enabled = false,
     event = "VimEnter",
     dependencies = {"nvim-tree/nvim-web-devicons"},
     config = function()
@@ -30,7 +30,6 @@ return {{
     end
 }, {
     "folke/noice.nvim",
-    -- event = "VeryLazy",
     event = "VimEnter",
     -- enabled = false,
 
@@ -73,7 +72,7 @@ return {{
         }},
 
         cmdline = {
-            enabled = false, -- enables the Noice cmdline UI
+            enabled = true, -- enables the Noice cmdline UI
             view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
             opts = {}, -- global options for the cmdline. See section on views
             ---@type table<string, CmdlineFormat>
@@ -131,9 +130,9 @@ return {{
 
         presets = {
             bottom_search = true,
-            command_palette = false,
+            command_palette = true,
             long_message_to_split = true,
-            inc_rename = true
+            inc_rename = false,
         }
     },
     -- stylua: ignore
