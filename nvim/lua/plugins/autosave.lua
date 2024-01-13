@@ -3,8 +3,11 @@ return {
 	-- event = "VeryLazy",
 	config = function()
 		 require("auto-save").setup {
-			events = {"InsertLeave", "TextChanged"},
-			execution_message = "",
+		    execution_message = {
+			  message = function() -- message to print on save
+				  return (" ")
+			  end,
+			},
 			conditions = {
 				exists = true,
 				filename_is_not = { "plugins.lua" },
