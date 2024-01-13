@@ -3,9 +3,9 @@
 function install_host {
 	echo "source ${PWD}/terminal.sh" >> ~/.bashrc
 	ln -sf ${PWD}/vimrc ~/.vimrc
-	ln -sf ${PWD}/gitconfig ~/.gitconfig
 	ln -sf ${PWD}/rustconfig ~/.cargo/config
 	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
+	cp -f ${PWD}/gitconfig ~/.gitconfig
 }
 
 function install_rust {
