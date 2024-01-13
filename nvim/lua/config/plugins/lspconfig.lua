@@ -60,7 +60,7 @@ M.config = {
 				--'dockerls',
 				-- 'pyright',
 				--'luau_lsp',
-				'bashls',
+				-- 'bashls',
 				'jdtls',
 				'rust_analyzer'
 			  },
