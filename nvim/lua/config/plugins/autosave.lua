@@ -2,8 +2,12 @@ return {
 	"Pocco81/auto-save.nvim",
 	event = "VeryLazy",
 	config = function()
-		 require("auto-save").setup {
-			events = {"InsertLeave", "TextChanged"},
+			require("auto-save").setup {
+		    execution_message = {
+			  message = function() -- message to print on save
+				  return (" ")
+			  end,
+			},
 			conditions = {
 				exists = true,
 				filename_is_not = { "plugins.lua" },
