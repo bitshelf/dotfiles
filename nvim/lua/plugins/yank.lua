@@ -2,6 +2,7 @@ return {
 	{
 		"gbprod/yanky.nvim",
 		-- event = "VimEnter",
+		enabled = false,
 		dependencies = {
 			"kkharji/sqlite.lua",
 		},
