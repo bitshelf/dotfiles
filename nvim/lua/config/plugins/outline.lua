@@ -4,7 +4,7 @@ return {
 	event = "VimEnter",
     cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
     config = function()
-	  vim.keymap.set("n", "<leader>oo", ":SymbolsOutline<CR>", { noremap = true, silent = true })
+	  vim.keymap.set("n", "<leader>oo", ":SymbolsOutline<CR>", { desc = "SymbolsOutline", noremap = true, silent = true })
 
 	  local opts = {
 			highlight_hovered_item = true,

@@ -59,6 +59,24 @@ require("lazy").setup({
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
 
+  ui = {
+    icons = {
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      require = "🌙",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+    },
+  },
+
   -- automatically check for plugin updates
   checker = {
 	enabled = true,

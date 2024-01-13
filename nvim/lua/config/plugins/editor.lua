@@ -11,6 +11,7 @@ endfun
 inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
 ]])
 
+
 return {
 	{
 	  "echasnovski/mini.indentscope",
@@ -211,9 +212,7 @@ return {
             { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "n" },
             { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "r" },
             { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "g" },
-            { action = [[lua require("lazyvim.util").telescope.config_files()()]], desc = " Config",          icon = " ", key = "c" },
             { action = 'lua require("persistence").load()',                        desc = " Restore Session", icon = " ", key = "s" },
-            { action = "LazyExtras",                                               desc = " Lazy Extras",     icon = " ", key = "x" },
             { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
             { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
           },
@@ -267,8 +266,9 @@ return {
 	},
 	{
 		'wfxr/minimap.vim',
+		enable = false,
 		build = "cargo install --locked code-minimap",
-		-- cmd = {"Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight"},
+		cmd = {"Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight"},
 		config = function ()
 		  vim.cmd ("let g:minimap_width = 10")
 		  vim.cmd ("let g:minimap_auto_start = 1")
@@ -277,10 +277,13 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    event = "VimEnter",
-	enabled = false,
-    opts = {
+	"folke/which-key.nvim",
+	event = "VimEnter",
+	init = function()
+	  vim.o.timeout = true
+	  vim.o.timeoutlen = 500
+	end,
+	opts = {
       plugins = { spelling = true },
       defaults = {
         mode = { "n", "v" },
@@ -293,18 +296,30 @@ return {
         ["<leader>c"] = { name = "+code" },
         ["<leader>f"] = { name = "+file/find" },
         ["<leader>g"] = { name = "+git" },
-        ["<leader>gh"] = { name = "+hunks" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },
-        ["<leader>u"] = { name = "+ui" },
+        ["<leader>o"] = { name = "+symbol" },
         ["<leader>w"] = { name = "+windows" },
         ["<leader>x"] = { name = "+diagnostics/quickfix" },
       },
-    },
+	},
+
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
       wk.register(opts.defaults)
     end,
+  },
+
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = { options = vim.opt.sessionoptions:get() },
+    -- stylua: ignore
+    keys = {
+      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+    },
   },
 }

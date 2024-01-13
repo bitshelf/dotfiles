@@ -2,13 +2,14 @@ return {
   "ahmedkhalf/project.nvim",
     config = function()
 	local opts = {silent = true, nowait = true}
-	vim.keymap.set('n', '<leader>gi', ':ProjectRoot<cr>', opts)
-	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", opts)
+	vim.keymap.set('n', '<leader>gi', ':ProjectRoot<cr>', { desc = "ProjectRoot", silent = true, nowait = true })
+	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", { desc = "file dir", silent = true, nowait = true })
 
 	-- Open new file adjacent to current file
-	vim.cmd([[
-		nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-	]])
+	vim.keymap.set("n", "<leader>e", ':e <C-R>=expand("%:p:h") . "/" <cr>', { desc = "open file" })
+	-- vim.cmd([[
+	-- 	nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+	-- ]])
 
     require("project_nvim").setup {
 		-- Manual mode doesn't automatically change your root directory, so you have
