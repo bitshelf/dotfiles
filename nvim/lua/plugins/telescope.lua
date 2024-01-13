@@ -183,7 +183,7 @@ return {
 		ts.load_extension('telescope-tabs')
 		ts.load_extension('fzf')
 		ts.load_extension('projects')
-		-- ts.load_extension("yank_history")
+		ts.load_extension("yank_history")
 		-- ts.load_extension('fzy_native')
 		-- ts.load_extension('dap') -- telescope debug extensions
 		-- ts.load_extension("commander")
