@@ -49,9 +49,9 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.autochdir = false
 vim.opt.swapfile = false
-vim.opt.guicursor:append('n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50')
-vim.opt.guicursor:append('a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor')
-vim.opt.guicursor:append('sm:block-blinkwait175-blinkoff150-blinkon175')
+-- vim.opt.guicursor:append('n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50')
+-- vim.opt.guicursor:append('a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor')
+-- vim.opt.guicursor:append('sm:block-blinkwait175-blinkoff150-blinkon175')
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = false,

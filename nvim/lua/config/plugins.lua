@@ -47,6 +47,7 @@ require("lazy").setup({
 	require("config.plugins.outline"),
 	require("config.plugins.calltree"),
 	require("config.plugins.autosave"),
+	require("config.plugins.mini-animate"),
 	{ "dstein64/vim-startuptime" },
 
   defaults = {
