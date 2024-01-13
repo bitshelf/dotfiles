@@ -9,3 +9,5 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.b.autoformat = false
 	end,
 })
+
+vim.cmd([[autocmd FileType * set formatoptions-=o]])
