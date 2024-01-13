@@ -29,6 +29,6 @@ return {
 				previewer = false,
 			})
 		end, opts);
-		vim.keymap.set("n", "<LEADER>c;", notify.dismiss, opts);
+		vim.keymap.set("n", "<LEADER>c;", notify.dismiss, { desc = "nvim-notify" });
 	end
 }
