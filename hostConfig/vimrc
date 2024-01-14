@@ -29,6 +29,7 @@ if has('gui_running')
   let do_syntax_sel_menu = 1
   let do_no_lazyload_menus = 1
 endif
+let mapleader = "\<space>"
 
 if !has('nvim')
   source $VIMRUNTIME/vimrc_example.vim
