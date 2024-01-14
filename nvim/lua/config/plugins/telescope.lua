@@ -58,7 +58,7 @@ M.config = {
 			vim.keymap.set('n', '<leader>rs', builtin.resume, m)
 			vim.keymap.set('n', '<leader>ch', builtin.command_history, { desc = "command history", noremap = true, nowait = true })
 			vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers", noremap = true, nowait = true })
-			vim.keymap.set('n', '<c-h>', builtin.oldfiles, { desc = "oldfiles", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>fh', builtin.oldfiles, { desc = "oldfiles", noremap = true, nowait = true })
 			vim.keymap.set('n', '<c-_>', builtin.current_buffer_fuzzy_find, m)
 			vim.keymap.set('n', 'z=', builtin.spell_suggest, m)
 

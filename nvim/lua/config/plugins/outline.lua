@@ -1,74 +1,54 @@
 return {
-	"simrat39/symbols-outline.nvim",
-    lazy = true,
-	event = "VimEnter",
-    cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
-    config = function()
-	  vim.keymap.set("n", "<leader>oo", ":SymbolsOutline<CR>", { desc = "SymbolsOutline", noremap = true, silent = true })
-
-	  local opts = {
-			highlight_hovered_item = true,
-			show_guides = true,
+	  {
+		"hedyhli/outline.nvim",
+		lazy = true,
+		event = "VimEnter",
+		cmd = { "Outline", "OutlineOpen" },
+		keys = { -- Example mapping to toggle outline
+		  { "<leader>oo", "<cmd>Outline<CR>", desc = "Toggle outline" },
+		},
+		opts = {
+		  preview_window = {
 			auto_preview = false,
-			position = 'right',
-			relative_width = true,
-			width = 25,
-			auto_close = false,
-			show_numbers = false,
-			show_relative_numbers = false,
-			show_symbol_details = true,
-			preview_bg_highlight = 'Pmenu',
-			autofold_depth = nil,
-			auto_unfold_hover = true,
-			fold_markers = { 'Ôë†', 'Ôëº' },
-			wrap = false,
-			keymaps = { -- These keymaps can be a string or a table for multiple keys
-			  close = {"<Esc>", "q"},
-			  goto_location = "<Cr>",
-			  focus_location = "o",
-			  hover_symbol = "<C-space>",
-			  toggle_preview = "K",
-			  rename_symbol = "r",
-			  code_actions = "a",
-			  fold = "h",
-			  unfold = "l",
-			  fold_all = "W",
-			  unfold_all = "E",
-			  fold_reset = "R",
-			},
-			lsp_blacklist = {},
-			symbol_blacklist = {},
-			symbols = {
-			  File = { icon = "Ôúì", hl = "@text.uri" },
-			  Module = { icon = "Ôö¶", hl = "@namespace" },
-			  Namespace = { icon = "Ôô©", hl = "@namespace" },
-			  Package = { icon = "Ô£ñ", hl = "@namespace" },
-			  -- Class = { icon = "Ì†µÌ≥í", hl = "@type" },
-			  Method = { icon = "∆í", hl = "@method" },
-			  Property = { icon = "Óò§", hl = "@method" },
-			  Field = { icon = "Ôöß", hl = "@field" },
-			  Constructor = { icon = "Óàè", hl = "@constructor" },
-			  Enum = { icon = "‚Ñ∞", hl = "@type" },
-			  Interface = { icon = "Ô∞Æ", hl = "@type" },
-			  Function = { icon = "ÔÇö", hl = "@function" },
-			  Variable = { icon = "Óûõ", hl = "@constant" },
-			  Constant = { icon = "Óà¨", hl = "@constant" },
-			  -- String = { icon = "Ì†µÌ≥ê", hl = "@string" },
-			  Number = { icon = "#", hl = "@number" },
-			  Boolean = { icon = "‚ä®", hl = "@boolean" },
-			  Array = { icon = "Ôô©", hl = "@constant" },
-			  Object = { icon = "‚¶ø", hl = "@type" },
-			  -- Key = { icon = "Ì†ΩÌ¥ê", hl = "@type" },
-			  -- Null = { icon = "NULL", hl = "@type" },
-			  EnumMember = { icon = "ÔÖù", hl = "@field" },
-			  -- Struct = { icon = "Ì†µÌ≥¢", hl = "@type" },
-			  -- Event = { icon = "Ì†ΩÌ∑≤", hl = "@type" },
-			  Operator = { icon = "+", hl = "@operator" },
-			  -- TypeParameter = { icon = "Ì†µÌπè", hl = "@parameter" },
-			  Component = { icon = "Ôô≥", hl = "@function" },
-			  Fragment = { icon = "Ôô≥", hl = "@constant" },
-			},
+		  },
+
+		  keymaps = { 
+			show_help = '?',
+			close = {'<Esc>', 'q'},
+			-- Jump to symbol under cursor.
+			-- It can auto close the outline window when triggered, see
+			-- 'auto_close' option above.
+			goto_location = '<Cr>',
+			-- Jump to symbol under cursor but keep focus on outline window.
+			peek_location = 'o',
+			-- Visit location in code and close outline immediately
+			goto_and_close = '<S-Cr>',
+			-- Change cursor position of outline window to match current location in code.
+			-- 'Opposite' of goto/peek_location.
+			restore_location = '<C-g>',
+			-- Open LSP/provider-dependent symbol hover information
+			hover_symbol = '<C-space>',
+			-- Preview location code of the symbol under cursor
+			toggle_preview = 'K',
+			rename_symbol = 'r',
+			code_actions = 'a',
+			-- These fold actions are collapsing tree nodes, not code folding
+			fold = 'h',
+			unfold = 'l',
+			fold_toggle = '<Tab>',
+			-- Toggle folds for all nodes.
+			-- If at least one node is folded, this action will fold all nodes.
+			-- If all nodes are folded, this action will unfold all nodes.
+			fold_toggle_all = '<S-Tab>',
+			fold_all = 'W',
+			unfold_all = 'E',
+			fold_reset = 'R',
+			-- Move down/up by one line and peek_location immediately.
+			-- You can also use outline_window.auto_jump=true to do this for any
+			-- j/k/<down>/<up>.
+			down_and_jump = '<C-j>',
+			up_and_jump = '<C-k>',
 		  }
-        require("symbols-outline").setup(opts)
-    end,
+		},
+	  },
 }
