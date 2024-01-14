@@ -16,6 +16,7 @@ require("lazy").setup({
 	-- require("config.plugins.coc"),
 	require("config.plugins.comment"),
 	require("config.plugins.colonize"),
+	require("config.plugins.coding"),
 	require("config.plugins.editor"),
 	require("config.plugins.colorscheme"),
 	require("config.plugins.copilot"),

@@ -25,8 +25,15 @@ return {
 					end,
 					additional_vim_regex_highlighting = false,
 				},
+
+				matchup = {
+				  enable = true,              -- mandatory, false will disable the whole extension
+				  -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+				  -- [options]
+				},
+
 				indent = {
-					enable = false
+					enable = false,
 				},
 				incremental_selection = {
 					enable = true,
