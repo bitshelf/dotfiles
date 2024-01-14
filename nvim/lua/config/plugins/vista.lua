@@ -7,9 +7,10 @@ return {
  --  }
  {
   "liuchengxu/vista.vim",
-   event = "VeryLazy",
+	event = "VimEnter",
+	cmd = "Vista",
 	config = function()
-	   vim.keymap.set('n', '<leader>tb', ":Vista!!<cr>" )
+	   vim.keymap.set('n', '<leader>os', ":Vista!!<cr>", { desc = "Vista toggle", noremap = true, nowait = true })
 	   vim.g.vista_default_executive = 'ctags'
 	   -- vim.g.vista_icon_indent = {'╰─▸ ', '├─▸ '}
 

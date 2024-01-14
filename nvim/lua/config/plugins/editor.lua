@@ -295,9 +295,11 @@ return {
         ["<leader>c"] = { name = "+code" },
         ["<leader>d"] = { name = "+workspace diagnostics" },
         ["<leader>f"] = { name = "+file/find" },
-        ["<leader>g"] = { name = "+git" },
+        ["<leader>g"] = { name = "+git/goto" },
         ["<leader>q"] = { name = "+quit/session" },
+        ["<leader>r"] = { name = "+rename" },
         ["<leader>s"] = { name = "+search" },
+        ["<leader>t"] = { name = "+trouble" },
         ["<leader>o"] = { name = "+symbol" },
         ["<leader>w"] = { name = "+windows" },
         ["<leader>x"] = { name = "+diagnostics/quickfix" },
@@ -337,7 +339,7 @@ return {
         end,
         desc = "Explorer NeoTree (cwd)",
       },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (cwd)", remap = true },
+      -- { "<leader>fe", "<leader>fe", desc = "Explorer NeoTree (cwd)", remap = true },
       {
         "<leader>ge",
         function()

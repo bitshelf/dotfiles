@@ -10,19 +10,6 @@ M.config = {
 		version = false,
 		event = "VimEnter",
 		-- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-		-- tag = '0.1.1',
-  --   dependencies = {
-  --     {
-  --       "nvim-telescope/telescope-fzf-native.nvim",
-  --       build = "make",
-  --       enabled = vim.fn.executable("make") == 1,
-  --       config = function()
-  --         Util.on_load("telescope.nvim", function()
-  --           require("telescope").load_extension("fzf")
-  --         end)
-  --       end,
-  --     },
-  --   },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{
@@ -55,22 +42,21 @@ M.config = {
 			vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "find_files" })
 			vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "live_grep" })
 			-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-			vim.keymap.set('n', '<leader>rs', builtin.resume, m)
+			vim.keymap.set('n', '<leader>rs', builtin.resume, { desc = "telescope resume", noremap = true, nowait = true })
 			vim.keymap.set('n', '<leader>ch', builtin.command_history, { desc = "command history", noremap = true, nowait = true })
 			vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers", noremap = true, nowait = true })
 			vim.keymap.set('n', '<leader>fh', builtin.oldfiles, { desc = "oldfiles", noremap = true, nowait = true })
-			vim.keymap.set('n', '<c-_>', builtin.current_buffer_fuzzy_find, m)
+			vim.keymap.set('n', '<leader>sf', builtin.current_buffer_fuzzy_find, { desc = "telescope fuzzy find", noremap = true, nowait = true })
 			vim.keymap.set('n', 'z=', builtin.spell_suggest, m)
-
 			vim.keymap.set('n', '<leader>d', function()
 				builtin.diagnostics({
 					severity_sort = true,
 				})
 			end, m)
 			vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
-			vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
-			vim.keymap.set('n', 'gi', builtin.git_status, m)
-			-- vim.keymap.set("n", ":", builtin.commands, m)
+			vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "lsp document symbols", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = "telescope git status", noremap = true, nowait = true })
+			vim.keymap.set("n", "<leader>;", builtin.commands, { desc = "telescope commands", noremap = true, nowait = true })
 
 			local trouble = require("trouble.providers.telescope")
 

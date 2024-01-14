@@ -6,7 +6,7 @@ return {
 	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", { desc = "file dir", silent = true, nowait = true })
 
 	-- Open new file adjacent to current file
-	vim.keymap.set("n", "<leader>e", ':e <C-R>=expand("%:p:h") . "/" <cr>', { desc = "open file" })
+	vim.keymap.set("n", "<leader>ee", ':e <C-R>=expand("%:p:h") . "/" <cr>', { desc = "open file" })
 	-- vim.cmd([[
 	-- 	nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 	-- ]])
