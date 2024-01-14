@@ -1,9 +1,9 @@
 return {
   {
 	"andymass/vim-matchup",
-	event = "VimEnter",
+	-- event = "VimEnter",
 	setup = function()
 	  vim.g.matchup_matchparen_offscreen = { method = "popup" }
 	end,
   },
- }
+}
