@@ -51,4 +51,18 @@ return {
 		  }
 		},
 	  },
+
+	-- {
+	-- 'stevearc/aerial.nvim',
+	-- event = "VimEnter",
+	-- enabled = false,
+	-- opts = {},
+	-- -- Optional dependencies
+	-- dependencies = {
+	--    "nvim-treesitter/nvim-treesitter",
+	--    "nvim-tree/nvim-web-devicons"
+	-- },
+	-- vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>"),
+ --  }
+
 }
