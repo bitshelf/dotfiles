@@ -13,8 +13,8 @@ for _, mapping in ipairs(nmappings) do
 end
 
 vim.keymap.set('n', "<F2>", ":nohlsearch<CR>", { desc = "nohlsearch", silent = true })
-vim.keymap.set('x', "ZQ", "<Esc>:quit<CR>", opts )
-vim.keymap.set('x', "ZZ", "<Esc>:wqa<CR>", opts )
+vim.keymap.set({'n','x'}, "ZQ", "<Esc>:quitall<CR>", opts )
+vim.keymap.set({'n','x'}, "ZZ", "<Esc>:wqa<CR>", opts )
 
 -- save buffer
 -- keymap("n", "<leader>w", ":w<cr>", { desc = "save and don't quit", silent = true })
