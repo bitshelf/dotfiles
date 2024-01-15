@@ -65,15 +65,15 @@ export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hi
 #export FZF_DEFAULT_COMMAND="(rg --hidden --files --follow  -g '!{.git,tools,sdk,out,tools,cts,buildroot/output,development,toolchain}')2> /dev/null"
 
 # preview
-#--height 70% 
-#--preview '(highlight  {} || bat {}) 2> /dev/null | head -800'
-#--prompt='⮞ ' --pointer='⮞ ' --marker='✗' 
+# --preview 'bat --color=always --style=header,grid --line-range :300 {}'
+# --preview-window 'right:60%'
+# --bind 'ctrl-space:toggle-preview'
 export FZF_DEFAULT_OPTS="
 --prompt='→ '
 --pointer='→'
 --marker='✗' 
 --height 90% 
---bind 'ctrl-space:toggle-preview'
+--ansi
 --border 
 --margin=1 
 --multi

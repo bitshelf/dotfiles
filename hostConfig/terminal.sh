@@ -26,7 +26,7 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 alias ..='cd ..'
 alias cp='cp -v'
 alias ls='lsd'
-alias cat='bat'
+# alias cat='bat'
 alias vi='nvim'
 #alias vim='nvim'
 #alias cp='xcp'
@@ -35,6 +35,7 @@ alias l='ls -l'
 alias la='ls -a'
 alias ll='ls -la'
 alias lt='ls --tree'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export LS_COLORS="$(vivid generate molokai)"
 
 # prevent Ctrl-S from freezing the terminal to use the shortcut in vim.
