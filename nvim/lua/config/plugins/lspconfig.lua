@@ -27,9 +27,9 @@ M.config = {
 			{ 'mfussenegger/nvim-jdtls' },
 			{
 				'williamboman/mason.nvim',
-				build = function()
-					vim.cmd([[MasonInstall]])
-				end,
+				-- build = function()
+				-- 	vim.cmd([[MasonInstall]])
+				-- end,
 			},
 			{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
