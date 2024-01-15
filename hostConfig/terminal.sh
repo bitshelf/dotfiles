@@ -28,6 +28,7 @@ alias cp='cp -v'
 alias ls='lsd'
 # alias cat='bat'
 alias vi='nvim'
+alias tldr='tldr  -L zh'
 #alias vim='nvim'
 #alias cp='xcp'
 
