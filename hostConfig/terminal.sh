@@ -26,8 +26,9 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 alias ..='cd ..'
 alias cp='cp -v'
 alias ls='lsd'
-alias cat='bat'
+# alias cat='bat'
 alias vi='nvim'
+alias tldr='tldr  -L zh'
 #alias vim='nvim'
 #alias cp='xcp'
 
@@ -35,6 +36,7 @@ alias l='ls -l'
 alias la='ls -a'
 alias ll='ls -la'
 alias lt='ls --tree'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export LS_COLORS="$(vivid generate molokai)"
 
 # prevent Ctrl-S from freezing the terminal to use the shortcut in vim.
@@ -97,7 +99,7 @@ if [ -f ~/.config/git-completion.bash ]; then
 fi
 
 # with_proxy(){
-#    HTTPS_PROXY=socks5://192.168.0.36:7890 HTTP_PROXY=socks5://192.168.0.36:7890 "$@"
+#    HTTPS_PROXY=socks5://localhost:7890 HTTP_PROXY=socks5://localhost:7890 "$@"
 # }
 
 rehash(){
