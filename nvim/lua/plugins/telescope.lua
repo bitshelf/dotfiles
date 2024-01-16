@@ -66,21 +66,16 @@ return {
 			function() G.project_files() end,
 			desc = "Find Plugin File",
 		  },
-		  {' <leader>ff', function() builtin.find_files() end, desc = "find_files" },
+		  { '<leader>ff', function() builtin.find_files() end, desc = "find_files" },
 		  { '<leader>fg', function() builtin.live_grep() end, desc = "live_grep" },
-		  { '<leader>fh', function() builtin.help_tags() end, desc = "help_tags" },
+		  { '<leader>fh', function() builtin.oldfiles() end, desc = "oldfiles" },
 		  { '<leader>ch', function() builtin.command_history() end , desc = "command_history" },
 		  { '<leader>fb', function() builtin.buffers() end, desc = "buffers" },
-		  { '<c-h>', function() builtin.oldfiles() end, desc = "oldfiles" },
 		  { '<leader>fs',function() builtin.lsp_document_symbols() end, { desc = "lsp document symbols", noremap = true, nowait = true }},
 		  { '<leader>gs',function() builtin.git_status() end, { desc = "telescope git status", noremap = true, nowait = true }},
-		  { "<leader>;", function() builtin.commands() end, { desc = "telescope commands", noremap = true, nowait = true }},
-			-- <leader>rs', builtin.resume, m)
-			-- <c-_>', builtin.current_buffer_fuzzy_find, m)
-			-- z=', builtin.spell_suggest, m)
-			--
+		  { '<leader>;', function() builtin.commands() end, { desc = "telescope commands", noremap = true, nowait = true }},
 		},
-    -- change some options
+
 		opts = {
 				defaults = {
 					vimgrep_arguments = {
@@ -102,6 +97,46 @@ return {
 						},
 						width = 0.95,
 						height = 0.95,
+					},
+					mappings = {
+						i = {
+							["<C-h>"] = "which_key",
+							["<esc>"] = "close",
+							["<C-n>"] = actions.move_selection_next,
+							["<C-p>"] = actions.move_selection_previous,
+
+							["<C-c>"] = actions.close,
+
+							["<Down>"] = actions.move_selection_next,
+							["<Up>"] = actions.move_selection_previous,
+
+							["<CR>"] = actions.select_default,
+							["<C-x>"] = actions.select_horizontal,
+							["<C-v>"] = actions.select_vertical,
+							["<C-t>"] = actions.select_tab,
+
+							["<C-u>"] = actions.preview_scrolling_up,
+							["<C-d>"] = actions.preview_scrolling_down,
+							["<C-f>"] = actions.preview_scrolling_left,
+							["<C-k>"] = actions.preview_scrolling_right,
+
+							["<PageUp>"] = actions.results_scrolling_up,
+							["<PageDown>"] = actions.results_scrolling_down,
+							["<M-f>"] = actions.results_scrolling_left,
+							["<M-k>"] = actions.results_scrolling_right,
+
+							["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+							["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+							["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+							["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+							["<C-l>"] = actions.complete_tag,
+							["<C-/>"] = actions.which_key,
+							["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+							["<C-w>"] = { "<c-s-w>", type = "command" },
+
+							-- disable c-j because we dont want to allow new lines #2123
+							["<C-j>"] = actions.nop,
+						}
 					},
 					color_devicons = true,
 					prompt_prefix = "🔍 ",

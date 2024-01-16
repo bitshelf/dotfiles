@@ -3,7 +3,7 @@ return {
 	event = "LazyFile",
 	config = function()
 		local api = require("dropbar.api")
-		vim.keymap.set('n', '<Leader>;', api.pick)
+		vim.keymap.set('n', '<Leader>e;', api.pick,{ desc = "dropbar" })
 		vim.keymap.set('n', '[c', api.goto_context_start)
 		vim.keymap.set('n', ']c', api.select_next_context)
 
