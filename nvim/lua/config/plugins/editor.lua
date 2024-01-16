@@ -294,6 +294,7 @@ return {
         ["<leader>b"] = { name = "+buffer" },
         ["<leader>c"] = { name = "+code" },
         ["<leader>d"] = { name = "+workspace diagnostics" },
+		["<leader>e"] = { name = "+edit" },
         ["<leader>f"] = { name = "+file/find" },
         ["<leader>g"] = { name = "+git/goto" },
         ["<leader>q"] = { name = "+quit/session" },
