@@ -1,51 +1,15 @@
 local m = { noremap = true, nowait = true }
 local is_inside_work_tree = {}
+local M = {}
 local G = {}
-local builtin = require('telescope.builtin')
-local actions = require('telescope.actions')
 
-G.project_files = function()
-  local builtin = require('telescope.builtin')
-
---   local bufnr = vim.api.nvim_get_current_buf()
---   local file_path = vim.api.nvim_buf_get_name(bufnr)
---   local cwd = vim.fn.fnamemodify(file_path.path, ":p:h")
-  local cwd = vim.fn.getcwd()
-  local opts = {
-			git_command = {
-			  "git",
-			  "-C",
-			  cwd,
-			  "ls-files",
-			  "--exclude-standard",
-			  "--cached",
-			  "--",
-			  cwd,
-		  },
-  } -- define here if you want to define something
-
-  if is_inside_work_tree[cwd] == nil then
-    vim.fn.system("git rev-parse --is-inside-work-tree")
-    is_inside_work_tree[cwd] = vim.v.shell_error == 0
-  end
-
-  if is_inside_work_tree[cwd] then
-	-- builtin.find_files({
-	--   hidden = true,
-	--   find_command = { "git", "ls-files","--", cwd,},
- --    })
-    builtin.git_files(opts)
-  else
-    builtin.find_files(opts)
-  end
-
-end
-
-return {
-  {
+M.config = {
+	{
 		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
 		version = false,
-
+		event = "VimEnter",
+		-- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{
@@ -57,36 +21,49 @@ return {
 					vim.keymap.set('n', '<c-t>', tstabs.list_tabs, {})
 				end
 			},
+			{
+			  "nvim-telescope/telescope-fzf-native.nvim",
+			  build = "make",
+			  enabled = vim.fn.executable("make") == 1,
+			},
+			-- {
+			--   "nvim-telescope/telescope-fzy-native.nvim",
+			--   build = "make",
+			--   event = "BufRead",
+			-- },
+			-- "nvim-telescope/telescope-ui-select.nvim",
 			'stevearc/dressing.nvim',
 		},
+		config = function()
 
-		keys = {
-		  {
-			"<c-p>",
-			function() G.project_files() end,
-			desc = "Find Plugin File",
-		  },
-		  {' <leader>ff', function() builtin.find_files() end, desc = "find_files" },
-		  { '<leader>fg', function() builtin.live_grep() end, desc = "live_grep" },
-		  { '<leader>fh', function() builtin.help_tags() end, desc = "help_tags" },
-		  { '<leader>ch', function() builtin.command_history() end , desc = "command_history" },
-		  { '<leader>fb', function() builtin.buffers() end, desc = "buffers" },
-		  { '<c-h>', function() builtin.oldfiles() end, desc = "oldfiles" },
-			-- <leader>rs', builtin.resume, m)
-			-- <c-_>', builtin.current_buffer_fuzzy_find, m)
-			-- z=', builtin.spell_suggest, m)
-			--
-			-- vim.keymap.set('n', '<leader>d', function()
-			-- 	builtin.diagnostics({
-			-- 		severity_sort = true,
-			-- 	})
-			-- end, m)
-			-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
-			-- vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
-			-- vim.keymap.set('n', 'gi', builtin.git_status, m)
-		},
-    -- change some options
-		opts = {
+			local builtin = require('telescope.builtin')
+			-- vim.keymap.set('n', '<c-p>', builtin.find_files, m)
+			vim.keymap.set('n', '<c-p>', G.project_files, { desc = "git_files", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "find_files" })
+			vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "live_grep" })
+			-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+			vim.keymap.set('n', '<leader>rs', builtin.resume, { desc = "telescope resume", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>ch', builtin.command_history, { desc = "command history", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "buffers", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>fh', builtin.oldfiles, { desc = "oldfiles", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>sf', builtin.current_buffer_fuzzy_find, { desc = "telescope fuzzy find", noremap = true, nowait = true })
+			vim.keymap.set('n', 'z=', builtin.spell_suggest, m)
+			vim.keymap.set('n', '<leader>d', function()
+				builtin.diagnostics({
+					severity_sort = true,
+				})
+			end, m)
+			vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
+			vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "lsp document symbols", noremap = true, nowait = true })
+			vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = "telescope git status", noremap = true, nowait = true })
+			vim.keymap.set("n", "<leader>;", builtin.commands, { desc = "telescope commands", noremap = true, nowait = true })
+
+			local trouble = require("trouble.providers.telescope")
+
+			local ts = require('telescope')
+			local actions = require('telescope.actions')
+			M.ts = ts
+			ts.setup({
 				defaults = {
 					vimgrep_arguments = {
 						"rg",
@@ -137,7 +114,7 @@ return {
 						--   end
 						-- }
 					 --  },
-					  theme = "ivy",
+					  -- theme = "ivy",
 					  cwd = vim.fn.expand('%:p:h'),
 					},
 				},
@@ -156,39 +133,80 @@ return {
 
 					command_palette = command_palette,
 				}
-		},
+			})
+			require('dressing').setup({
+				select = {
+					get_config = function(opts)
+						if opts.kind == 'codeaction' then
+							return {
+								backend = 'telescope',
+								telescope = require('telescope.themes').get_cursor()
+							}
+						end
+					end
+				}
+			})
 
-		  require('dressing').setup({
-			  select = {
-				  get_config = function(opts)
-					  if opts.kind == 'codeaction' then
-						  return {
-							  backend = 'telescope',
-							  telescope = require('telescope.themes').get_cursor()
-						  }
-					  end
-				  end
-			  }
-		  })
-	  },
-	  -- add telescope-fzf-native
-  {
-    "telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-		local ts = require('telescope')
-        ts.load_extension("fzf")
-		ts.load_extension('telescope-tabs')
-		ts.load_extension('fzf')
-		ts.load_extension('projects')
-		-- ts.load_extension("yank_history")
-		-- ts.load_extension('fzy_native')
-		-- ts.load_extension('dap') -- telescope debug extensions
-		-- ts.load_extension("commander")
-      end,
-    },
-  },
+			-- ts.load_extension("yank_history")
+			-- ts.load_extension('dap') -- telescope debug extensions
+			ts.load_extension('telescope-tabs')
+			ts.load_extension('fzf')
+			-- ts.load_extension('fzy_native')
+			ts.load_extension('projects')
+			-- ts.load_extension("commander")
+		end
+	},
+	-- {
+	-- 	"FeiyouG/commander.nvim",
+	-- 	dependencies = "nvim-telescope/telescope.nvim",
+	-- 	config = function()
+	-- 		local commander = require("commander")
+	-- 		vim.keymap.set('n', '<c-q>', ":Telescope commander<CR>", m)
+	-- 		commander.add({
+	-- 			{
+	-- 				desc = "Git diff",
+	-- 				cmd = "<CMD>Telescope git_status<CR>",
+	-- 			},
+	-- 		})
+	-- 	end
+	-- }
 }
 
+G.project_files = function()
+  local builtin = require('telescope.builtin')
+
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local file_path = vim.api.nvim_buf_get_name(bufnr)
+--   local cwd = vim.fn.fnamemodify(file_path.path, ":p:h")
+  local cwd = vim.fn.getcwd()
+  local opts = {
+			git_command = {
+			  "git",
+			  "-C",
+			  cwd,
+			  "ls-files",
+			  "--exclude-standard",
+			  "--cached",
+			  "--",
+			  cwd,
+		  },
+  } -- define here if you want to define something
+
+  if is_inside_work_tree[cwd] == nil then
+    vim.fn.system("git rev-parse --is-inside-work-tree")
+    is_inside_work_tree[cwd] = vim.v.shell_error == 0
+  end
+
+  if is_inside_work_tree[cwd] then
+	-- builtin.find_files({
+	--   hidden = true,
+	--   find_command = { "git", "ls-files","--", cwd,},
+ --    })
+    builtin.git_files(opts)
+  else
+    builtin.find_files(opts)
+  end
+
+end
+
+return M
