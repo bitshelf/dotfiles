@@ -8,4 +8,5 @@ return {
   { "stevearc/conform.nvim", enabled = false },
   -- { "rcarriga/nvim-notify", enabled = false },
   { "folke/todo-comments.nvim", enabled = false },
+  { "zbirenbaum/copilot.lua", enabled = false },
 }
