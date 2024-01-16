@@ -72,18 +72,13 @@ return {
 		  { '<leader>ch', function() builtin.command_history() end , desc = "command_history" },
 		  { '<leader>fb', function() builtin.buffers() end, desc = "buffers" },
 		  { '<c-h>', function() builtin.oldfiles() end, desc = "oldfiles" },
+		  { '<leader>fs',function() builtin.lsp_document_symbols() end, { desc = "lsp document symbols", noremap = true, nowait = true }},
+		  { '<leader>gs',function() builtin.git_status() end, { desc = "telescope git status", noremap = true, nowait = true }},
+		  { "<leader>;", function() builtin.commands() end, { desc = "telescope commands", noremap = true, nowait = true }},
 			-- <leader>rs', builtin.resume, m)
 			-- <c-_>', builtin.current_buffer_fuzzy_find, m)
 			-- z=', builtin.spell_suggest, m)
 			--
-			-- vim.keymap.set('n', '<leader>d', function()
-			-- 	builtin.diagnostics({
-			-- 		severity_sort = true,
-			-- 	})
-			-- end, m)
-			-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
-			-- vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
-			-- vim.keymap.set('n', 'gi', builtin.git_status, m)
 		},
     -- change some options
 		opts = {
