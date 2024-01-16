@@ -5,4 +5,4 @@ vim.keymap.set('n', "<F2>", ":nohlsearch<CR>", { silent = true, desc = "nohlsear
 vim.keymap.set({'n','x'}, "ZQ", "<Esc>:quitall<CR>", { silent = true, desc = "visual quit not save" })
 vim.keymap.set({'n','x'}, "ZZ", "<Esc>:wqa<CR>", { silent = true ,desc = "visual quit" })
 
-vim.keymap.del('n',"<leader>e")
+-- vim.keymap.del('n',"<leader>e")
