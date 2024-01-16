@@ -65,15 +65,15 @@ export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hi
 #export FZF_DEFAULT_COMMAND="(rg --hidden --files --follow  -g '!{.git,tools,sdk,out,tools,cts,buildroot/output,development,toolchain}')2> /dev/null"
 
 # preview
-#--height 70% 
-#--preview '(highlight  {} || bat {}) 2> /dev/null | head -800'
-#--prompt='⮞ ' --pointer='⮞ ' --marker='✗' 
+# --preview 'bat --color=always --style=header,grid --line-range :300 {}'
+# --preview-window 'right:60%'
+# --bind 'ctrl-space:toggle-preview'
+# --ansi
 export FZF_DEFAULT_OPTS="
 --prompt='→ '
 --pointer='→'
 --marker='✗' 
 --height 90% 
---bind 'ctrl-space:toggle-preview'
 --border 
 --margin=1 
 --multi
@@ -135,6 +135,26 @@ cdd() {
   dir=$(find ${1:-.} -path '*/\.*' -prune \
 				  -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
+}
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# Modified version where you can press
+#   - CTRL-O to open with `open` command,
+#   - CTRL-E or Enter key to open with the $EDITOR
+fo() {
+  IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+  fi
 }
 
  rm -f /tmp/rg-fzf-{r,f}
