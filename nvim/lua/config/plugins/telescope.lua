@@ -54,6 +54,7 @@ M.config = {
 				})
 			end, m)
 			vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
+			vim.keymap.set('n', 'gr', builtin.lsp_references,{ desc = "Telescope References",noremap = true,nowait = true })
 			vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "lsp document symbols", noremap = true, nowait = true })
 			vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = "telescope git status", noremap = true, nowait = true })
 			vim.keymap.set("n", "<leader>;", builtin.commands, { desc = "telescope commands", noremap = true, nowait = true })
