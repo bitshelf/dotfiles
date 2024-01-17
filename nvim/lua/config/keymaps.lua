@@ -1,7 +1,8 @@
 
 local mode_nv = { "n", "v" }
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+--local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 local nmappings = {
 	-- Movement
@@ -20,11 +21,11 @@ vim.keymap.set({'n','x'}, "ZZ", "<Esc>:wqa<CR>", opts )
 -- keymap("n", "<leader>w", ":w<cr>", { desc = "save and don't quit", silent = true })
 keymap("n", "<C-s>", ":w<cr>", opts)
 
--- Resize with arrows
-keymap("n", "<A-Up>", ":resize +2<CR>", opts)
-keymap("n", "<A-Down>", ":resize -2<CR>", opts)
-keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+-- Resize window using <ctrl> arrow keys
+keymap("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+keymap("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Move to window using the <ctrl> hjkl keys
 keymap("n", "<C-h>", "<C-w>h", { desc = "Go to left window",  })
