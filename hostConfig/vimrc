@@ -50,6 +50,7 @@ set path=./**
 set nobackup
 set hidden
 set signcolumn=yes
+autocmd FileType * set formatoptions-=o
 
 if v:version >= 900
   set wildoptions=pum
