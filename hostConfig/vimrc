@@ -66,10 +66,10 @@ endif
 
 if has('mouse')
   if has('gui_running') || (&term =~ 'xterm' && !has('mac'))
-    set mouse=v
+    set mouse=i
   else
     "set mouse=nvi
-    set mouse=v
+    set mouse=i
   endif
 endif
 
@@ -146,11 +146,14 @@ call plug#end()
 "   PlugUpgrade: Upgrade vim-plug itself
 
 " Tagbar
-nmap <Leader>tb :TagbarToggle<CR>
+nmap <Leader>oo :TagbarToggle<CR>
 " 自动打开 Tagbar 侧边栏
 " autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen() "
 nnoremap <F9>      :TagbarToggle<CR>
 inoremap <F9> <C-O>:TagbarToggle<CR>
+
+nnoremap ZQ      :quitall<CR>
+nnoremap ZZ      :wqa<CR>
 
 " float terminal
 nnoremap   <silent>   <C-\>   :FloatermToggle<CR>
