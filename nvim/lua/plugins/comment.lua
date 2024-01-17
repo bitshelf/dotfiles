@@ -3,6 +3,8 @@ return {
 	event = "VeryLazy",
 	config = function()
 		local api = require("Comment.api")
+		local ft = require('Comment.ft')
+		ft({'dts'}, ft.get('c'))
 		vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"))
 		vim.keymap.set("n", "<leader>cu", api.locked("uncomment.linewise.current"))
 		local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
