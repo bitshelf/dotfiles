@@ -100,7 +100,6 @@ return {
 					},
 					mappings = {
 						i = {
-							["<C-h>"] = "which_key",
 							["<esc>"] = "close",
 							["<C-n>"] = actions.move_selection_next,
 							["<C-p>"] = actions.move_selection_previous,
