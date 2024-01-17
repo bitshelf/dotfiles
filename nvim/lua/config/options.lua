@@ -45,6 +45,7 @@ vim.o.scrolloff = 2
 vim.o.mouse = "ni"
 vim.o.encoding = "utf-8"
 vim.g.indent_blankline_enabled = 0
+vim.o.clipboard = ""
 vim.g.python3_host_prog = "$HOME/miniconda3/bin/python3"
 vim.opt.signcolumn = "yes"
 vim.o.autoread = true
