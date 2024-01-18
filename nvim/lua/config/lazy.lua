@@ -14,6 +14,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.java" },
+    { import = "lazyvim.plugins.extras.lang.rust" },
 	-- { import = "lazyvim.plugins.extras.coding.yanky" },
 	-- { import = "lazyvim.plugins.extras.util.project" },
 	{ import = "lazyvim.plugins.extras.editor.symbols-outline" },
