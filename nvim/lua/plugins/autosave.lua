@@ -1,23 +1,40 @@
 return {
-	"Pocco81/auto-save.nvim",
-	-- event = "VeryLazy",
-	config = function()
-		 require("auto-save").setup {
-		    execution_message = {
-			  message = function() -- message to print on save
-				  return (" ")
-			  end,
-			},
-			conditions = {
-				exists = true,
-				filename_is_not = { "plugins.lua" },
-				filetype_is_not = {},
-				modifiable = true
-			},
-			write_all_buffers = false,
-			on_off_commands = true,
-			clean_command_line_interval = 0,
-			debounce_delay = 135
-		 }
-	end,
+	"okuuva/auto-save.nvim",
+	event = { "InsertLeave", "TextChanged" },
+	opts =  {
+		 execution_message = {
+		  enabled = false,
+		  message = function() -- message to print on save
+			return (" ")
+		  end,
+		},
+		trigger_events = { -- See :h events
+		  immediate_save = { "BufLeave", "FocusLost" },
+		  defer_save = { "InsertLeave", "TextChanged" }, -- vim events that trigger a deferred save (saves after `debounce_delay`)
+		  cancel_defered_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
+		},
+		write_all_buffers = false, -- write all buffers when the current one meets `condition`
+		noautocmd = false, -- do not execute autocmds when saving
+		debounce_delay = 1000,
+	},
+
+	-- {
+	--   '0x00-ketsu/autosave.nvim',
+	--   -- lazy-loading on events
+	--   event = { "InsertLeave", "TextChanged" },
+	--   config = function()
+	-- 	require('autosave').setup {
+	-- 	 prompt_message = function()
+ --          return ''
+	-- 	end,
+ --        events = { "TermOpen" },
+ --        conditions = {
+ --            exists = true,
+ --            modifiable = true,
+ --            filename_is_not = {},
+ --            filetype_is_not = {}
+ --        },
+	--   }
+	--   end
+	-- }
 }
