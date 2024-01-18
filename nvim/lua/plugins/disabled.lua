@@ -9,4 +9,6 @@ return {
   -- { "rcarriga/nvim-notify", enabled = false },
   { "folke/todo-comments.nvim", enabled = false },
   { "zbirenbaum/copilot.lua", enabled = false },
+  { "echasnovski/mini.comment", enabled = false },
+  { "echasnovski/mini.pairs", enabled = false },
 }
