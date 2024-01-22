@@ -5,7 +5,7 @@ layout {
 
     pane size=1 borderless=true {
         plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-            format_left  "{mode}#[fg=black,bg=blue,bold]{session}  #[fg=blue,bg=#181825]{tabs}"
+            format_left  "{mode}#[fg=black,bg=blue,bold]  #[fg=blue,bg=#181825]{tabs}"
             format_right "{command_conky}#[fg=#9c86bf,bg=#DCD7BA]{datetime}"
             format_space "#[bg=#181825]"
 
@@ -28,8 +28,8 @@ layout {
             command_conky_interval "1"
 
             datetime          "#[fg=#000000,bg=#DCD7BA,nobold]{format}"
-            datetime_format   "%d/%m %H:%M"
-            datetime_timezone "Asia/Taipei"
+            datetime_format   "%m-%d %H:%M"
+            datetime_timezone "Asia/Shanghai"
         }
     }
 }
