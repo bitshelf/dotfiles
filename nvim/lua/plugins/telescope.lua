@@ -166,7 +166,7 @@ return {
 						--   end
 						-- }
 					 --  },
-					  theme = "ivy",
+					  -- theme = "ivy",
 					  cwd = vim.fn.expand('%:p:h'),
 					},
 				},
