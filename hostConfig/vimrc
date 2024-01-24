@@ -156,6 +156,12 @@ inoremap <F9> <C-O>:TagbarToggle<CR>
 nnoremap ZQ      :qa!<CR>
 nnoremap ZZ      :wqa<CR>
 
+"ignore typing errors
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
+
 " float terminal
 nnoremap   <silent>   <C-\>   :FloatermToggle<CR>
 tnoremap   <silent>   <C-\>   <C-\><C-n>:FloatermToggle<CR>

@@ -13,6 +13,7 @@ bottom
 cargo-update
 du-dust
 fd-find
+git-delta # delta
 igrep
 joshuto
 lsd
@@ -24,9 +25,9 @@ ripgrep_all
 mdcat
 #rm-improved
 starship
+tailspin # log tool
 tree-rs
 tealdeer # tldr
-git-delta # delta
 vivid
 #xcp
 )
