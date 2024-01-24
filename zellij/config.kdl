@@ -250,7 +250,7 @@ plugins {
 // The name of the default layout to load on startup
 // Default: "default"
 //
- default_layout "conky"
+ default_layout "theme"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
