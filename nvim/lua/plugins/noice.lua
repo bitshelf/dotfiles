@@ -34,9 +34,22 @@ return {
 	  },
 
       routes = {
+		{
+		  view = "popup",
+		  filter = {
+			any = {
+			  { cmdline = "^:reg" },
+			  { cmdline = "^:dis" },
+			  { cmdline = "^:ls" },
+			  { cmdline = "^:marks" },
+			  { cmdline = "^:hi" },
+		 }},
+	   },
+
         {
           filter = {
-            event = { "msg_showmode", "msg_showcmd", "msg_ruler", "msg_show" },
+			event = "msg_show", -- look for event: hi-messages
+			kind = "",
             any = {
               { find = "%d+L, %d+B" },
               { find = "; after #%d+" },
@@ -56,11 +69,6 @@ return {
 		  },
 		  opts = { skip = true },
 		},
-
-		-- {
-		--   view = "notify",
-		--   filter = { event = "msg_showmode" },
-		-- },
 
 		{
 		  view = "notify",
