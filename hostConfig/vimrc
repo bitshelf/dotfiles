@@ -130,7 +130,7 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'github/copilot.vim'
+  " Plug 'github/copilot.vim'
   Plug 'voldikss/vim-floaterm'
   "Plug 'Bakudankun/qline.vim'
 
