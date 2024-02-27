@@ -1,8 +1,8 @@
 return {
 	{
 		"gbprod/yanky.nvim",
-		-- event = "VimEnter",
-		enabled = false,
+		event = "VimEnter",
+		-- enabled = false,
 		dependencies = {
 			"kkharji/sqlite.lua",
 		},
@@ -18,7 +18,7 @@ return {
 			require('yanky').setup({
 				ring = {
 					history_length = 2000,
-					storage = "sqlite",
+					-- storage = "sqlite",
 					sync_with_numbered_registers = true,
 					cancel_event = "update",
 				},
