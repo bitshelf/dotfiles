@@ -28,11 +28,13 @@ function install_all {
 }
 
 function install_nvim {
-	git clone https://github.com/neovim/neovim.git --depth=1 --branch=stable
+	# git clone https://github.com/neovim/neovim.git --depth=1 --branch=stable
+	git clone https://github.com/neovim/neovim.git --depth=1
 	pushd neovim/
 	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/ -j${nproc}
 	make install
 	popd
+	rm -rf neovim
 	#conda install -c conda-forge neovim # pip3 install --user --upgrade neovim
 }
 

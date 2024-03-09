@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true, nowait = true }
-local keymap = vim.keymap.set
+-- local keymap = vim.keymap.set
 
 vim.keymap.set('n', "<F2>", ":nohlsearch<CR>", { silent = true, desc = "nohlsearch" })
 vim.keymap.set({'n','x'}, "ZQ", "<cmd>qa!<CR>", { silent = true, desc = "visual quit not save" })
@@ -15,3 +15,4 @@ vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
 vim.keymap.set("t", "<c-j>", "<c-j>", { buffer = buf, nowait = true })
 vim.keymap.set("t", "<c-k>", "<c-k>", { buffer = buf, nowait = true })
 vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true })
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]],{ buffer = buf, nowait = true })
