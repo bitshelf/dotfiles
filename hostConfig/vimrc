@@ -166,6 +166,22 @@ nnoremap ZZ      :wqa<CR>
 nnoremap   <silent>   <C-\>   :FloatermToggle<CR>
 tnoremap   <silent>   <C-\>   <C-\><C-n>:FloatermToggle<CR>
 
+" comment keybind
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCompactSexyComs = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+nnoremap <C-/> <plug>NERDCommenterToggle
+vnoremap <C-/> <plug>NERDCommenterToggle
+nnoremap <C-_> <plug>NERDCommenterToggle
+vnoremap <C-_> <plug>NERDCommenterToggle
+let g:NERDCustomDelimiters = {
+    \ 'dts': { 'left': '//', 'leftAlt': '//' },
+    \ 'c': { 'left': '//', 'leftAlt': '//' },
+\ }
+
 " statusline
 "let g:loaded_airline = 1
 "let g:loaded_lightline = 1
