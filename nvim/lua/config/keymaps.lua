@@ -9,6 +9,14 @@ vim.keymap.set('n', '<leader>l', "<cmd>UndotreeToggle<cr>", { desc = "UndotreeTo
 -- vim.keymap.del('n',"<leader>e")
 vim.keymap.del('n', "<leader>L")
 vim.keymap.del('n', "<leader>l")
+vim.keymap.del('n', "<c-/>")
+vim.keymap.del('n', "<c-_>")
+
+local api = require("Comment.api")
+vim.keymap.set("n", "<c-/>", api.locked("comment.linewise.current"))
+vim.keymap.set("n", "<c-/>", api.locked("uncomment.linewise.current"))
+vim.keymap.set("n", "<c-_>", api.locked("comment.linewise.current"))
+vim.keymap.set("n", "<c-_>", api.locked("uncomment.linewise.current"))
 
 -- remove lazyvim terminal keybind
 vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
