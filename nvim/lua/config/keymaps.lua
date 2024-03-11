@@ -24,11 +24,11 @@ vim.keymap.set("n", "<c-_>", "<cmd>lua require('Comment.api').toggle.linewise.cu
 vim.keymap.set("x", "<c-_>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment visualmode" })
 
 -- remove lazyvim terminal keybind
--- vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
--- vim.keymap.set("t", "<c-j>", "<c-j>", { buffer = buf, nowait = true })
--- vim.keymap.set('t', '<esc>', [[<C-\><C-n>]],{ buffer = buf, nowait = true })
-vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
-vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
+vim.keymap.set("t", "<c-j>", "<c-j>", { buffer = buf, nowait = true })
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]],{ buffer = buf, nowait = true })
 vim.keymap.set("t", "<c-k>", "<c-k>", { buffer = buf, nowait = true, desc = "delte after chars" })
 vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true, desc = "Clear screen" })
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+-- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+-- vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+-- vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
