@@ -3,6 +3,8 @@
 [core]
     editor = nvim
     quotepath = false
+	fsmonitor = true
+	untrackedCache = true
 [color]
 	ui = auto
 [color "diff-highlight"]
@@ -57,6 +59,10 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[fetch]
+	writeCommitGraph = true
+[rerere]
+	enabled = true
 ; git clone proxy 
 ; add this in ~/.ssh/config
 ; ### github.com
