@@ -7,9 +7,12 @@
 /pulse
 /nvim/lazy-lock.json
 /nvim/package-lock.json
+/nvim/.neoconf.json
 /nvim/tmp/
 /configstore/
 /coc
 /lazygit/state.yml
 /github-copilot/versions.json
 /zellij/plugins/
+/TabNine
+/ripgrep-all/

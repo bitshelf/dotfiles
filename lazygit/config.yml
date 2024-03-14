@@ -1,5 +1,6 @@
 gui:
   showBottomLine: false
+  skipDiscardChangeWarning: true
 git:
   paging:
     colorArg: always
