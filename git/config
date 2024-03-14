@@ -3,7 +3,7 @@
 [core]
     editor = nvim
     quotepath = false
-	fsmonitor = true
+	; fsmonitor = true
 	untrackedCache = true
 [color]
 	ui = auto
