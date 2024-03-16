@@ -13,6 +13,7 @@ bottom
 cargo-update
 du-dust
 fd-find
+gitui # delta
 git-delta # delta
 igrep
 joshuto
