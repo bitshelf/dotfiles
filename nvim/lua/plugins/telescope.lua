@@ -66,7 +66,7 @@ return {
 			function() G.project_files() end,
 			desc = "Find Plugin File",
 		  },
-		  -- { '<leader>ff', function() builtin.find_files() end, desc = "find_files" },
+		  { '<leader>ff', function() builtin.find_files() end, desc = "find_files" },
 		  -- { '<leader>fg', function() builtin.live_grep() end, desc = "live_grep" },
 		  -- { '<leader>fh', function() builtin.oldfiles() end, desc = "oldfiles" },
 		  -- { '<leader>ch', function() builtin.command_history() end , desc = "command_history" },
