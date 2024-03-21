@@ -11,7 +11,7 @@ shopt -s checkwinsize
 shopt -s autocd
 shopt -s cdspell
 
-# cargo  
+# cargo
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
