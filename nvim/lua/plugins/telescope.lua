@@ -44,10 +44,12 @@ end
 return {
   {
 		"nvim-telescope/telescope.nvim",
-		version = false,
+		version = false, -- telescope did only one release, so use HEAD for now
+	    cmd = "Telescope",
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim",
 			{
 				"LukasPietzschmann/telescope-tabs",
 				config = function()
@@ -57,7 +59,6 @@ return {
 					vim.keymap.set('n', '<c-t>', tstabs.list_tabs, {})
 				end
 			},
-			'stevearc/dressing.nvim',
 		},
 
 		keys = {
@@ -67,6 +68,10 @@ return {
 			desc = "Find Plugin File",
 		  },
 		  { '<leader>ff', function() builtin.find_files() end, desc = "find_files" },
+		  { '<leader>t', function() builtin.jumplist() end, desc = "jumplist" },
+		  { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+		  { "<leader>sg", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+		  { "<leader>sG", LazyVim.telescope("live_grep"), desc = "Grep (root dir)" },
 		  -- { '<leader>fg', function() builtin.live_grep() end, desc = "live_grep" },
 		  -- { '<leader>fh', function() builtin.oldfiles() end, desc = "oldfiles" },
 		  -- { '<leader>ch', function() builtin.command_history() end , desc = "command_history" },
@@ -187,37 +192,29 @@ return {
 				}
 		},
 
-		  require('dressing').setup({
-			  select = {
-				  get_config = function(opts)
-					  if opts.kind == 'codeaction' then
-						  return {
-							  backend = 'telescope',
-							  telescope = require('telescope.themes').get_cursor()
-						  }
-					  end
-				  end
-			  }
-		  })
-	  },
-	  -- add telescope-fzf-native
-  {
-    "telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-		local ts = require('telescope')
-        ts.load_extension("fzf")
-		ts.load_extension('telescope-tabs')
-		ts.load_extension('fzf')
-		ts.load_extension('projects')
-		-- ts.load_extension("yank_history")
-		-- ts.load_extension('fzy_native')
-		-- ts.load_extension('dap') -- telescope debug extensions
-		-- ts.load_extension("commander")
-      end,
-    },
-  },
+		require('dressing').setup({
+			select = {
+				get_config = function(opts)
+					if opts.kind == 'codeaction' then
+						return {
+							backend = 'telescope',
+							telescope = require('telescope.themes').get_cursor()
+						}
+					end
+				end
+			}
+		}),
+
+		config = function()
+		  local ts = require('telescope')
+		  ts.load_extension("fzf")
+		  ts.load_extension('telescope-tabs')
+		  ts.load_extension('projects')
+		  ts.load_extension("yank_history")
+		  -- ts.load_extension('fzy_native')
+		  -- ts.load_extension('dap') -- telescope debug extensions
+		  -- ts.load_extension("commander")
+		end,
+	},
 }
 
