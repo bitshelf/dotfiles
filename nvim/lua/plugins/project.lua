@@ -1,5 +1,6 @@
 return {
   "ahmedkhalf/project.nvim",
+	event = "LazyFile",
     config = function()
 	local opts = {silent = true, nowait = true}
 	vim.keymap.set('n', '<leader>gi', ':ProjectRoot<cr>', { desc = "ProjectRoot", silent = true, nowait = true })
