@@ -56,7 +56,7 @@ return {
 					local tstabs = require('telescope-tabs')
 					tstabs.setup({
 					})
-					vim.keymap.set('n', '<c-t>', tstabs.list_tabs, {})
+					vim.keymap.set('n', '<leader>t', tstabs.list_tabs, {})
 				end
 			},
 		},
@@ -68,7 +68,7 @@ return {
 			desc = "Find Plugin File",
 		  },
 		  { '<leader>ff', function() builtin.find_files() end, desc = "find_files" },
-		  { '<leader>t', function() builtin.jumplist() end, desc = "jumplist" },
+		  { '<c-t>', function() builtin.jumplist() end, desc = "jumplist" },
 		  { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
 		  { "<leader>sg", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
 		  { "<leader>sG", LazyVim.telescope("live_grep"), desc = "Grep (root dir)" },
