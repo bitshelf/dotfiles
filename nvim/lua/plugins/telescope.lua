@@ -1,15 +1,10 @@
-local m = { noremap = true, nowait = true }
-local is_inside_work_tree = {}
-local G = {}
-local builtin = require('telescope.builtin')
-local actions = require('telescope.actions')
-
-G.project_files = function()
+local project_files = function()
   local builtin = require('telescope.builtin')
+  local is_inside_work_tree = {}
 
---   local bufnr = vim.api.nvim_get_current_buf()
---   local file_path = vim.api.nvim_buf_get_name(bufnr)
---   local cwd = vim.fn.fnamemodify(file_path.path, ":p:h")
+  -- local bufnr = vim.api.nvim_get_current_buf()
+  -- local file_path = vim.api.nvim_buf_get_name(bufnr)
+  -- local cwd = vim.fn.fnamemodify(file_path.path, ":p:h")
   local cwd = vim.fn.getcwd()
   local opts = {
 			git_command = {
@@ -30,26 +25,48 @@ G.project_files = function()
   end
 
   if is_inside_work_tree[cwd] then
-	-- builtin.find_files({
-	--   hidden = true,
-	--   find_command = { "git", "ls-files","--", cwd,},
- --    })
     builtin.git_files(opts)
   else
-    builtin.find_files(opts)
+	builtin.find_files({
+	  hidden = true,
+    })
   end
 
 end
 
 return {
-  {
 		"nvim-telescope/telescope.nvim",
 		version = false, -- telescope did only one release, so use HEAD for now
 	    cmd = "Telescope",
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"stevearc/dressing.nvim",
+			{
+				"stevearc/dressing.nvim",
+				require('dressing').setup({
+					select = {
+						get_config = function(opts)
+							if opts.kind == 'codeaction' then
+								return {
+									backend = 'telescope',
+									telescope = require('telescope.themes').get_cursor()
+								}
+							end
+						end
+					}
+				}),
+			},
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = vim.fn.executable("make") == 1 and "make"
+				  or "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+				enabled = vim.fn.executable("make") == 1 or vim.fn.executable("cmake") == 1,
+				config = function()
+				  LazyVim.on_load("telescope.nvim", function()
+					require("telescope").load_extension("fzf")
+				  end)
+				end,
+			},
 			{
 				"LukasPietzschmann/telescope-tabs",
 				config = function()
@@ -64,24 +81,42 @@ return {
 		keys = {
 		  {
 			"<c-p>",
-			function() G.project_files() end,
+			function() project_files() end,
 			desc = "Find Plugin File",
 		  },
-		  { '<leader>ff', function() builtin.find_files() end, desc = "find_files" },
-		  { '<c-t>', function() builtin.jumplist() end, desc = "jumplist" },
+		  { '<c-t>', "<cmd>Telescope jumplist<cr>", desc = "jumplist" },
 		  { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
 		  { "<leader>sg", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
 		  { "<leader>sG", LazyVim.telescope("live_grep"), desc = "Grep (root dir)" },
-		  -- { '<leader>fg', function() builtin.live_grep() end, desc = "live_grep" },
-		  -- { '<leader>fh', function() builtin.oldfiles() end, desc = "oldfiles" },
-		  -- { '<leader>ch', function() builtin.command_history() end , desc = "command_history" },
-		  -- { '<leader>fb', function() builtin.buffers() end, desc = "buffers" },
-		  { '<leader>fs',function() builtin.lsp_document_symbols() end, { desc = "lsp document symbols", noremap = true, nowait = true }},
-		  -- { '<leader>gs',function() builtin.git_status() end, { desc = "telescope git status", noremap = true, nowait = true }},
-		  { '<leader>;', function() builtin.commands() end, { desc = "telescope commands", noremap = true, nowait = true }},
+		  { '<leader>fs',"<cmd>Telescope lsp_document_symbols<cr>", { desc = "lsp document symbols", noremap = true, nowait = true }},
+		  { '<leader>;', "<cmd>Telescope commands<cr>", { desc = "telescope commands", noremap = true, nowait = true }},
 		},
 
-		opts = {
+		opts = function()
+
+			local actions = require('telescope.actions')
+			local ts = require('telescope')
+
+			ts.load_extension("fzf")
+			ts.load_extension('telescope-tabs')
+			ts.load_extension('projects')
+			ts.load_extension("yank_history")
+			-- ts.load_extension('fzy_native')
+			-- ts.load_extension('dap') -- telescope debug extensions
+
+			local find_files_no_ignore = function()
+			  local action_state = require("telescope.actions.state")
+			  local line = action_state.get_current_line()
+			  LazyVim.telescope("find_files", { no_ignore = true, default_text = line })()
+			end
+
+			local find_files_with_hidden = function()
+			  local action_state = require("telescope.actions.state")
+			  local line = action_state.get_current_line()
+			  LazyVim.telescope("find_files", { hidden = true, default_text = line })()
+			end
+
+			return {
 				defaults = {
 					vimgrep_arguments = {
 						"rg",
@@ -94,20 +129,31 @@ return {
 						"--smart-case",
 						"--trim",
 					},
+
 					layout_config = {
 				        horizontal = {
 						  -- prompt_position = 'top',
-						  preview_width = 0.55,
-						  results_width = 0.8,
+						  preview_width = 0.60,
+						  results_width = 0.40,
 						},
 						width = 0.95,
 						height = 0.95,
 					},
+
 					mappings = {
 						i = {
-							["<esc>"] = "close",
-							["<C-n>"] = actions.move_selection_next,
-							["<C-p>"] = actions.move_selection_previous,
+							["<C-n>"] = actions.cycle_history_next,
+							["<C-p>"] = actions.cycle_history_prev,
+							["<C-j>"] = actions.move_selection_next,
+							["<C-k>"] = actions.move_selection_previous,
+
+							["<C-Down>"] = actions.cycle_history_next,
+							["<C-Up>"] = actions.cycle_history_prev,
+
+							["<C-u>"] = actions.preview_scrolling_up,
+							["<C-d>"] = actions.preview_scrolling_down,
+							["<C-h>"] = actions.preview_scrolling_left,
+							["<C-l>"] = actions.preview_scrolling_right,
 
 							["<C-c>"] = actions.close,
 
@@ -119,36 +165,54 @@ return {
 							["<C-v>"] = actions.select_vertical,
 							["<C-t>"] = actions.select_tab,
 
-							["<C-u>"] = actions.preview_scrolling_up,
-							["<C-d>"] = actions.preview_scrolling_down,
-							["<C-f>"] = actions.preview_scrolling_left,
-							["<C-k>"] = actions.preview_scrolling_right,
+							["<a-i>"] = find_files_no_ignore,
+							["<a-h>"] = find_files_with_hidden,
 
 							["<PageUp>"] = actions.results_scrolling_up,
 							["<PageDown>"] = actions.results_scrolling_down,
-							["<M-f>"] = actions.results_scrolling_left,
-							["<M-k>"] = actions.results_scrolling_right,
+							["<M-l>"] = actions.results_scrolling_right,
+							["<M-h>"] = actions.results_scrolling_left,
 
 							["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 							["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
 							["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 							["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-							["<C-l>"] = actions.complete_tag,
 							["<C-/>"] = actions.which_key,
 							["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
 							["<C-w>"] = { "<c-s-w>", type = "command" },
 
 							-- disable c-j because we dont want to allow new lines #2123
-							["<C-j>"] = actions.nop,
-						}
+							-- ["<C-j>"] = actions.nop,
+							["<M-j>"] = actions.nop,
+							["<M-k>"] = actions.nop,
+						},
+
+						n = { 
+						  q = actions.close 
+						},
 					},
+
 					color_devicons = true,
 					prompt_prefix = "🔍 ",
 					selection_caret = " ",
 					path_display = { "truncate" },
 					file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 					grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+					-- open files in the first window that is an actual file.
+					-- use the current window if no other window is available.
+					get_selection_window = function()
+					  local wins = vim.api.nvim_list_wins()
+					  table.insert(wins, 1, vim.api.nvim_get_current_win())
+					  for _, win in ipairs(wins) do
+						local buf = vim.api.nvim_win_get_buf(win)
+						if vim.bo[buf].buftype == "" then
+						  return win
+						end
+					  end
+					  return 0
+					end,
 				},
+
 				pickers = {
 					buffers = {
 						show_all_buffers = true,
@@ -188,33 +252,9 @@ return {
 					--   override_file_sorter = true,
 					-- },
 
-					command_palette = command_palette,
-				}
-		},
-
-		require('dressing').setup({
-			select = {
-				get_config = function(opts)
-					if opts.kind == 'codeaction' then
-						return {
-							backend = 'telescope',
-							telescope = require('telescope.themes').get_cursor()
-						}
-					end
-				end
-			}
-		}),
-
-		config = function()
-		  local ts = require('telescope')
-		  ts.load_extension("fzf")
-		  ts.load_extension('telescope-tabs')
-		  ts.load_extension('projects')
-		  ts.load_extension("yank_history")
-		  -- ts.load_extension('fzy_native')
-		  -- ts.load_extension('dap') -- telescope debug extensions
-		  -- ts.load_extension("commander")
-		end,
-	},
+					command_palette = command_palette
+				},
+		}
+	  end
 }
 
