@@ -166,6 +166,16 @@ nnoremap ZZ      :wqa<CR>
 nnoremap   <silent>   <C-\>   :FloatermToggle<CR>
 tnoremap   <silent>   <C-\>   <C-\><C-n>:FloatermToggle<CR>
 
+" Ignored in completion
+set suffixes=.bak,~,.h,.info,.swp,.obj,.class
+set wildignore=*.o,*.obj,*.bak,*.exe,*.so,*.class,*.hi,*.jpg,*.png,*.zip,*.tar,*.tar.gz
+
+" Hidden character toggling
+set listchars=tab:»\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+
+" sudo write this
+cmap W! silent w !sudo tee % >/dev/null
+
 " comment keybind
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -245,8 +255,8 @@ inoremap <Down> <C-O>gj
 " inoremap <C-S-Tab> <C-O><C-W>W
 
 " Nerdtree
-" nnoremap <C-S-e> :exec 'NERDTreeToggle' <CR>
-nnoremap <C-S-e> :NERDTreeToggle <CR>
+nnoremap <C-S-e> :exec 'NERDTreeToggle' <CR>
+" nnoremap <C-S-e> :NERDTreeToggle <CR>
 
 " Vista
 "let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]

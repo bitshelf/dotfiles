@@ -9,6 +9,10 @@ fun! s:MakePair()
 	endif
 endfun
 inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
+
+" sudo write this
+" cmap W! silent w !sudo tee % >/dev/null
+
 ]])
 
 
