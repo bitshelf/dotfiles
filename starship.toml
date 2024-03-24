@@ -4,38 +4,52 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 command_timeout = 10
-# Inserts a blank line between shell prompts
 scan_timeout = 10
 continuation_prompt = "[▶▶](green)"
 
-
 format = """
-$hostname\
+${env_var.SERVER}\
 $conda\
 $memory_usage\
 $directory\
+${custom.aosp}\
 $git_branch\
-$git_commit\
 $git_state\
 $git_metrics\
+$jobs\
+$battery\
 $cmd_duration\
 $line_break\
 $character"""
 
+#$git_commit\
 #$git_status\
+
+[env_var.SERVER]
+variable = 'SERVER'
+default = ''
+format = "[$env_value ]($style)"
+style = "bright-black"
+
+[custom.aosp]
+command = '' # 显示命令输出
+when = ''' [ $TARGET_PRODUCT ]'''
+symbol = '🅰 '
+# format = '[$symbol($output )]($style)'
+format = '[$symbol]($style)'
+style = "bright-black"
 
 [hostname]
 ssh_only = true
-format = "[228](bold red) "
-#format = "[$ssh_symbol](bold blue)on [$hostname](bold red) "
-disabled = false
+# format = "[$ssh_symbol](bold blue)on [$hostname](bold red) "
+disabled = true
 
-[character] 
-success_symbol = "[→](bold green)" 
+[character]
+success_symbol = "[→](bold green)"
 vicmd_symbol = "[❮](green)"
-error_symbol = "[→](red)"
-#error_symbol = "[⮞](red)"
-#success_symbol = "[⮞](bold green)" 
+error_symbol = "[→](bold green)"
+# success_symbol = "[❯](bold)"
+# error_symbol = "[❯](bold)"
 
 #Disable the package module, hiding it from the prompt completely
 [package]
@@ -54,7 +68,7 @@ untracked = "🤷"
 stashed = "📦"
 staged = '[++\($count\)](green)'
 deleted = "💥"
-disabled = false
+disabled = true
 
 [directory]
 #style = "blue"
@@ -63,14 +77,17 @@ truncation_length = 11
 truncate_to_repo = true
 
 [git_branch]
-format = " [$branch]($style) "
+format = "[$branch]($style) "
+truncation_length = 8
+truncation_symbol = ''
 style = "bright-black"
 
 [jobs]
-symbol = ""
-style = "bold red"
+symbol = '+'
 number_threshold = 1
-format = "[$symbol]($style)"
+symbol_threshold = 1
+# style = "bold red"
+# format = "[$symbol]($style)"
 
 [cobol]
 disabled = true
@@ -85,8 +102,8 @@ style = "yellow"
 
 [memory_usage]
 disabled = false
-format = "[${ram}]($style) "
-symbol = " "
+# threshold = 75
+format = "[${ram}(|${swap})]($style) "
 style = " purple"
 
 [sudo]
