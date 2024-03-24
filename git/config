@@ -1,17 +1,21 @@
 [user]
 	name = JZ Loh
+
 [core]
     editor = nvim
     quotepath = false
 	; fsmonitor = true
 	untrackedCache = true
+
 [color]
 	ui = auto
+
 [color "diff-highlight"]
 	oldNormal = red
 	oldHighlight = red 52
 	newNormal = green
 	newHighlight = green 22
+
 [color "diff"]
 	meta = yellow
 	frag = magenta
@@ -19,50 +23,105 @@
 	old = red bold
 	new = green
 	whitespace = red reverse
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "status"]
+    added              = green
+    changed            = yellow
+    untracked          = red
+
 [log]
     date = format-local:%Y-%m-%d
 	date = iso-local
 	#date = auto:human
+
 [alias]
     lg = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s %Cred%d%Creset %Cblue[%an]\" --date=short
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	co = checkout
 	br = branch
 	ci = commit
-	st = status
+	st = status -sb
 	di = diff
 	dis = diff --staged
+
 [push]
 	default = simple
+
 [pull]
 	ff = only
+
+[fetch]
+	writeCommitGraph = true
+
 [init]
 	defaultBranch = main
+
+[advice]
+    # Disable advice for beginners
+    pushNonFastForward = false
+    pushNonFFCurrent   = false
+    pushNonFFDefault   = false
+    pushNonFFMatching  = false
+    statusHints        = false
+    commitBeforeMerge  = false
+    resolveConflict    = false
+    implicitIdentity   = false
+    detachedHead       = false
+    amWorkDir          = false
+
+[rebase]
+    # Allow rebase with unstaged changes
+    autoStash = true
+
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false
     side-by-side = true
+
 [gui]
     encoding = utf-8
+
 [i18n]
     commitencoding = utf-8
     logoutputencoding = utf-8
+
 [svn]
     pathnameencoding = utf-8
+
 [i18n "commit"]
     encoding = utf-8
 ; [interactive]
 ;     diffFilter = delta --color-only
+
+; [merge]
+;     conflictstyle = diff3
+
+[mergetool.fugitive]
+    cmd = 'vim -f -c "Gvdiffsplit!" "$MERGED"'
+
+[mergetool.justconflicts]
+    cmd = "diffconflicts vim $BASE $LOCAL $REMOTE $MERGED"
+    trustExitCode = true
+
 [merge]
-    conflictstyle = diff3
+    tool = justconflicts
+    keepBackup = false
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[fetch]
-	writeCommitGraph = true
+
 [rerere]
+; Remember how conflicts were resolved
 	enabled = true
+
 ; git clone proxy 
 ; add this in ~/.ssh/config
 ; ### github.com
