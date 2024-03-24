@@ -1,0 +1,6 @@
+---
+"editor_view:move_to_line_start": ctrl-a
+"editor_view:insert_autosuggestion": ctrl-f
+"workspace:show_command_search": none
+"editor_view:select_all": ctrl-shift-A
+"editor_view:move_to_line_end": ctrl-e
