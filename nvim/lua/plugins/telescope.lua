@@ -76,6 +76,12 @@ return {
 					vim.keymap.set('n', '<leader>t', tstabs.list_tabs, {})
 				end
 			},
+			{
+				"nvim-telescope/telescope-live-grep-args.nvim" ,
+				-- This will not install any breaking changes.
+				-- For major updates, this must be adjusted manually.
+				version = "^1.0.0",
+			},
 		},
 
 		keys = {
@@ -85,7 +91,8 @@ return {
 			desc = "Find Plugin File",
 		  },
 		  { '<c-t>', "<cmd>Telescope jumplist<cr>", desc = "jumplist" },
-		  { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+		  -- { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+		  { "<leader>/","<cmd>Telescope live_grep_args live_grep_args<cr>", { desc = "Ripgrep", noremap = true, nowait = true }},
 		  { "<leader>sg", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
 		  { "<leader>sG", LazyVim.telescope("live_grep"), desc = "Grep (root dir)" },
 		  { '<leader>fs',"<cmd>Telescope lsp_document_symbols<cr>", { desc = "lsp document symbols", noremap = true, nowait = true }},
@@ -101,6 +108,7 @@ return {
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('projects')
 			ts.load_extension("yank_history")
+			ts.load_extension("live_grep_args")
 			-- ts.load_extension('fzy_native')
 			-- ts.load_extension('dap') -- telescope debug extensions
 
@@ -152,8 +160,8 @@ return {
 
 							["<C-u>"] = actions.preview_scrolling_up,
 							["<C-d>"] = actions.preview_scrolling_down,
-							["<C-h>"] = actions.preview_scrolling_left,
-							["<C-l>"] = actions.preview_scrolling_right,
+							["<C-b>"] = actions.preview_scrolling_left,
+							["<C-f>"] = actions.preview_scrolling_right,
 
 							["<C-c>"] = actions.close,
 
