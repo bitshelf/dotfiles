@@ -1,7 +1,4 @@
-## This is a Linux config
-```shell
-git clone --recursive https://gitee.com/bitshelf/linuxconfig.git
-```
+## Linux dotfiles
 
 ### apt proxy
 ```shell
