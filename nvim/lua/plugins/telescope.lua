@@ -178,8 +178,8 @@ return {
 
 							["<PageUp>"] = actions.results_scrolling_up,
 							["<PageDown>"] = actions.results_scrolling_down,
-							["<M-l>"] = actions.results_scrolling_right,
-							["<M-h>"] = actions.results_scrolling_left,
+							["<M-f>"] = actions.results_scrolling_right,
+							["<M-b>"] = actions.results_scrolling_left,
 
 							["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 							["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
