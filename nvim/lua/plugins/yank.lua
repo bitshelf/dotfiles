@@ -31,6 +31,12 @@ return {
 			-- vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
 			-- vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
+			local utils = require("yanky.utils")
+			local mapping = require("yanky.telescope.mapping")
+
+			local ts = require('telescope')
+			ts.load_extension("yank_history")
+
 			require('yanky').setup({
 				ring = {
 					history_length = 2000,
@@ -46,8 +52,23 @@ return {
 						action = nil, -- nil to use default put action
 					},
 					telescope = {
-						use_default_mappings = true, -- if default mappings should be used
-						mappings = nil,        -- nil to use default mappings or no mappings (see `use_default_mappings`)
+						use_default_mappings = false, -- if default mappings should be used
+						-- mappings = nil,        -- nil to use default mappings or no mappings (see `use_default_mappings`)
+						mappings = {
+						  default = mapping.put("p"),
+						  i = {
+							-- ["<c-g>"] = mapping.put("p"),
+							-- ["<c-k>"] = mapping.put("P"),
+							["<c-x>"] = mapping.delete(),
+							["<c-r>"] = mapping.set_register(utils.get_default_register()),
+						  },
+						  n = {
+							p = mapping.put("p"),
+							P = mapping.put("P"),
+							d = mapping.delete(),
+							r = mapping.set_register(utils.get_default_register())
+						  },
+						}
 					},
 				},
 

@@ -37,7 +37,8 @@ end
 return {
 		"nvim-telescope/telescope.nvim",
 		version = false, -- telescope did only one release, so use HEAD for now
-	    cmd = "Telescope",
+	    -- cmd = "Telescope",
+		event = "LazyFile",
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -107,7 +108,7 @@ return {
 			ts.load_extension("fzf")
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('projects')
-			ts.load_extension("yank_history")
+			-- ts.load_extension("yank_history")
 			ts.load_extension("live_grep_args")
 			-- ts.load_extension('fzy_native')
 			-- ts.load_extension('dap') -- telescope debug extensions
@@ -150,10 +151,10 @@ return {
 
 					mappings = {
 						i = {
-							["<C-n>"] = actions.cycle_history_next,
-							["<C-p>"] = actions.cycle_history_prev,
-							["<C-j>"] = actions.move_selection_next,
-							["<C-k>"] = actions.move_selection_previous,
+							["<C-j>"] = actions.cycle_history_next,
+							["<C-k>"] = actions.cycle_history_prev,
+							["<C-n>"] = actions.move_selection_next,
+							["<C-p>"] = actions.move_selection_previous,
 
 							["<C-Down>"] = actions.cycle_history_next,
 							["<C-Up>"] = actions.cycle_history_prev,
