@@ -2,7 +2,7 @@ return {
   {
     "ldelossa/litee-calltree.nvim",
 	ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-	event = "VimEnter",
+	event = "LazyFile",
 	dependencies = {
 	  "ldelossa/litee.nvim",
 	  config = function()

@@ -87,7 +87,6 @@ return {
 
 	{
 	  "goolord/alpha-nvim",
-	  event = "VimEnter",
 	  enabled = false,
 	  init = false,
 	  opts = function()
@@ -187,7 +186,6 @@ return {
   {
     "nvimdev/dashboard-nvim",
 	-- enabled = false,
-    event = "VimEnter",
     opts = function()
       local logo = [[
 		   ██╗      █████╗ ███████╗██╗   ██╗
@@ -281,7 +279,7 @@ return {
 
   {
 	"folke/which-key.nvim",
-	event = "VimEnter",
+	event = "LazyFile",
 	init = function()
 	  vim.o.timeout = true
 	  vim.o.timeoutlen = 500
@@ -323,7 +321,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-	event = "VimEnter",
+	event = "LazyFile",
     cmd = "Neotree",
     keys = {
       {

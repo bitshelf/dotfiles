@@ -17,7 +17,7 @@ return {
 	--  }
 	"numToStr/Comment.nvim",
 	-- lazy = false,
-	event = "VeryLazy",
+	event = "LazyFile",
 	config = function()
 		-- vim.api.nvim_command('set commentstring=//%s')
 		local ft = require('Comment.ft')
