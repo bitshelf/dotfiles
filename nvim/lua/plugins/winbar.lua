@@ -1,6 +1,14 @@
+local isabled = function()
+  if vim.version().major == 0 and vim.version().minor < 10 then
+	return false
+  end
+end
+
 return {
 	"Bekaboo/dropbar.nvim",
 	event = "LazyFile",
+	enabled = isabled(),
+
 	config = function()
 		local api = require("dropbar.api")
 		vim.keymap.set('n', '<Leader>e;', api.pick,{ desc = "dropbar" })
