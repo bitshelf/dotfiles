@@ -56,45 +56,6 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 
-		-- 	---@param opts cmp.ConfigSchema
-		-- 	opts = function(_, opts)
-		-- 		local has_words_before = function()
-		-- 			unpack = unpack or table.unpack
-		-- 			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		-- 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-		-- 		end
-		--
-		-- 		local luasnip = require("luasnip")
-		-- 		local cmp = require("cmp")
-		--
-		-- 		opts.mapping = vim.tbl_extend("force", opts.mapping, {
-		-- 			["<Tab>"] = cmp.mapping(function(fallback)
-		-- 				if cmp.visible() then
-		-- 					-- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
-		-- 					cmp.select_next_item()
-		-- 					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-		-- 					-- this way you will only jump inside the snippet region
-		-- 				elseif luasnip.expand_or_jumpable() then
-		-- 					luasnip.expand_or_jump()
-		-- 				elseif has_words_before() then
-		-- 					cmp.complete()
-		-- 				else
-		-- 					fallback()
-		-- 				end
-		-- 			end, { "i", "s" }),
-		-- 			["<S-Tab>"] = cmp.mapping(function(fallback)
-		-- 				if cmp.visible() then
-		-- 					cmp.select_prev_item()
-		-- 				elseif luasnip.jumpable(-1) then
-		-- 					luasnip.jump(-1)
-		-- 				else
-		-- 					fallback()
-		-- 				end
-		-- 			end, { "i", "s" }),
-		-- 		})
-		-- 	end,
-		-- }
-
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
@@ -102,7 +63,19 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-calc",
 			"hrsh7th/nvim-cmp",
-			-- "SirVer/ultisnips",
+			"SirVer/ultisnips",
+			{
+				"L3MON4D3/LuaSnip",
+				-- follow latest release.
+				version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+				-- install jsregexp (optional!).
+				build = (not LazyVim.is_win()) and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp" or nil,
+
+			    opts = {
+				  history = true,
+				  delete_check_events = "TextChanged",
+				},
+			},
 			{
 				"onsails/lspkind.nvim",
 				lazy = false,
@@ -117,32 +90,68 @@ return {
 					-- optional call to setup (see customization section)
 					require("cmp_nvim_ultisnips").setup {}
 				end,
-			}
-			-- "L3MON4D3/LuaSnip",
+			},
 		},
 
+			---@param opts cmp.ConfigSchema
+			opts = function(_, opts)
+				local has_words_before = function()
+					unpack = unpack or table.unpack
+					local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+					return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+				end
+
+				local luasnip = require("luasnip")
+				local cmp = require("cmp")
+
+				opts.mapping = vim.tbl_extend("force", opts.mapping, {
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							-- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
+							cmp.select_next_item()
+							-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+							-- this way you will only jump inside the snippet region
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif has_words_before() then
+							cmp.complete()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+				})
+			end,
 
 		config = function()
 			local lspkind = require("lspkind")
 			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 			local cmp = require("cmp")
 			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-			-- local luasnip = require("luasnip")
+			local luasnip = require("luasnip")
 
 			local fgdark = "#2E3440"
 
 			setCompHL()
 			cmp.setup({
-				-- preselect = cmp.PreselectMode.None,
+				preselect = cmp.PreselectMode.None,
 				snippet = {
 					expand = function(args)
-						-- luasnip.lsp_expand(args.body)
+						luasnip.lsp_expand(args.body)
 						vim.fn["UltiSnips#Anon"](args.body)
 					end,
 				},
 				window = {
 					completion = {
-						-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
 						col_offset = -3,
 						side_padding = 0,
 					},
@@ -170,7 +179,7 @@ return {
 					{ name = "path" },
 					{ name = "nvim_lua" },
 					{ name = "calc" },
-					-- { name = "luasnip" },
+					{ name = "luasnip" },
 					{ name = "treesitter" },
 					{ name = "spell" },
 					-- { name = 'tmux',    option = { all_panes = true, } },  -- this is kinda slow
