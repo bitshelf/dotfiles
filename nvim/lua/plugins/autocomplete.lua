@@ -63,19 +63,19 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-calc",
 			"hrsh7th/nvim-cmp",
-			"SirVer/ultisnips",
-			{
-				"L3MON4D3/LuaSnip",
-				-- follow latest release.
-				version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-				-- install jsregexp (optional!).
-				build = (not LazyVim.is_win()) and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp" or nil,
-
-			    opts = {
-				  history = true,
-				  delete_check_events = "TextChanged",
-				},
-			},
+			-- "SirVer/ultisnips",
+			-- {
+			-- 	"L3MON4D3/LuaSnip",
+			-- 	-- follow latest release.
+			-- 	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+			-- 	-- install jsregexp (optional!).
+			-- 	build = (not LazyVim.is_win()) and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp" or nil,
+			--
+			--     opts = {
+			-- 	  history = true,
+			-- 	  delete_check_events = "TextChanged",
+			-- 	},
+			-- },
 			{
 				"onsails/lspkind.nvim",
 				lazy = false,
