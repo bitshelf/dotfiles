@@ -34,3 +34,4 @@ vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true, desc = "Cle
 -- vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 
 vim.keymap.set("c", "W!", "silent w !sudo tee % >/dev/null", { buffer = buf, nowait = true })
+vim.keymap.set("n", "<leader>fT","<cmd>ToggleTerm direction=horizontal<CR>", { buffer = buf, nowait = true })
