@@ -1,18 +1,19 @@
 return {
   {
     "folke/noice.nvim",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
 
     dependencies = { -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim", -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify"},
+	  "MunifTanjim/nui.nvim", -- OPTIONAL:
+	  --   `nvim-notify` is only needed, if you want to use the notification view.
+	  --   If not available, we use `mini` as the fallback
+	  "rcarriga/nvim-notify",
+	},
 
     opts = {
       lsp = {
 		progress = {
-			enabled = true
+			enabled = true,
 		},
 		
         override = {
@@ -20,6 +21,10 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
+
+	    signature = {
+		  auto_open = { enable = false },
+		},
       },
 
 	  messages = {
@@ -44,21 +49,24 @@ return {
 			  { cmdline = "^:marks" },
 			  { cmdline = "^:hi" },
 		 }},
-	   },
+		},
 
         {
           filter = {
-			event = "msg_show", -- look for event: hi-messages
-			kind = "",
+			-- event = "msg_show", -- look for event: hi-messages
+			-- kind = "",
             any = {
               { find = "%d+L, %d+B" },
               { find = "; after #%d+" },
               { find = "; before #%d+" },
-              { find = "%d fewer lines" },
               { find = "%d lines yanked" },
               { find = "clipboard:" },
               { find = "%d lines <ed %d time[s]?" },
               { find = "%d lines >ed %d time[s]?" },
+			  { event = "notify", find = "No information available" },
+			  { event = "msg_show", find = "fewer lines" },
+			  { event = "msg_show", find = "more lines" },
+			  { event = "notify", find = "Compilation completed" },
             },
           },
 		  opts = { skip = true },
@@ -82,6 +90,15 @@ return {
 		  opts = { skip = true },
 		},
       },
+
+	  popupmenu = {
+		enabled = true, -- enables the Noice popupmenu UI
+		---@type 'nui'|'cmp'
+		backend = "nui", -- backend to use to show regular cmdline completions
+		---@type NoicePopupmenuItemKind|false
+		-- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+		kind_icons = {}, -- set to `false` to disable icons
+	  },
 
 	  cmdline = {
 		  enabled = true, -- enables the Noice cmdline UI
@@ -126,7 +143,6 @@ return {
 				  icon = ""
 			  },
 			  input = {} -- Used by input()
-			  -- lua = false, -- to disable a format, set to `false`
 		  }
 	  },
 
@@ -135,6 +151,7 @@ return {
         command_palette = true,
         long_message_to_split = true,
         inc_rename = true,
+		lsp_doc_border = true,
       },
 
 	  notify = {
@@ -146,7 +163,6 @@ return {
 		  enabled = false,
 		  view = "notify"
 	  },
-
     },
     -- stylua: ignore
     keys = {

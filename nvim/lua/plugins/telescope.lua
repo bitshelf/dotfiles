@@ -106,9 +106,9 @@ return {
 			local ts = require('telescope')
 
 			ts.load_extension("fzf")
+			-- ts.load_extension("noice")
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('projects')
-			-- ts.load_extension("yank_history")
 			ts.load_extension("live_grep_args")
 			-- ts.load_extension('fzy_native')
 			-- ts.load_extension('dap') -- telescope debug extensions
