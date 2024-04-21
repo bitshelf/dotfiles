@@ -1,6 +1,7 @@
 return {
   'akinsho/toggleterm.nvim', 
   event = "LazyFile",
+  cmd = "ToggleTerm",
   -- enabled = false,
   opts = {
 	  open_mapping = [[<c-\>]],
