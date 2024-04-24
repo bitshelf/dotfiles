@@ -35,3 +35,15 @@ vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true, desc = "Cle
 
 vim.keymap.set("c", "W!", "silent w !sudo tee % >/dev/null", { buffer = buf, nowait = true })
 vim.keymap.set("n", "<leader>fT","<cmd>ToggleTerm direction=horizontal<CR>", { buffer = buf, nowait = true })
+
+local function toggle_list()
+  if vim.opt.list:get() then
+    vim.cmd("setlocal nolist")
+    vim.b.miniindentscope_disable = true
+  else
+    vim.cmd("setlocal list")
+    vim.b.miniindentscope_disable = false
+  end
+end
+
+vim.keymap.set("n", "<leader>um", toggle_list, { desc = "Toggle listchars" })
