@@ -24,6 +24,10 @@ return {
 	  end,
 	},
 	{
+	  "LunarVim/bigfile.nvim",
+	  lazy = false,
+	},
+	{
 	  "echasnovski/mini.indentscope",
 	  version = '*',
 	  -- require('mini.indentscope').setup()
