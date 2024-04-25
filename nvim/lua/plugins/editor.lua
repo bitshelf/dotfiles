@@ -18,6 +18,12 @@ inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
 
 return {
 	{
+	  "ntpeters/vim-better-whitespace",
+	  init = function()
+		vim.g.better_whitespace_enabled = 0
+	  end,
+	},
+	{
 	  "echasnovski/mini.indentscope",
 	  version = '*',
 	  -- require('mini.indentscope').setup()

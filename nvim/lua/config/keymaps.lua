@@ -39,9 +39,11 @@ vim.keymap.set("n", "<leader>fT","<cmd>ToggleTerm direction=horizontal<CR>", { b
 local function toggle_list()
   if vim.opt.list:get() then
     vim.cmd("setlocal nolist")
+    vim.cmd("DisableWhitespace")
     vim.b.miniindentscope_disable = true
   else
     vim.cmd("setlocal list")
+    vim.cmd("EnableWhitespace")
     vim.b.miniindentscope_disable = false
   end
 end
