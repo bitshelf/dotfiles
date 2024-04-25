@@ -19,6 +19,8 @@ inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
 return {
 	{
 	  "ntpeters/vim-better-whitespace",
+	  event = "LazyFile",
+
 	  init = function()
 		vim.g.better_whitespace_enabled = 0
 	  end,
@@ -271,6 +273,8 @@ return {
 	},
 	{
 		"windwp/nvim-autopairs",
+		event = "LazyFile",
+
 		config = function()
 			require("nvim-autopairs").setup({})
 		end

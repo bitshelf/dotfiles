@@ -2,6 +2,7 @@ return {
 	{
 		"mbbill/undotree",
 		-- keys = { "L" },
+		event = "LazyFile",
 		config = function()
 			vim.cmd([[
 				noremap L :UndotreeToggle<CR>
