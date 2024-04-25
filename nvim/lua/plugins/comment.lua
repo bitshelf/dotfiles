@@ -24,8 +24,8 @@ return {
 		ft.set('dts','//%s')
 	
 		local api = require("Comment.api")
-		vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"))
-		vim.keymap.set("n", "<leader>cu", api.locked("uncomment.linewise.current"))
+		vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"), { buffer = buf, nowait = true, desc = "comment linewise" })
+		vim.keymap.set("n", "<leader>cu", api.locked("uncomment.linewise.current"), { buffer = buf, nowait = true, desc = "uncomment linewise" })
 		local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
 		vim.keymap.set('x', '<leader>cn', function()
 			vim.api.nvim_feedkeys(esc, 'nx', false)
