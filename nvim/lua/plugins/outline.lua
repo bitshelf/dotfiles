@@ -5,7 +5,8 @@ return {
 		-- event = "VimEnter",
 		cmd = { "Outline", "OutlineOpen" },
 		keys = { -- Example mapping to toggle outline
-		  { "<leader>oo", "<cmd>Outline<CR>", desc = "Toggle outline" },
+		  -- { "<leader>oo", "<cmd>Outline<CR>", desc = "Toggle outline" },
+		  { "<leader>cs", "<cmd>Outline<cr>", desc = "Symbols Outline" },
 		},
 		opts = {
 		  preview_window = {

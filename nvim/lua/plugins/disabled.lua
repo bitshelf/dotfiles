@@ -11,4 +11,5 @@ return {
   { "zbirenbaum/copilot.lua", enabled = false },
   { "echasnovski/mini.comment", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
+  { "simrat39/symbols-outline.nvim", enabled = false },
 }
