@@ -91,6 +91,7 @@ return {
 			function() project_files() end,
 			desc = "Find Plugin File",
 		  },
+		  {'<leader>ff', function() require('telescope.builtin').find_files() end, desc = "find_files" },
 		  { '<c-t>', "<cmd>Telescope jumplist<cr>", desc = "jumplist" },
 		  -- { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
 		  { "<leader>/","<cmd>Telescope live_grep_args live_grep_args<cr>", { desc = "Ripgrep", noremap = true, nowait = true }},
@@ -233,17 +234,6 @@ return {
 						}
 					},
 					find_files = {
-					 --  mappings = {
-						-- n = {
-						--   ["cd"] = function(prompt_bufnr)
-						-- 	local selection = require("telescope.actions.state").get_selected_entry()
-						-- 	local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-						-- 	require("telescope.actions").close(prompt_bufnr)
-						-- 	-- Depending on what you want put `cd`, `lcd`, `tcd`
-						-- 	vim.cmd(string.format("silent lcd %s", dir))
-						--   end
-						-- }
-					 --  },
 					  -- theme = "ivy",
 					  cwd = vim.fn.expand('%:p:h'),
 					},
