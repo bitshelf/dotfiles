@@ -8,6 +8,19 @@ function install_host {
 	cp -f ${PWD}/gitconfig ~/.gitconfig
 }
 
+function install_node {
+	mkdir -p $HOME/.local/.nvm/
+	export NVM_DIR="$HOME/.local/.nvm"
+	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+
+	export NVM_DIR="$HOME/.local/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+	nvm install --lts
+
+}
+
 function install_rust {
 	# install rust
 	curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
