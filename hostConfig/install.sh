@@ -29,6 +29,8 @@ function install_rust {
 	cargo install ripgrep_all --locked
 	cargo install ripgrep --features 'pcre2'
 	cargo install --locked zellij
+	# curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh
+	# cargo install --git  https://github.com/imsnif/bandwhich
 	./cargo.sh
 }
 

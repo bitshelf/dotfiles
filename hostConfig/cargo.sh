@@ -17,6 +17,7 @@ gitui # delta
 git-delta # delta
 igrep
 joshuto
+kmon # linux module
 lsd
 mcfly
 #procs
@@ -27,9 +28,11 @@ mdcat
 #rm-improved
 starship
 tailspin # log tool
+topgrade
 tree-rs
 tealdeer # tldr
 vivid
+zenith
 #xcp
 )
 
