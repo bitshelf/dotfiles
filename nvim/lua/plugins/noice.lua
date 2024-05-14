@@ -61,6 +61,7 @@ return {
               { find = "; before #%d+" },
               { find = "%d lines yanked" },
               { find = "clipboard:" },
+              { find = "UltiSnips" },
               { find = "%d lines <ed %d time[s]?" },
               { find = "%d lines >ed %d time[s]?" },
 			  { event = "notify", find = "No information available" },
