@@ -25,13 +25,15 @@ function install_rust {
 	# install rust
 	curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
 
+	./cargo.sh
 	cargo install -f --git https://github.com/starship/starship
 	cargo install ripgrep_all --locked
 	cargo install ripgrep --features 'pcre2'
 	cargo install --locked zellij
-	# curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh
+
+	# curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh # install termscp
 	# cargo install --git  https://github.com/imsnif/bandwhich
-	./cargo.sh
+	# wget -O zjstatus.wasm https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm
 }
 
 function install_all {
