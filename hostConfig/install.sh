@@ -34,6 +34,7 @@ function install_rust {
 	# curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh # install termscp
 	# cargo install --git  https://github.com/imsnif/bandwhich
 	# wget -O zjstatus.wasm https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm
+	# curl -L "https://github.com/rvcas/room/releases/latest/download/room.wasm" -o ~/.config/zellij/plugins/room.wasm
 }
 
 function install_all {
