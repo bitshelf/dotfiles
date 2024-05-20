@@ -37,17 +37,9 @@ function install_rust {
 	# curl -L "https://github.com/rvcas/room/releases/latest/download/room.wasm" -o ~/.config/zellij/plugins/room.wasm
 }
 
-function install_all {
-	install_host
-	install_fzf
-	install_rust
-	install_vim
-	install_nvim
-}
-
 function install_nvim {
-	# git clone https://github.com/neovim/neovim.git --depth=1 --branch=stable
-	git clone https://github.com/neovim/neovim.git --depth=1
+	git clone https://github.com/neovim/neovim.git --depth=1 --branch=stable
+	# git clone https://github.com/neovim/neovim.git --depth=1
 	pushd neovim/
 	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/ -j${nproc}
 	make install
@@ -69,6 +61,14 @@ function install_vim {
 	make install
 	popd
 	rm -rf vim
+}
+
+function install_all {
+	install_host
+	install_fzf
+	install_rust
+	install_vim
+	install_nvim
 }
 
 OPTIONS="$@"
