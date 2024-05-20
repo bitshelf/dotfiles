@@ -1,11 +1,11 @@
 return {
 	{
 		"mbbill/undotree",
-		keys = { "L" },
+		keys = { "J" },
 		event = "VeryLazy",
 		config = function()
 			vim.cmd([[
-				noremap L :UndotreeToggle<CR>
+				noremap J :UndotreeToggle<CR>
 				let g:undotree_DiffAutoOpen = 1
 				let g:undotree_SetFocusWhenToggle = 1
 				let g:undotree_ShortIndicators = 1
