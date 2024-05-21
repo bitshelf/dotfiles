@@ -63,7 +63,7 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-calc",
 			"hrsh7th/nvim-cmp",
-			"SirVer/ultisnips",
+			-- "SirVer/ultisnips",
 			{
 				"L3MON4D3/LuaSnip",
 				-- follow latest release.
@@ -146,7 +146,7 @@ return {
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
-						vim.fn["UltiSnips#Anon"](args.body)
+						-- vim.fn["UltiSnips#Anon"](args.body)
 					end,
 				},
 				window = {
