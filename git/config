@@ -2,6 +2,7 @@
 	name = JZ Loh
 
 [core]
+	pager = bat
     editor = nvim
     quotepath = false
 	; fsmonitor = true
@@ -121,6 +122,9 @@
 [rerere]
 ; Remember how conflicts were resolved
 	enabled = true
+
+[credential]
+       helper = store
 
 ; git clone proxy 
 ; add this in ~/.ssh/config
