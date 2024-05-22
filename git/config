@@ -2,7 +2,8 @@
 	name = JZ Loh
 
 [core]
-	pager = bat
+	pager = bat --style="grid"
+	; pager = less -x1,5
     editor = nvim
     quotepath = false
 	; fsmonitor = true
