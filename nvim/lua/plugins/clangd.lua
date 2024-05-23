@@ -1,18 +1,24 @@
 return {
   {
-	"williamboman/mason.nvim",
-	opts = function(_, opts)
-		opts.ensure_installed = {
+	'williamboman/mason-lspconfig.nvim',
+	dependencies = { "williamboman/mason.nvim" },
+	opts = {
+		ensure_installed = {
+			"bashls",
 			"clangd",
-		}
-	end,
+			"pyright"
+		},
+	},
   },
+
   {
 	"neovim/nvim-lspconfig",
 	opts = {
-		setup = {
-			clangd = function(_, opts)
-				opts.cmd = {
+
+		servers = {
+		-- Ensure mason installs the server
+			clangd = {
+				cmd = {
 					"clangd",
 					"--background-index",
 					-- "--clang-tidy",
@@ -28,9 +34,9 @@ return {
 					-- 启用这项时，补全函数时，将会给参数提供占位符，键入后按 Tab 可以切换到下一占位符
 					"--function-arg-placeholders=false",
 					"-j=32",
-				}
-			end,
+				},
+			},
 		},
 	},
-  }
+  },
 }
