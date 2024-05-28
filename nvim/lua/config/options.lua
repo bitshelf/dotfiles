@@ -1,4 +1,4 @@
--- vim.g.mapleader = "\\"
+vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 
@@ -11,15 +11,18 @@ vim.o.secure = false
 vim.o.number = false
 vim.o.relativenumber = false
 vim.o.cursorline = true
+
 vim.o.signcolumn = "yes"
-vim.opt.softtabstop = 8
-vim.opt.shiftwidth = 8
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.expandtab = false
-vim.o.tabstop = 8
-vim.o.smarttab = false
-vim.o.shiftwidth = 8
+vim.o.tabstop = 4
+vim.o.smarttab = true
+vim.o.shiftwidth = 4
 vim.o.autoindent = true
 vim.o.ttimeoutlen = 0
+vim.o.smartcase = true -- Don't ignore case with capitals
+vim.o.smartindent = true -- Insert indents automatically
 -- vim.o.timeout = false
 vim.o.viewoptions = "cursor,folds,slash,unix"
 vim.o.wrap = false
@@ -31,7 +34,6 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.showmode = true
 vim.o.ignorecase = true
-vim.o.smartcase = true
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.inccommand = "split"
 vim.o.completeopt = "longest,noinsert,menuone,noselect,preview"
