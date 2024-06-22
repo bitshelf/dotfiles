@@ -42,7 +42,12 @@ function install_nvim {
 	# git clone https://github.com/neovim/neovim.git --depth=1
 	pushd neovim/
 	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local/ -j${nproc}
-	make install
+	if [[ $? = 0 ]];then
+		make install
+	else
+		exit 1
+	fi
+
 	popd
 	rm -rf neovim
 	#conda install -c conda-forge neovim # pip3 install --user --upgrade neovim
