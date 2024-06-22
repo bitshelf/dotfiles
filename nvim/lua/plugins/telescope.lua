@@ -37,7 +37,7 @@ end
 return {
 		"nvim-telescope/telescope.nvim",
 		version = false, -- telescope did only one release, so use HEAD for now
-	    cmd = "Telescope",
+		cmd = "Telescope",
 		event = "LazyFile",
 
 		dependencies = {
@@ -56,17 +56,6 @@ return {
 						end
 					}
 				}),
-			},
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = vim.fn.executable("make") == 1 and "make"
-				  or "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-				enabled = vim.fn.executable("make") == 1 or vim.fn.executable("cmake") == 1,
-				config = function()
-				  LazyVim.on_load("telescope.nvim", function()
-					require("telescope").load_extension("fzf")
-				  end)
-				end,
 			},
 			{
 				"LukasPietzschmann/telescope-tabs",
@@ -93,10 +82,9 @@ return {
 		  },
 		  {'<leader>ff', function() require('telescope.builtin').find_files() end, desc = "find_files" },
 		  { '<c-t>', "<cmd>Telescope jumplist<cr>", desc = "jumplist" },
-		  -- { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
 		  { "<leader>/","<cmd>Telescope live_grep_args live_grep_args<cr>", { desc = "Ripgrep", noremap = true, nowait = true }},
-		  { "<leader>sg", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-		  { "<leader>sG", LazyVim.telescope("live_grep"), desc = "Grep (root dir)" },
+		  { "<leader>sg", LazyVim.pick("live_grep" ), desc = "Grep (cwd)" },
+		  { "<leader>sG", LazyVim.pick("live_grep", { root = false }), desc = "Grep (root dir)" },
 		  { '<leader>fs',"<cmd>Telescope lsp_document_symbols<cr>", { desc = "lsp document symbols", noremap = true, nowait = true }},
 		  { '<leader>;', "<cmd>Telescope commands<cr>", { desc = "telescope commands", noremap = true, nowait = true }},
 		},
@@ -106,7 +94,7 @@ return {
 			local actions = require('telescope.actions')
 			local ts = require('telescope')
 
-			ts.load_extension("fzf")
+			-- ts.load_extension("fzf")
 			-- ts.load_extension("noice")
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('projects')
@@ -117,13 +105,13 @@ return {
 			local find_files_no_ignore = function()
 			  local action_state = require("telescope.actions.state")
 			  local line = action_state.get_current_line()
-			  LazyVim.telescope("find_files", { no_ignore = true, default_text = line })()
+			  LazyVim.pick("find_files", { no_ignore = true, default_text = line })()
 			end
 
 			local find_files_with_hidden = function()
 			  local action_state = require("telescope.actions.state")
 			  local line = action_state.get_current_line()
-			  LazyVim.telescope("find_files", { hidden = true, default_text = line })()
+			  LazyVim.pick("find_files", { hidden = true, default_text = line })()
 			end
 
 			return {
