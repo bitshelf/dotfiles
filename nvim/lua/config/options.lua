@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.g.lazyvim_picker = "telescope"
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 
 vim.o.termguicolors = true
