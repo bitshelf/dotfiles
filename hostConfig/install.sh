@@ -68,12 +68,19 @@ function install_vim {
 	rm -rf vim
 }
 
+function install_yazi {
+	cargo install -f --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
+	git clone https://github.com/Rolv-Apneseth/starship.yazi.git ~/.config/yazi/plugins/starship.yazi
+	git clone https://github.com/DreamMaoMao/git-status.yazi.git ~/.config/yazi/plugins/git-status.yazi
+}
+
 function install_all {
 	install_host
 	install_fzf
 	install_rust
 	install_vim
 	install_nvim
+	install_yazi
 }
 
 OPTIONS="$@"
