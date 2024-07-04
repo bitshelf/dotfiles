@@ -1,5 +1,16 @@
 return {
 	{
+      "nvim-neo-tree/neo-tree.nvim",
+	  enabled = false,
+
+      opts = {
+        filesystem = {
+          hijack_netrw_behavior = "disabled",
+        },
+      },
+    },
+
+	{
 		"mikavilpas/yazi.nvim",
 		event = "VeryLazy",
 
@@ -25,7 +36,7 @@ return {
 		---@type YaziConfig
 		opts = {
 			-- if you want to open yazi instead of netrw, see below for more info
-			open_for_directories = false,
+			open_for_directories = true,
 		},
 	}
 }

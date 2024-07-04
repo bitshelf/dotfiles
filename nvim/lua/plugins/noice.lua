@@ -65,6 +65,7 @@ return {
 		{ find = "UltiSnips" },
 		{ find = "%d lines <ed %d time[s]?" },
 		{ find = "%d lines >ed %d time[s]?" },
+		{ find = "{ %d }" },
 		{ event = "notify", find = "No information available" },
 		{ event = "msg_show", find = "fewer lines" },
 		{ event = "msg_show", find = "more lines" },
