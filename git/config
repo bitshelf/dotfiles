@@ -1,5 +1,6 @@
 [user]
 	name = JZ Loh
+	email = ljzyx86@qq.com
 
 [core]
 	pager = bat --style="changes" --tabs 8
