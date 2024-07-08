@@ -6,7 +6,7 @@ return {
 	},
 	{
 	  "bitshelf/aosp-vim",
-	  ft = {"bp", "hal", "rc" },
+	  ft = { "hal", "rc" },
 	},
 	{
 	  'google/vim-maktaba',
