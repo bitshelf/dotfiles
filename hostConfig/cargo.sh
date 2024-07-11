@@ -7,6 +7,9 @@ export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 tools=(
+lsd
+starship
+mcfly
 bat
 #broot
 bottom
@@ -16,17 +19,14 @@ fd-find
 gitui # delta
 git-delta # delta
 igrep
-joshuto
+#joshuto
 kmon # linux module
-lsd
-mcfly
 #procs
 #peep
 ripgrep
 ripgrep_all
 mdcat
 #rm-improved
-starship
 tailspin # log tool
 topgrade
 tree-rs
