@@ -27,6 +27,7 @@ function install_node {
 function install_rust {
 	# install rust
 	curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
+	. "$HOME/.cargo/env"
 
 	./cargo.sh
 	cargo install -f --git https://github.com/starship/starship
