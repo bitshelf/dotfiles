@@ -103,6 +103,12 @@ if [ -f ~/.config/git-completion.bash ]; then
 	source ~/.config/git-completion.bash
 fi
 
+if ! hash nvm 2>/dev/null; then
+	export NVM_DIR="$HOME/.local/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
 # with_proxy(){
 #    HTTPS_PROXY=socks5://localhost:7890 HTTP_PROXY=socks5://localhost:7890 "$@"
 # }
