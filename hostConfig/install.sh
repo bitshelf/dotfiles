@@ -6,7 +6,7 @@ function install_host {
 	ln -sf ${PWD}/rustconfig ~/.cargo/config
 	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
 	echo "with_proxy(){
-	   HTTPS_PROXY=socks5://localhost:7890 HTTP_PROXY=socks5://localhost:7890 "$@"
+	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 "$@"
 	}" >> ~/.bashrc
 }
 
@@ -31,15 +31,6 @@ function install_rust {
 	. "$HOME/.cargo/env"
 
 	./cargo.sh
-	cargo install -f --git https://github.com/starship/starship
-	cargo install ripgrep_all --locked
-	cargo install ripgrep --features 'pcre2'
-	cargo install --locked zellij
-
-	# curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh # install termscp
-	# cargo install --git  https://github.com/imsnif/bandwhich
-	# wget -O zjstatus.wasm https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm
-	# curl -L "https://github.com/rvcas/room/releases/latest/download/room.wasm" -o ~/.config/zellij/plugins/room.wasm
 }
 
 function install_nvim {
