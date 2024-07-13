@@ -63,7 +63,7 @@ return {
 					local tstabs = require('telescope-tabs')
 					tstabs.setup({
 					})
-					vim.keymap.set('n', '<leader>t', tstabs.list_tabs, {})
+					vim.keymap.set('n', '<leader>t', tstabs.list_tabs, { desc = "Tabs", noremap = true, nowait = true })
 				end
 			},
 			{

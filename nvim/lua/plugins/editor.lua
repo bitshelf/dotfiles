@@ -306,6 +306,7 @@ return {
         ["gs"] = { name = "+surround" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
+        ["<leader>e"] = { name = "+edit" },
         ["<leader>o"] = { name = "+symbol" },
         ["<leader>g"] = { name = "+git/goto" },
         ["<leader>;"] = { name = "+Telescope commands" },
