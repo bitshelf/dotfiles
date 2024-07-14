@@ -299,25 +299,31 @@ return {
 	  vim.o.timeoutlen = 500
 	end,
 	opts = {
-      plugins = { spelling = true },
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["gs"] = { name = "+surround" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader>e"] = { name = "+edit" },
-        ["<leader>o"] = { name = "+symbol" },
-        ["<leader>g"] = { name = "+git/goto" },
-        ["<leader>;"] = { name = "+Telescope commands" },
+		plugins = {
+					spelling = true,
+					registers = true,
+					marks = true,
+			},
+		icons = { rules = false, },
+		spec = {
+		  {
+			mode = { "n", "v" },
+			{ "g", group = "+goto" },
+			{ "gs", group = "+surround" },
+			{ "]",  group = "+next" },
+			{ "[",  group = "+prev" },
+			{ "<leader>e",  group = "+edit" },
+			{ "<leader>o",  group = "+symbol" },
+			{ "<leader>g",  group = "+git/goto" },
+			{ "<leader>;",  group = "Telescope commands" },
+			},
       },
 	},
 
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(opts.defaults)
-    end,
+    -- config = function(_, opts)
+    --   local wk = require("which-key")
+    --   wk.setup(opts)
+    -- end,
   },
 
   {
@@ -335,6 +341,7 @@ return {
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
+	enable = false,
     branch = "v3.x",
 	event = "LazyFile",
     cmd = "Neotree",
