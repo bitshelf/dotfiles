@@ -3,7 +3,7 @@
 function install_host {
 	echo "source ${PWD}/terminal.sh" >> ~/.bashrc
 	ln -sf ${PWD}/vimrc ~/.vimrc
-	ln -sf ${PWD}/rustconfig ~/.cargo/config
+	# ln -sf ${PWD}/rustconfig ~/.cargo/config
 	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
 	echo "with_proxy(){
 	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 "$@"
@@ -30,6 +30,7 @@ function install_rust {
 	curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
 	. "$HOME/.cargo/env"
 
+	cargo install cargo-binstall
 	./cargo.sh
 }
 

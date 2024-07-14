@@ -57,7 +57,7 @@ tools=(
 # cargo install  ${tools[*]}
 for tool in ${tools[@]}
 do
-	cargo install --locked $tool
+	wtth_proxy cargo binstall --locked $tool
 done
 
 # curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh # install termscp
