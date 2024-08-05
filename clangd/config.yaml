@@ -7,6 +7,5 @@ Diagnostics:
     Remove: modernize-use-trailing-return-type
     CheckOptions:
       IgnoreMacros: true
-
-# Index:
-#   Background: Skip
+CompileFlags:
+  Remove: [-march=*, -mabi=*, -mcpu=*]
