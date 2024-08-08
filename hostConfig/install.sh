@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function install_host {
+	touch $HOME/.hushlogin
 	echo "source ${PWD}/terminal.sh" >> ~/.bashrc
 	ln -sf ${PWD}/vimrc ~/.vimrc
 	# ln -sf ${PWD}/rustconfig ~/.cargo/config
