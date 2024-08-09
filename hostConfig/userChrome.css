@@ -1,0 +1,21 @@
+  /* 隐藏urlbar上的插件标识符 */
+#identity-box.extensionPage #identity-icon-label {
+  display: none !important;
+}
+
+#identity-icon-box {
+  background: none !important;
+}
+  
+#urlbar #identity-box.extensionPage #identity-icon-label {
+  display: none !important;
+}
+
+#identity-icon,
+#identity-permission-box {
+    display:none !important;
+}
+
+/* about:config:toolkit.legacyUserProfileCustomizations.stylesheets:true */
+/* about:support */
+
