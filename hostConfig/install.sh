@@ -9,6 +9,7 @@ function install_host {
 	echo "with_proxy(){
 	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 "$@"
 	}" >> ~/.bashrc
+	curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.config/git/git-completion.bash
 }
 
 function install_node {

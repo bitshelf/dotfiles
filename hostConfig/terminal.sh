@@ -99,9 +99,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-if [ -f ~/.config/git-completion.bash ]; then
-	source ~/.config/git-completion.bash
+# Git config
+if [ -f ~/.config/git/git-completion.bash ]; then
+	source ~/.config/git/git-completion.bash
 fi
+export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
 if ! hash nvm 2>/dev/null; then
 	export NVM_DIR="$HOME/.local/.nvm"
