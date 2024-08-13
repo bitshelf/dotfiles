@@ -73,6 +73,14 @@ function install_yazi {
 	git clone https://github.com/DreamMaoMao/git-status.yazi.git ~/.config/yazi/plugins/git-status.yazi
 }
 
+function install_lazygit {
+	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+	tar xf lazygit.tar.gz lazygit
+	sudo install lazygit /usr/local/bin
+	rm lazygit.tar.gz lazygit -rf
+}
+
 function install_all {
 	install_host
 	install_fzf
@@ -80,6 +88,7 @@ function install_all {
 	install_vim
 	install_nvim
 	install_yazi
+	install_lazygit
 }
 
 OPTIONS="$@"
