@@ -7,7 +7,7 @@ function install_host {
 	# ln -sf ${PWD}/rustconfig ~/.cargo/config
 	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
 	echo "with_proxy(){
-	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 "$@"
+	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 \"\$@\"
 	}" >> ~/.bashrc
 	curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.config/git/git-completion.bash
 }
