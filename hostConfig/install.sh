@@ -3,7 +3,7 @@
 function install_host {
 	touch $HOME/.hushlogin
 	echo "source ${PWD}/terminal.sh" >> ~/.bashrc
-	ln -sf ${PWD}/vimrc ~/.vimrc
+	#ln -sf ${PWD}/vimrc ~/.vimrc
 	# ln -sf ${PWD}/rustconfig ~/.cargo/config
 	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
 	echo "with_proxy(){
@@ -14,10 +14,9 @@ function install_host {
 
 function install_node {
 	mkdir -p $HOME/.local/.nvm/
-	export NVM_DIR="$HOME/.local/.nvm"
 	# wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 	# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-	export NVM_DIR="$HOME/.nvm" && ( git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR";   cd "$NVM_DIR";   git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`; ) && \. "$NVM_DIR/nvm.sh"
+	export NVM_DIR="$HOME/.local/.nvm" && ( git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR";   cd "$NVM_DIR";   git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`; ) && \. "$NVM_DIR/nvm.sh"
 
 	export NVM_DIR="$HOME/.local/.nvm"
 	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
