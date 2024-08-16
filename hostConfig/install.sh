@@ -68,7 +68,9 @@ function install_vim {
 
 function install_yazi {
 	cargo install -f --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
-	git clone https://github.com/Rolv-Apneseth/starship.yazi.git ~/.config/yazi/plugins/starship.yazi
+	ya pack -a Rolv-Apneseth/starship
+	ya pack -a yazi-rs/plugins#no-status
+	ya pack -a yazi-rs/plugins#max-preview
 }
 
 function install_lazygit {
