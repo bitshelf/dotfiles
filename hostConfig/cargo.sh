@@ -54,10 +54,13 @@ tools=(
 	#xcp
 )
 
+cargo install cargo-binstall
+
 # cargo install  ${tools[*]}
 for tool in ${tools[@]}
 do
-	cargo install --locked $tool
+	#cargo install --locked $tool
+	cargo binstall -y $tool
 done
 
 # curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh # install termscp
@@ -68,7 +71,6 @@ curl -L "https://github.com/rvcas/room/releases/latest/download/room.wasm" -o ~/
 curl -L "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" -o ~/.config/zellij/plugins/zjstatus.wasm
 
 # from git install
-# cargo install -f --git https://github.com/starship/starship
 # cargo install ripgrep_all --locked
 # cargo install --locked zellij
 # cargo install ripgrep --features 'pcre2'
