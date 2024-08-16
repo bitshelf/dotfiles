@@ -7,6 +7,7 @@ return {
 		ensure_installed = {
 			"bashls",
 			"clangd",
+			"lua_ls",
 			"tsserver",
 			"pyright"
 			},
