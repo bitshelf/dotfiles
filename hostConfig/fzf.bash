@@ -3,14 +3,12 @@ if [[ ! "$PATH" == *fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}$HOME/.local/.fzf/bin"
 fi
 
-# Auto-completion
-# ---------------
-[[ $- == *i* ]] && source "$HOME/.local/.fzf/shell/completion.bash" 2> /dev/null
 
-# Key bindings
-# ------------
-source "$HOME/.local/.fzf/shell/key-bindings.bash"
-unset -f __fzf_history__
+# bash integration
+eval "$(fzf --bash)"
+
+# remove fzf history key-binding
+bind -r "\C-r"
 
 EXCLUDE_DIRS=(\
 	-E tools \
