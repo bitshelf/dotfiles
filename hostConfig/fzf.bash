@@ -3,7 +3,6 @@ if [[ ! "$PATH" == *fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}$HOME/.local/.fzf/bin"
 fi
 
-
 # bash integration
 eval "$(fzf --bash)"
 
@@ -23,34 +22,10 @@ EXCLUDE_DIRS=(\
 	-E toolchain \
 )
 
-#if [[ ! "$PATH" == *$ConfigFolder/fzf/bin* ]]; then
-#  PATH="${PATH:+${PATH}:}$ConfigFolder/fzf/bin"
-#fi
-#
-## Auto-completion
-## ---------------
-#[[ $- == *i* ]] && source "$ConfigFolder/fzf/shell/completion.bash" 2> /dev/null
-
-# add Supported commands
-_fzf_setup_completion path code git z
-_fzf_setup_completion dir tree
-
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
-    export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
-    ssh)          fzf "$@" --preview 'dig {}' ;;
-    *)            fzf "$@" ;;
-  esac
-}
-
 # for large git repo
 export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hidden --follow --strip-cwd-prefix --color=auto ${EXCLUDE_DIRS[@]} ) 2> /dev/null'
 
-# fd
+# FZF_DEFAULT_COMMAND only use fd
 #export FZF_DEFAULT_COMMAND='(fd ${EXCLUDE_DIRS[@]}
 #--hidden
 #--type f
@@ -59,7 +34,7 @@ export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hi
 #--color=auto
 #) 2> /dev/null'
 
-# ripgrep
+# FZF_DEFAULT_COMMAND only use ripgrep
 #export FZF_DEFAULT_COMMAND="(rg --hidden --files --follow  -g '!{.git,tools,sdk,out,tools,cts,buildroot/output,development,toolchain}')2> /dev/null"
 
 # preview
@@ -86,6 +61,33 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude "${EXCLUDE_DIRS[@]}" . "$1"
 }
 
+# add Supported commands
+_fzf_setup_completion path code git z
+_fzf_setup_completion dir tree
+
+_fzf_compgen_path() {
+  fd --hidden --follow ${EXCLUDE_DIRS[@]} . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow ${EXCLUDE_DIRS[@]} . "$1"
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
+    export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
+    ssh)          fzf "$@" --preview 'dig {}' ;;
+    *)            fzf "$@" ;;
+  esac
+}
+
+
+########################## custon function #########################
 ## rga 
 f() {
  RG_PREFIX="rga --files-with-matches"
@@ -113,19 +115,11 @@ f() {
 }
 
 # key-binding <C-x> for rga
+bind -r "\C-x"
 bind -m emacs-standard '"\C-x": " \C-b\C-k \C-u f \e\C-e\er\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d"'
-bind -m vi-command '"\et": "\C-z\et\C-z"'
-bind -m vi-insert '"\et": "\C-z\et\C-z"'
+bind -m vi-command '"\C-x": "\C-z\C-x\C-z"'
+bind -m vi-insert '"\C-x": "\C-z\C-x\C-z"'
 
-
-_fzf_compgen_path() {
-  fd --hidden --follow ${EXCLUDE_DIRS[@]} . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow ${EXCLUDE_DIRS[@]} . "$1"
-}
 
 # dir
 cdd() {
@@ -140,8 +134,18 @@ cdd() {
 #   - Exit if there's no match (--exit-0)
 fe() {
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  [[ -n "$files" ]] && ${EDITOR:-vi} "${files[@]}"
 }
+
+# key-binding <C-x> for rga
+if (( BASH_VERSINFO[0] > 4 )); then
+	bind -r "\C-t"
+	if [[ "${FZF_CTRL_T_COMMAND-x}" != "" ]]; then
+		bind -m emacs-standard -x '"\C-t": fe'
+		bind -m vi-command -x '"\C-t": fe'
+		bind -m vi-insert -x '"\C-t": fe'
+	fi
+fi
 
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,
@@ -155,25 +159,21 @@ fo() {
   fi
 }
 
- rm -f /tmp/rg-fzf-{r,f}
- fgs() {
-	 RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-	 INITIAL_QUERY="${*:-}"
-	 : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
-	     --bind "start:reload($RG_PREFIX {q})+unbind(ctrl-r)" \
-	     --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
-	     --bind "ctrl-f:unbind(change,ctrl-f)+change-prompt(→ )+enable-search+rebind(ctrl-r)+transform-query(echo {q} > /tmp/rg-fzf-r; cat /tmp/rg-fzf-f)" \
-	     --bind "ctrl-r:unbind(ctrl-r)+change-prompt(rg> )+disable-search+reload($RG_PREFIX {q} || true)+rebind(change,ctrl-f)+transform-query(echo {q} > /tmp/rg-fzf-f; cat /tmp/rg-fzf-r)" \
-	     --color "hl:-1:underline,hl+:-1:underline:reverse" \
-	     --prompt 'rg> ' \
-	     --delimiter : \
-	     --preview 'bat --color=always {1} --highlight-line {2}' \
-	     --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-	     --bind 'enter:become(vim {1} +{2})'
- }
-
-# ALT-t - rga open file
-#bind -m emacs-standard '"\et": " \C-b\C-k \C-u`f`\e\C-e\er\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d"'
-#bind -m emacs-standard '"\C-x": " \C-b\C-k \C-u`f`\e\C-e\er\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d"'
-#bind -m vi-command '"\et": "\C-z\et\C-z"'
-#bind -m vi-insert '"\et": "\C-z\et\C-z"'
+RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+rf() {
+	rm -f /tmp/rg-fzf-{r,f}
+	INITIAL_QUERY="${*:-}"
+	: | fzf --ansi --disabled --query "$INITIAL_QUERY" \
+		--bind "start:reload:$RG_PREFIX {q}" \
+		--bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+		--bind 'ctrl-t:transform:[[ ! $FZF_PROMPT =~ ripgrep ]] &&
+		echo "rebind(change)+change-prompt(ripgrep> )+disable-search+transform-query:echo \{q} > /tmp/rg-fzf-f; cat /tmp/rg-fzf-r" ||
+		echo "unbind(change)+change-prompt(fzf> )+enable-search+transform-query:echo \{q} > /tmp/rg-fzf-r; cat /tmp/rg-fzf-f"' \
+		--color "hl:-1:underline,hl+:-1:underline:reverse" \
+		--prompt 'ripgrep> ' \
+		--delimiter : \
+		--header 'CTRL-T: Switch between ripgrep/fzf' \
+		--preview 'bat --color=always {1} --highlight-line {2}' \
+		--preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+		--bind 'enter:become($EDITOR {1} +{2})'
+}
