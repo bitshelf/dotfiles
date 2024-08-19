@@ -28,30 +28,22 @@ tools=(
 	starship
 	mcfly
 	bat
-	#broot
 	bottom
 	cargo-update
 	du-dust
 	fd-find
 	gitui # delta
 	git-delta # delta
-	#igrep
-	#joshuto
 	kmon # linux module
-	#procs
-	#peep
 	ripgrep
 	ripgrep_all
 	mdcat
-	#rm-improved
 	tailspin # log tool
 	topgrade
 	tree-rs
 	tealdeer # tldr
 	vivid
-	zenith
 	zellij
-	#xcp
 )
 
 cargo install cargo-binstall
@@ -64,13 +56,11 @@ do
 done
 
 # curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh # install termscp
-# cargo install --git  https://github.com/imsnif/bandwhich
 # wget -O zjstatus.wasm https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm
 mkdir ~/.config/zellij/plugins/
 curl -L "https://github.com/rvcas/room/releases/latest/download/room.wasm" -o ~/.config/zellij/plugins/room.wasm
 curl -L "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" -o ~/.config/zellij/plugins/zjstatus.wasm
 
-# from git install
-# cargo install ripgrep_all --locked
-# cargo install --locked zellij
-# cargo install ripgrep --features 'pcre2'
+# other cargo install
+cargo install --git https://github.com/bvaisvil/zenith.git
+# cargo install --git  https://github.com/imsnif/bandwhich
