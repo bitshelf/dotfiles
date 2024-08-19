@@ -11,3 +11,16 @@ show_symlink   = true
 scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
 title_format   = "Yazi: {cwd}"
+
+[opener]
+vscode = [
+	{ run = 'code "$@"', orphan = true },
+]
+
+[open]
+append_rules = [
+	{ name = "*.md", use = "edit" },
+]
+rules = [
+	{ name = "*.pdf", use = [ "vscode","open"] },
+]
