@@ -18,9 +18,10 @@ vscode = [
 ]
 
 [open]
-append_rules = [
-	{ name = "*.md", use = "edit" },
-]
 rules = [
 	{ name = "*.pdf", use = [ "vscode","open"] },
+]
+append_rules = [
+	{ name = "*.md", use = "edit" },
+	{ name = "*", use = "edit" },
 ]
