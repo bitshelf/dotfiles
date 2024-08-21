@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "Lil-Dank/lazygit", rev = "c82794f" }, { use = "yazi-rs/plugins:smart-filter", rev = "49ec78e" }, { use = "yazi-rs/plugins:no-status", rev = "49ec78e" }, { use = "yazi-rs/plugins:max-preview", rev = "49ec78e" }]
+deps = [{ use = "Lil-Dank/lazygit", rev = "c82794f" }, { use = "yazi-rs/plugins:smart-filter", rev = "49ec78e" }, { use = "yazi-rs/plugins:no-status", rev = "49ec78e" }, { use = "yazi-rs/plugins:max-preview", rev = "49ec78e" },  { use = "ourongxing/fast-enter", rev = "2864c59" }]
 
 [flavor]
 deps = []

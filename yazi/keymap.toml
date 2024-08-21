@@ -22,3 +22,8 @@ desc = "run lazygit"
 on   = "F"
 run  = "plugin smart-filter"
 desc = "Smart filter"
+
+[[manager.prepend_keymap]]
+on   = [ "l" ]
+run  = "plugin --sync fast-enter"
+desc = "Enter the subfolder faster, or open the file directly"
