@@ -89,7 +89,7 @@ _fzf_comprun() {
 
 ########################## custon function #########################
 ## rga 
-f() {
+ff() {
  RG_PREFIX="rga --files-with-matches"
  local FILES=(tar.gz gz zip)
  local file
@@ -115,10 +115,10 @@ f() {
 }
 
 # key-binding <C-x> for rga
-bind -r "\C-x"
-bind -m emacs-standard '"\C-x": " \C-b\C-k \C-u f \e\C-e\er\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d"'
-bind -m vi-command '"\C-x": "\C-z\C-x\C-z"'
-bind -m vi-insert '"\C-x": "\C-z\C-x\C-z"'
+# bind -r "\C-x"
+# bind -m emacs-standard '"\C-x": " \C-b\C-k \C-u`ff`\e\C-e\er\C-m\C-u\e \ey\C-d"'
+# bind -m vi-command '"\C-x": "\C-z\C-x\C-z"'
+# bind -m vi-insert '"\C-x": "\C-z\C-x\C-z"'
 
 
 # dir
@@ -137,15 +137,15 @@ fe() {
   [[ -n "$files" ]] && ${EDITOR:-vi} "${files[@]}"
 }
 
-# key-binding <C-x> for rga
-if (( BASH_VERSINFO[0] > 4 )); then
-	bind -r "\C-t"
-	if [[ "${FZF_CTRL_T_COMMAND-x}" != "" ]]; then
-		bind -m emacs-standard -x '"\C-t": fe'
-		bind -m vi-command -x '"\C-t": fe'
-		bind -m vi-insert -x '"\C-t": fe'
-	fi
-fi
+# key-binding <C-t> for fzf
+# if (( BASH_VERSINFO[0] > 4 )); then
+# 	bind -r "\C-t"
+# 	if [[ "${FZF_CTRL_T_COMMAND-x}" != "" ]]; then
+# 		bind -m emacs-standard -x '"\C-t": fe'
+# 		bind -m vi-command -x '"\C-t": fe'
+# 		bind -m vi-insert -x '"\C-t": fe'
+# 	fi
+# fi
 
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,

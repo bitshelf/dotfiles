@@ -85,6 +85,9 @@ export MCFLY_DISABLE_MENU=true
 export MCFLY_PROMPT='→'
 #readonly PROMPT_COMMAND
 
+bind -r "\C-g"
+bind -m emacs-standard -x '"\C-g": yazi '
+
 # Completion settings
 #source <(procs --gen-completion-out bash)
 

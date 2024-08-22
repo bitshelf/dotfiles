@@ -38,6 +38,7 @@ tools=(
 	ripgrep
 	ripgrep_all
 	mdcat
+	ouch
 	tailspin # log tool
 	topgrade
 	tree-rs
