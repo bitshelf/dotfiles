@@ -1,14 +1,20 @@
-" Install
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-"set runtimepath-=$ConfigFolder/.vim
+" set runtimepath-=$ConfigFolder/.vim
 "    \ runtimepath^=$ConfigFolder/.local/share/nvim/site runtimepath^=$ConfigFolder/.vim
 "    \ runtimepath-=$ConfigFolder/.vim/after
 "    \ runtimepath+=$ConfigFolder/.local/share/nvim/site/after runtimepath+=$ConfigFolder/.vim/after
-"let &packpath = &runtimepath
+" let &packpath = &runtimepath
 " set runtimepath=$ConfigFolder/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$ConfigFolder/.vim/after
 " set packpath=$ConfigFolder/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$ConfigFolder/.vim/after
+
+" Setting up vim-plug
+let iCanHazPlug=1
+let plug_vim=expand('~/.vim/autoload/plug.vim')
+if !filereadable(plug_vim)
+    echo "Installing vim-plug..."
+    echo ""
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let iCanHazPlug=0
+endif
 
 if exists('$VIM_TERMINAL')
   echoerr 'Do not run Vim inside a Vim terminal'
@@ -145,6 +151,12 @@ call plug#end()
 "   PlugInstall: Install plugins
 "   PlugUpdate: Install or update plugins
 "   PlugUpgrade: Upgrade vim-plug itself
+
+if iCanHazPlug == 0
+    echo "Installing vim-plug, please ignore key map error messages"
+    echo ""
+    :PlugInstall
+endif
 
 " Tagbar
 nmap <Leader>oo :TagbarToggle<CR>
