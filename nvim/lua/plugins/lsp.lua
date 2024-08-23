@@ -8,8 +8,8 @@ return {
 			"bashls",
 			"clangd",
 			"lua_ls",
-			"tsserver",
-			"pyright"
+			"pyright",
+			"vtsls"
 			},
 		},
 	},
