@@ -6,6 +6,8 @@
 " set runtimepath=$ConfigFolder/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$ConfigFolder/.vim/after
 " set packpath=$ConfigFolder/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$ConfigFolder/.vim/after
 
+scriptencoding utf-8
+
 " Setting up vim-plug
 let iCanHazPlug=1
 let plug_vim=expand('~/.vim/autoload/plug.vim')
@@ -56,6 +58,8 @@ set path=./**
 set nobackup
 set hidden
 set signcolumn=yes
+set cursorline
+set langmenu=zh_CN.UTF-8
 autocmd FileType * set formatoptions-=o
 
 if v:version >= 900
@@ -110,8 +114,7 @@ call plug#begin()
   " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
   " On-demand loading
-  Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
-  " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+  Plug 'preservim/nerdtree'
 
   " Using a non-default branch
   " Plug 'ycm-core/YouCompleteMe'
@@ -140,13 +143,8 @@ call plug#begin()
   Plug 'voldikss/vim-floaterm'
   "Plug 'Bakudankun/qline.vim'
 
-" Initialize plugin system
-" - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
-" You can revert the settings after the call like so:
-"   filetype indent off   " Disable file-type-specific indentation
-"   syntax off            " Disable syntax highlighting
-"
+
 "   command
 "   PlugInstall: Install plugins
 "   PlugUpdate: Install or update plugins
@@ -157,6 +155,18 @@ if iCanHazPlug == 0
     echo ""
     :PlugInstall
 endif
+
+" Nerdtree
+nnoremap <C-S-e> :exec 'NERDTreeToggle' <CR>
+" nnoremap <C-S-e> :NERDTreeToggle <CR>
+
+" auto open or close NERDTree
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
 " Tagbar
 nmap <Leader>oo :TagbarToggle<CR>
@@ -187,6 +197,7 @@ set listchars=tab:»\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 
 " sudo write this
 cmap W! silent w !sudo tee % >/dev/null
+ca w!! w !sudo tee "%"
 
 " comment keybind
 let g:NERDCreateDefaultMappings = 1
@@ -203,6 +214,11 @@ let g:NERDCustomDelimiters = {
     \ 'dts': { 'left': '//', 'leftAlt': '//' },
     \ 'c': { 'left': '//', 'leftAlt': '//' },
 \ }
+
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+" let g:gitgutter_set_sign_backgrounds = 1
+" let g:gitgutter_sign_allow_clobber = 1
 
 " statusline
 "let g:loaded_airline = 1
@@ -265,10 +281,6 @@ inoremap <Down> <C-O>gj
 " inoremap <C-Tab>   <C-O><C-W>w
 " nnoremap <C-S-Tab> <C-W>W
 " inoremap <C-S-Tab> <C-O><C-W>W
-
-" Nerdtree
-nnoremap <C-S-e> :exec 'NERDTreeToggle' <CR>
-" nnoremap <C-S-e> :NERDTreeToggle <CR>
 
 " Vista
 "let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
