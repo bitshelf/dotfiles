@@ -1,5 +1,6 @@
 return {
 	"theniceboy/joshuto.nvim",
+	enabled = false,
 	lazy = true,
 	cmd = "Joshuto",
 	config = function()
