@@ -12,6 +12,9 @@ scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
 title_format   = "Yazi: {cwd}"
 
+[preview]
+wrap = "yes"
+
 [opener]
 vscode = [
 	{ run = 'code "$@"', orphan = true },
