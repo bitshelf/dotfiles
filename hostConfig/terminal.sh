@@ -11,6 +11,18 @@ shopt -s checkwinsize
 shopt -s autocd
 shopt -s cdspell
 
+export HISTCONTROL=ignoreboth
+# ignorespace: 忽略空格开头的命令
+# ignoredups: 忽略连续重复命令
+# ignoreboth: 表示上述两个参数都设置
+
+# 设置追加而不是覆盖
+shopt -s histappend
+
+export HISTSIZE=100000
+export HISTFILESIZE=200000
+export HISTIGNORE='pwd:exit:fg:bg:top:clear:history:ls:uptime:df'
+
 # cargo
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
