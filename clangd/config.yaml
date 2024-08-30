@@ -12,4 +12,4 @@ CompileFlags:
           -fno-ipa-sra,-mno-thumb-interwork,-fno-var-tracking-ssignments,
           -fconserve-stack,-mthumb-interwork,-mword-relocations,
           -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang,
-          -fno-allow-store-data-races,]
+          -fno-allow-store-data-races,-fno-var-tracking-assignments,-mpc-relative-literal-loads,]
