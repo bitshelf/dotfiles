@@ -61,7 +61,7 @@ return {
 		{ find = "; before #%d+" },
 		{ find = "%d lines yanked" },
 		{ find = "clipboard:" },
-		{ find = "Ignoring invalid" },
+		-- { find = "Ignoring invalid" },
 		{ find = "completion" },
 		{ find = "UltiSnips" },
 		{ find = "%d lines <ed %d time[s]?" },
