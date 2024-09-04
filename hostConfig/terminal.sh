@@ -120,11 +120,11 @@ if [ -f ~/.config/git/git-completion.bash ]; then
 fi
 export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
-if ! hash nvm 2>/dev/null; then
-	export NVM_DIR="$HOME/.local/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
+# if ! hash nvm 2>/dev/null; then
+# 	export NVM_DIR="$HOME/.local/.nvm"
+# 	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fi
 
 # with_proxy(){
 #    HTTPS_PROXY=socks5://localhost:7890 HTTP_PROXY=socks5://localhost:7890 "$@"
