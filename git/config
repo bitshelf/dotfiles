@@ -9,6 +9,7 @@
 	quotepath = false
 	; fsmonitor = true
 	untrackedCache = true
+	excludesfile = ~/.config/git/gitignore_global
 
 [color]
 	ui = auto
