@@ -4,10 +4,9 @@ if [[ ! "$PATH" == *fzf/bin* ]]; then
 fi
 
 # bash integration
-eval "$(fzf --bash)"
+# eval "$(fzf --bash)"
+FZF_ALT_C_COMMAND=  eval "$(fzf --bash)"
 
-# remove fzf history key-binding
-bind -r "\C-r"
 
 EXCLUDE_DIRS=(\
 	-E tools \
@@ -55,7 +54,12 @@ export FZF_DEFAULT_OPTS="
 
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
-FZF_CTRL_R_OPTS="--layout=reverse --preview 'echo {}' --preview-window down:3:hidden:wrap"
+# remove fzf history key-binding
+bind -r "\C-r"
+
+# fzf history
+# FZF_CTRL_R_OPTS="--layout=reverse --preview 'echo {}' --preview-window down:3:hidden:wrap"
+
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude "${EXCLUDE_DIRS[@]}" . "$1"

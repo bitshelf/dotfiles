@@ -89,12 +89,13 @@ export DFT_DISPLAY=side-by-side-show-both
 
 # mcfly
 eval "$(mcfly init bash)"
-export MCFLY_FUZZY=2
 export MCFLY_RESULTS_SORT=LAST_RUN
-export MCFLY_HISTORY_LIMIT=10000
-export MCFLY_RESULTS=30
 export MCFLY_DISABLE_MENU=true
 export MCFLY_PROMPT='→'
+export MCFLY_HISTORY_LIMIT=10000
+# export MCFLY_FUZZY=2
+# export MCFLY_RESULTS=30
+
 #readonly PROMPT_COMMAND
 
 bind -r "\C-g"
