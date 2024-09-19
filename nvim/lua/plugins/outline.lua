@@ -2,6 +2,7 @@ return {
 	  {
 		"hedyhli/outline.nvim",
 		lazy = true,
+		enabled = false,
 		-- event = "VimEnter",
 		cmd = { "Outline", "OutlineOpen" },
 		keys = { -- Example mapping to toggle outline
@@ -53,7 +54,7 @@ return {
 		},
 	  },
 
-	  {
+	{
 		  "neovim/nvim-lspconfig",
 		  -- event = "VimEnter",
 		  cmd = { "Navbuddy",},
@@ -96,19 +97,31 @@ return {
 			  }
 		  },
 		  -- your lsp config or other stuff
-	  }
+	},
 
-	-- {
-	-- 'stevearc/aerial.nvim',
-	-- event = "VimEnter",
-	-- enabled = false,
-	-- opts = {},
-	-- -- Optional dependencies
-	-- dependencies = {
-	--    "nvim-treesitter/nvim-treesitter",
-	--    "nvim-tree/nvim-web-devicons"
-	-- },
-	-- vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>"),
- --  }
+	{
+		"stevearc/aerial.nvim",
+		event = "LazyFile",
+		opts = function()
 
+			local opts = {
+				attach_mode = "global",
+				backends = { "treesitter", "lsp", "markdown", "asciidoc", "man" },
+				show_guides = true,
+				layout = {
+					resize_to_content = false,
+					win_opts = {
+					winhl = "Normal:NormalFloat,FloatBorder:NormalFloat,SignColumn:SignColumnSB",
+					signcolumn = "yes",
+					statuscolumn = " ",
+					},
+			},
+			filter_kind = filter_kind,
+			}
+			return opts
+		end,
+		keys = {
+			{ "<leader>cs", "<cmd>AerialToggle<cr>", desc = "Aerial (Symbols)" },
+		},
+	},
 }
