@@ -12,7 +12,6 @@ return {
 					"--header-insertion=iwyu",
 					"--completion-style=detailed",
 					"--fallback-style=llvm",
-					"--header-insertion=never",
 					"--all-scopes-completion",
 					"--offset-encoding=utf-16",
 					"--pch-storage=memory",
