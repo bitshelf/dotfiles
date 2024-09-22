@@ -95,11 +95,6 @@ return {
 
 			---@param opts cmp.ConfigSchema
 			opts = function(_, opts)
-				local has_words_before = function()
-					unpack = unpack or table.unpack
-					local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-					return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-				end
 
 				local luasnip = require("luasnip")
 				local cmp = require("cmp")
@@ -192,7 +187,7 @@ return {
 							fallback()
 						end
 					}),
-					['<c-y>'] = cmp.mapping({ i = function(fallback) fallback() end }),
+					['<c-y>'] = cmp.mapping({ i = function(fallback) cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert }) end }),
 					['<CR>'] = cmp.mapping({
 						i = function(fallback)
 							if cmp.visible() and cmp.get_active_entry() then
