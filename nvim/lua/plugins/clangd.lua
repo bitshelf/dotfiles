@@ -13,7 +13,6 @@ return {
 					"--background-index",
 					"--pch-storage=memory",
 					"--fallback-style=GNU",
-					"--header-insertion=iwyu",
 					"--header-insertion=never",
 					"--all-scopes-completion",
 					"--offset-encoding=utf-16",

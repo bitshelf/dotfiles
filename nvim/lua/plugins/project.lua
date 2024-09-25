@@ -25,7 +25,7 @@ return {
 
 		-- All the patterns used to detect root dir, when **"pattern"** is in
 		-- detection_methods
-		patterns = { ".git" },
+		patterns = { ".git", ".repo" },
 
 		-- Table of lsp clients to ignore by name
 		-- eg: { "efm", ... }
