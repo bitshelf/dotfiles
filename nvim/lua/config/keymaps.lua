@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true, nowait = true, desc = "Go to left window" }
+local opts = { noremap = true, silent = true, nowait = true }
 -- local keymap = vim.keymap.set
 
 -- vim.keymap.del('n',"<leader>e")
@@ -26,7 +26,7 @@ vim.keymap.set("x", "<c-_>", "<esc><cmd>lua require('Comment.api').toggle.linewi
 -- remove lazyvim terminal keybind
 vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
 vim.keymap.set("t", "<c-j>", "<c-j>", { buffer = buf, nowait = true })
-vim.keymap.set('t', '<esc>', [[<C-\><C-n>]],{ buffer = buf, nowait = true })
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]],{ buffer = buf, nowait = true, desc = "Enter Normal Mode" })
 vim.keymap.set("t", "<c-k>", "<c-k>", { buffer = buf, nowait = true, desc = "delte after chars" })
 vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true, desc = "Clear screen" })
 -- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
@@ -36,7 +36,27 @@ vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true, desc = "Cle
 vim.keymap.set("c", "W!", "silent w !sudo tee % >/dev/null", { buffer = buf, nowait = true })
 vim.keymap.set("n", "<leader>fT","<cmd>ToggleTerm direction=horizontal<CR>", { buffer = buf, nowait = true })
 
-local function toggle_list()
+vim.keymap.set("n", "j", function(...)
+  local count = vim.v.count
+
+  if count == 0 then
+    return "gj"
+  else
+    return "j"
+  end
+end, { expr = true })
+
+vim.keymap.set("n", "k", function(...)
+  local count = vim.v.count
+
+  if count == 0 then
+    return "gk"
+  else
+    return "k"
+  end
+end, { expr = true })
+
+vim.keymap.set("n", "<leader>um", function (...)
   if vim.opt.list:get() then
     vim.cmd("setlocal nolist")
     vim.cmd("DisableWhitespace")
@@ -46,6 +66,4 @@ local function toggle_list()
     vim.cmd("EnableWhitespace")
     vim.b.miniindentscope_disable = false
   end
-end
-
-vim.keymap.set("n", "<leader>um", toggle_list, { desc = "Toggle listchars" })
+end, {buffer = buf, nowait = true, desc = "Toggle listchars" })

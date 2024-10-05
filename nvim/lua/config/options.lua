@@ -1,17 +1,17 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.lazyvim_picker = "telescope"
-vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
+vim.g.root_spec = { "lsp", {".repo", ".git", "lua" }, "cwd" }
 
 vim.o.termguicolors = true
 vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 vim.o.ttyfast = true
 vim.o.exrc = true
-vim.o.secure = false
 vim.o.number = false
 vim.o.relativenumber = false
-vim.o.cursorline = true
+-- vim.o.secure = false
+-- vim.o.cursorline = true
 
 vim.o.signcolumn = "yes"
 vim.o.softtabstop = 4
@@ -30,7 +30,6 @@ vim.o.wrap = false
 vim.o.textwidth = 0
 vim.o.indentexpr = ""
 -- vim.o.foldmethod = 'indent'
-vim.o.formatoptions = vim.o.formatoptions:gsub("tc", "")
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.showmode = true
@@ -62,9 +61,17 @@ vim.opt.swapfile = false
 -- vim.opt.guicursor:append("n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50")
 -- vim.opt.guicursor:append("a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor")
 -- vim.opt.guicursor:append("sm:block-blinkwait175-blinkoff150-blinkon175")
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = false,
   virtual_text = false,
   signs = false,
   update_in_insert = false,
 })
+
+vim.filetype.add {
+  extension = {
+    h = "c",
+    scheme = "scheme",
+  },
+}
