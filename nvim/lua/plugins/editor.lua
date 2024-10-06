@@ -27,6 +27,7 @@ return {
 	},
 	{
 	  "LunarVim/bigfile.nvim",
+	  enable = false,
 	  lazy = false,
 	},
 	{

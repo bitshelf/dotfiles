@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.lazyvim_picker = "telescope"
 vim.g.root_spec = { "lsp", {".repo", ".git", "lua" }, "cwd" }
+vim.g.autoformat = false
 
 vim.o.termguicolors = true
 vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
