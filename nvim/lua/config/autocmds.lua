@@ -12,9 +12,37 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
--- vim.cmd([[
--- 	autocmd FileType * set formatoptions-=o
--- ]])
+-- show cursor line only in active window
+vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+  callback = function()
+    if vim.w.auto_cursorline then
+      vim.wo.cursorline = true
+      vim.w.auto_cursorline = nil
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+  callback = function()
+    if vim.wo.cursorline then
+      vim.w.auto_cursorline = true
+      vim.wo.cursorline = false
+    end
+  end,
+})
+
+vim.filetype.add({
+  extension = {
+    overlay = "dts",
+    keymap = "dts",
+  },
+})
+
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  callback = function()
+    vim.cmd([[Trouble qflist open]])
+  end,
+})
 
 vim.cmd([[
 	silent !mkdir -p $HOME/.config/nvim/tmp/backup
@@ -27,3 +55,7 @@ vim.cmd([[
 		set undodir=$HOME/.config/nvim/tmp/undo,.
 	endif
 ]])
+
+-- vim.cmd([[
+-- 	autocmd FileType * set formatoptions-=o
+-- ]])
