@@ -73,10 +73,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   signs = false,
   update_in_insert = false,
 })
-
-vim.filetype.add {
-  extension = {
-    h = "c",
-    scheme = "scheme",
-  },
-}

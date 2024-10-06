@@ -33,6 +33,8 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
 
 vim.filetype.add({
   extension = {
+    h = "c",
+    scheme = "scheme",
     overlay = "dts",
     keymap = "dts",
   },
