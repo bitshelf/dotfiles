@@ -20,6 +20,24 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "plugins" },
   },
+
+  pkg = {
+    enabled = true,
+    cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+    -- the first package source that is found for a plugin will be used.
+    sources = {
+      "lazy",
+      "rockspec", -- will only be used when rocks.enabled is true
+      "packspec",
+    },
+  },
+
+  rocks = {
+    enabled = false,
+    root = vim.fn.stdpath("data") .. "/lazy-rocks",
+    server = "https://nvim-neorocks.github.io/rocks-binaries/",
+  },
+
   defaults = {
     lazy = false,
     -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
@@ -27,7 +45,9 @@ require("lazy").setup({
     -- version = false, -- always use the latest git commit
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
+
   install = { colorscheme = { "tokyonight", "habamax" } },
+
   checker = {
 	enabled = true,
 	notify = false,
@@ -38,6 +58,7 @@ require("lazy").setup({
     enabled = false,
     notify = false, -- get a notification when changes are found
   },
+
   performance = {
     rtp = {
       -- disable some rtp plugins
@@ -53,4 +74,5 @@ require("lazy").setup({
       },
     },
   },
+
 })
