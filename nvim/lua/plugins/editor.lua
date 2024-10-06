@@ -262,6 +262,7 @@ return {
 
   {
 	'luozhiya/fittencode.nvim',
+	event = "LazyFile",
 	config = function()
 		require('fittencode').setup()
 	end,
