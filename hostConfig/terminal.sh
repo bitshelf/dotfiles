@@ -86,6 +86,7 @@ export DFT_DISPLAY=side-by-side-show-both
 #source $HOME/.local/lib/git-core/git-sh-prompt
 [ -r ~/.config/${HOST_CONFIG}/rg.bash ] && source  ~/.config/${HOST_CONFIG}/rg.bash
 [ -r ~/.config/${HOST_CONFIG}/fzf.bash ] && source  ~/.config/${HOST_CONFIG}/fzf.bash
+[ -r ~/.config/${HOST_CONFIG}/chezmoi.bash ] && source  ~/.config/${HOST_CONFIG}/chezmoi.bash
 
 # mcfly
 eval "$(mcfly init bash)"
