@@ -1,0 +1,335 @@
+{
+    // terminal configuration
+    //"terminal.integrated.profiles.linux": {
+    //    "terminal": {
+    //      "path": "bash",
+    //      "args": [
+    //        "--init-file",
+    //        "${workspaceFolder}/../.config/terminal.sh"
+    //      ]
+    //    }
+    //  },
+    //  "terminal.integrated.defaultProfile.linux": "terminal",
+
+    "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font Mono','JetBrainsMonoNL NFM','cascadia code','Operator Mono', 'Inconsolata for Powerline', monospace",
+    "terminal.integrated.shellIntegration.decorationsEnabled":"both",
+    "terminal.integrated.rightClickBehavior": "selectWord",
+    "terminal.integrated.sendKeybindingsToShell": false,
+    "terminal.integrated.splitCwd": "inherited",
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.cursorWidth": 3,
+    "terminal.integrated.shellIntegration.history": 102400,
+    "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.lineHeight": 1.25,
+    "terminal.integrated.tabs.enabled":true,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.suggest.enabled": true,
+    "workbench.colorCustomizations": {
+        "terminal.selectionBackground": "#9c840b",
+        "terminal.findMatchHighlightBorder": "#ff0000",
+        //"terminal.findMatchBorder": "#eaf3e9",
+        "terminalCommandDecoration.successBackground": "#0ef582",
+        //"terminal.background": "#282936",
+        "tab.activeBackground":"#636d63",
+        "terminal.foreground": "#E9E9F4",
+        "terminalCursor.background": "#E9E9F4",
+        "terminalCursor.foreground": "#E9E9F4",
+        "terminal.ansiBlack": "#282936",
+        "terminal.ansiBlue": "#62D6E8",
+        "terminal.ansiBrightBlack": "#626483",
+        "terminal.ansiBrightBlue": "#62D6E8",
+        "terminal.ansiBrightCyan": "#A1EFE4",
+        "terminal.ansiBrightGreen": "#EBFF87",
+        "terminal.ansiBrightMagenta": "#B45BCF",
+        "terminal.ansiBrightRed": "#EA51B2",
+        "terminal.ansiBrightWhite": "#F7F7FB",
+        "terminal.ansiBrightYellow": "#00F769",
+        "terminal.ansiCyan": "#A1EFE4",
+        "terminal.ansiGreen": "#EBFF87",
+        "terminal.ansiMagenta": "#B45BCF",
+        "terminal.ansiRed": "#EA51B2",
+        "terminal.ansiWhite": "#E9E9F4",
+        "terminal.ansiYellow": "#00F769",
+
+        // code red underline
+        "editorError.foreground":   "#00000000",
+        "editorWarning.foreground": "#00000000",
+        "editorInfo.foreground":    "#00000000",
+        "editor.findMatchBackground": "#edeee8",
+        //"editor.findMatchHighlightBackground": "#fbfcf9",//all find matchHight
+        //"editor.findRangeHighlightBorder": "#7a7777",
+        "editor.selectionBackground": "#135564", //active matchHight
+        //"editor.selectionHighlightBackground": "#125564",
+    },
+
+    // vscode editor configuration
+    "editor.fontFamily": "'JetBrains Mono','CaskaydiaCove Nerd Font Mono','JetBrainsMonoNL NFM','cascadia code',Operator Mono, Menlo, Monaco, 'Courier New',monospace,'Droid Sans Mono', 'Droid Sans Fallback'",
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.fontSize": 16,
+    "workbench.commandPalette.preserveInput": true,
+    "output.smartScroll.enabled": false,
+    "files.trimTrailingWhitespace": false,
+    "explorer.confirmDelete": false,
+    "files.autoGuessEncoding": true,
+    "editor.tabCompletion": "on",
+    "editor.definitionLinkOpensInPeek": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.saveAllFilesBeforeRun": true,
+    "editor.suggestSelection": "first",
+    "editor.minimap.autohide": true,
+    "editor.lineHeight": 24.65,
+    "editor.letterSpacing": 0.5,
+    "editor.fontWeight": "400",
+    "editor.fontLigatures": true,
+    "editor.snippetSuggestions": "top",
+    "editor.glyphMargin": true,
+    "editor.mouseWheelZoom": true,
+    "editor.renderLineHighlight": "all",
+    "editor.lineNumbers": "relative",
+    "editor.guides.bracketPairs": true,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.fullScreen": false,
+    "zenMode.hideStatusBar": false,
+    "editor.suggest.showInlineDetails": false,
+    "zenMode.centerLayout": false,
+    "notebook.globalToolbarShowLabel": "dynamic",
+    "workbench.editor.labelFormat": "short",
+    "workbench.editor.highlightModifiedTabs": true,
+    "search.showLineNumbers": true,
+    
+    "[c]": {
+        "editor.tabSize": 8,
+        "editor.indentSize": "tabSize"
+    },
+
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.cursorStyle": "line",
+    //"editor.cursorWidth": 5,
+    "editor.cursorBlinking": "solid",
+    //"editor.renderWhitespace": "all",
+    
+    // vim configuration
+    "vim.searchHighlightColor": "#fbfcf9",
+    "vim.searchMatchColor": "#daa520",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": false,
+    "vim.highlightedyank.enable": true,
+    "vim.history": 1000,
+    
+    // git configuration
+    "git-graph.date.format": "ISO Date Only",
+    "gitlens.currentLine.uncommittedChangesFormat": "✏️ ${ago}",
+    "gitlens.graph.showRemoteNames": true,
+    "gitlens.views.contributors.pullRequests.enabled": false,
+    "gitlens.graph.avatars": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.hovers.autolinks.enhanced": false,
+    "gitlens.defaultDateStyle": "absolute",
+    "gitlens.defaultDateFormat": "YYYY-MM-DD",
+    "gitlens.statusBar.alignment": "left",
+    "gitlens.statusBar.dateFormat":"YYYY-MM-DD",
+    "gitlens.currentLine.dateFormat":"YYYY-MM-DD",
+    "gitlens.blame.dateFormat": "YYYY-MM-DD",
+    "files.exclude": {
+        ".repo": true,
+        "**/.classpath": true,
+        "**/.factorypath": true,
+        "**/.project": true,
+        "**/.settings": true
+    },
+    "explorer.autoRevealExclude": {
+    "**/output": true,
+    "**/out": true
+  },
+    
+    // file configuration
+    "files.autoSave": "onFocusChange",
+    "files.defaultLanguage": "c",
+
+    // theme configuration
+    "screencastMode.fontSize": 48,
+    "screencastMode.keyboardShortcutsFormat": "command",
+    "screencastMode.verticalOffset": 0,
+    "terminal.integrated.unicodeVersion": "11",
+    "timeline.pageSize": 10,
+    //"workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDragAndDrop": false,
+    "files.trimFinalNewlines": true,
+    // The default syntax (TextMate) highlighter classifies many tokens as variables and these are now (since VSCode 1.43) resolved into namespaces, classes, parameters, and so on. This is called Semantic highlighting support for TypeScript and JavaScript. But many themes and language extensions seem broken with single-colored syntax. This came as a surprise to me. It's set `true` by default. I recommend disabling this for now.
+    "editor.semanticHighlighting.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    
+    // code-runner configuration
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.defaultLanguage": "bash",
+    "code-runner.customCommand": "cd $workspaceRoot;./build.sh kernel",
+    "code-runner.executorMap": {
+        "bash": "cd $workspaceRoot;./build.sh",
+        "c": "cd $workspaceRoot;./build.sh",
+        "cpp": "cd $workspaceRoot;./build.sh",
+        "java": "cd $workspaceRoot;./build.sh",
+    },
+    // "code-runner.runInTerminal": true,
+
+    "workbench.commandPalette.history": 9999,
+    "scm.alwaysShowActions": true,
+    "diffEditor.codeLens": true,
+    "editor.comments.insertSpace": false,
+    "editor.trimAutoWhitespace": false,
+    
+    // C_Cpp configuration
+    "C_Cpp.default.configurationProvider": "NULL",
+    "C_Cpp.default.mergeConfigurations": true,
+    "C_Cpp.loggingLevel": "Debug",
+    "C_Cpp.vcpkg.enabled": false,
+    "C_Cpp.vcFormat.space.afterComma": false,
+    "C_Cpp.formatting": "disabled",
+    "C_Cpp.clang_format_fallbackStyle": "GNU",
+    //"C_CPP.default.intelliSenseMode":"linux-gcc-arm",
+    "C_Cpp.default.cStandard": "gnu99",
+    "C_Cpp.default.cppStandard": "gnu++11",
+    "C_Cpp.intelliSenseEngineFallback": "disabled",
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [],
+    // Clangd need disable
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.addNodeAddonIncludePaths": false,
+    "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": true,
+    "clangd.arguments": [
+        "--log=error",
+		"--enable-config",
+        "--background-index",
+		"--pch-storage=memory",
+        "--fallback-style=GNU",
+        "--all-scopes-completion",
+        "--offset-encoding=utf-16",
+		"--header-insertion=never",
+		"--completion-style=detailed",
+        "--header-insertion-decorators",
+		"--function-arg-placeholders=false",
+        "--compile-commands-dir=${workspaceFolder}/}"
+    ],
+
+    "clangd.checkUpdates": true,
+    //"clangd.path": "/usr/bin/clangd",
+    "C_Cpp.autocomplete": "disabled",
+    "C_Cpp.default.systemIncludePath": [
+        "${workspaceRoot}/kernel/include/**",
+        "${workspaceFolder}/kernel/include/**",
+        "${workspaceRoot}/u-boot/include/**",
+        "$workspaceRoot/kernel/include/**",
+        "$workspaceRoot",
+        "${workspaceFolder}/**"
+    ],
+    "search.useGlobalIgnoreFiles": true,
+    "files.autoSaveDelay": 100000,
+    "remote.restoreForwardedPorts": false,
+    "terminal.integrated.copyOnSelection": true,
+    "workbench.editor.scrollToSwitchTabs": true,
+    "terminal.integrated.commandsToSkipShell": [
+        "-workbench.action.quickOpen",
+        "-workbench.action.terminal.paste",
+        "-workbench.action.findInFiles",
+        "-workbench.action.quickOpen"
+    ],
+    "codesnap.realLineNumbers": true,
+    "codesnap.shutterAction": "copy",
+    "codesnap.showWindowTitle": true,
+    "codesnap.containerPadding": "1em",
+    "codesnap.transparentBackground": true,
+    "codesnap.showWindowControls": false,
+    "codesnap.target": "window",
+    "editor.scrollbar.horizontalScrollbarSize": 13,
+    "makefile.configurationCachePath": "",
+    "makefile.extensionOutputFolder": "",
+    "explorer.fileNesting.enabled": true,
+    "window.commandCenter": true,
+    "problems.showCurrentInStatus": true,
+    "window.menuBarVisibility": "compact",
+
+    // vim keybinding
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-f>": false
+    },
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["g","d"],
+            "commands":["editor.action.revealDefinition"]
+        },
+        {
+            "before": ["g","r"],
+            "commands":["editor.action.goToReferences"]
+        },
+        {
+            "before": ["g","h"],
+            "commands":["editor.action.goToTypeDefinition"],
+            "silent": true
+        },
+        {
+            "before": ["g","t"],
+            "commands":["editor.action.goToImplementation"],
+            "silent": true
+        },
+          {
+    "before" : ["<leader>","e"],
+    "commands" : [
+      "workbench.view.explorer"
+    ]
+  }
+    ],
+
+    "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+    },
+    "vim.leader": "<space>",
+
+    // remote configuration
+    //"remote.SSH.enableRemoteCommand": true,
+
+    "remote.SSH.remotePlatform": {
+        "192.168.139.132": "linux",
+        "192.168.1.117": "linux",
+        "192.168.1.10": "linux"
+    },
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "java.autobuild.enabled": false,
+    "workbench.editorAssociations": {
+        "*.pdf": "pdf.preview"
+    },
+    "redhat.telemetry.enabled": true,
+    "accessibility.signals.terminalQuickFix": {
+        "sound": "auto"
+    },
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "breadcrumbs.icons": false,
+    "gitlens.showWelcomeOnInstall": false,
+    "workbench.colorTheme": "Default Dark+",
+    "files.watcherExclude": {
+        ".repo/**": true,
+        "out/**": true
+    },
+    "cmake.configureOnOpen": false,
+    "cmake.options.statusBarVisibility": "visible",
+    "cmake.showOptionsMovedNotification": false,
+    "makefile.configureOnOpen": false,
+    "fittencode.languagePreference.displayPreference": "zh-cn",
+    "fittencode.languagePreference.commentPreference": "zh-cn",
+    "gitlens.currentLine.enabled": false,
+    "debug.disassemblyView.showSourceCode": false,
+    "C_Cpp.refactoring.includeHeader": "never",
+    "editor.inlayHints.enabled": "offUnlessPressed",
+}
