@@ -82,6 +82,11 @@ function install_lazygit {
 	rm lazygit.tar.gz lazygit -rf
 }
 
+function install_ble {
+	git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+	make -C ble.sh install PREFIX=~/.local
+}
+
 function install_all {
 	install_host
 	install_fzf
@@ -90,6 +95,7 @@ function install_all {
 	install_nvim
 	install_yazi
 	install_lazygit
+	install_ble
 }
 
 OPTIONS="$@"
