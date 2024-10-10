@@ -78,7 +78,7 @@ truncate_to_repo = true
 
 [git_branch]
 format = "[$branch]($style) "
-truncation_length = 8
+# truncation_length = 8
 truncation_symbol = ''
 style = "bright-black"
 
