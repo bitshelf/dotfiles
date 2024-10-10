@@ -1,33 +1,39 @@
 return {
-	--  {
-	--    "echasnovski/mini.comment",
-	-- version = '*',
-	--    opts = {
-	--      mappings = {
-	--			comment_line = "<C-_>",
-	-- 			comment_visual = "<C-_>",
-	-- 			textobject = "<C-_>",
-	--      },
-	--    },
-	--    config = function(_, opts)
-	--      vim.schedule(function()
-	--        require("mini.comment").setup(opts)
-	--      end)
-	--    end,
-	--  }
+	{
+		"folke/ts-comments.nvim",
+		event = "VeryLazy",
+		opts = {
+			lang = {
+				devicetree = { "// %s", "/* %s */" },
+			},
+		},
+	},
 
 	{
 		"numToStr/Comment.nvim",
-		-- enabled = false,
+		enabled = false,
 		event = "LazyFile",
 		config = function()
-			vim.api.nvim_command('set commentstring=//%s')
+			vim.api.nvim_command('set commentstring=// %s')
 			local ft = require('Comment.ft')
 			ft.set('dts','//%s')
 
 			local api = require("Comment.api")
-			vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"), { buffer = buf, nowait = true, desc = "comment linewise" })
-			vim.keymap.set("n", "<leader>cu", api.locked("uncomment.linewise.current"), { buffer = buf, nowait = true, desc = "uncomment linewise" })
+			vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"), {  nowait = true, desc = "comment linewise" })
+			vim.keymap.set("n", "<leader>cu", api.locked("uncomment.linewise.current"), {  nowait = true, desc = "uncomment linewise" })
+
+			-- need move keymap.lua
+			-- vim.api.nvim_set_keymap("n", "<C-_>", "<Cmd>lua require('Comment.api').toggle.linewise.current()<CR>", {})
+			-- vim.api.nvim_set_keymap("i", "<C-_>", "<Esc>:<C-u>lua require('Comment.api').toggle.linewise.current()<CR>\"_cc", {})
+			-- vim.api.nvim_set_keymap("v", "<C-_>", "gc", {})
+			-- vim.api.nvim_set_keymap("n", "<C-/>", "<Cmd>lua require('Comment.api').toggle.linewise.current()<CR>", {})
+			-- vim.api.nvim_set_keymap("i", "<C-/>", "<Esc>:<C-u>lua require('Comment.api').toggle.linewise.current()<CR>\"_cc", {})
+			-- vim.api.nvim_set_keymap("v", "<C-/>", "gc", {})
+			-- vim.keymap.set({'n','i'}, "<c-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment line" })
+			-- vim.keymap.set("x", "<c-/>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment visualmode" })
+			-- vim.keymap.set({'n','i'}, "<c-_>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment line" })
+			-- vim.keymap.set("x", "<c-_>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment visualmode" })
+
 
 			local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
 			vim.keymap.set('x', '<leader>cn', function()
