@@ -90,20 +90,19 @@ export DFT_DISPLAY=side-by-side-show-both
 [ -r ~/.config/${HOST_CONFIG}/rg.bash ] && source  ~/.config/${HOST_CONFIG}/rg.bash
 [ -r ~/.config/${HOST_CONFIG}/fzf.bash ] && source  ~/.config/${HOST_CONFIG}/fzf.bash
 [ -r ~/.config/${HOST_CONFIG}/chezmoi.bash ] && source  ~/.config/${HOST_CONFIG}/chezmoi.bash
-[ -r ~/.local/share/blesh/ble.sh ] && source ~/.local/share/blesh/ble.sh
+# [ -r ~/.local/share/blesh/ble.sh ] && source ~/.local/share/blesh/ble.sh
 
 # atuin
-eval "$(atuin init bash --disable-up-arrow)"
-# eval "$(atuin init bash)"
+# eval "$(atuin init bash --disable-up-arrow)"
 
-# # mcfly
-# export MCFLY_RESULTS_SORT=LAST_RUN
-# export MCFLY_DISABLE_MENU=true
-# export MCFLY_PROMPT='→'
-# export MCFLY_HISTORY_LIMIT=100000
-# export MCFLY_RESULTS=30
-# # export MCFLY_FUZZY=2
-# eval "$(mcfly init bash)"
+# mcfly
+export MCFLY_RESULTS_SORT=LAST_RUN
+export MCFLY_DISABLE_MENU=true
+export MCFLY_PROMPT='→'
+export MCFLY_HISTORY_LIMIT=100000
+export MCFLY_RESULTS=30
+# export MCFLY_FUZZY=2
+eval "$(mcfly init bash)"
 
 #readonly PROMPT_COMMAND
 
