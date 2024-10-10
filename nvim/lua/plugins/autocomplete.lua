@@ -65,19 +65,19 @@ return {
 			"hrsh7th/cmp-calc",
 			"hrsh7th/nvim-cmp",
 			-- "SirVer/ultisnips",
-			{
-				"L3MON4D3/LuaSnip",
-				event = "LazyFile",
-				-- follow latest release.
-				version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-				-- install jsregexp (optional!).
-				build = (not LazyVim.is_win()) and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp" or nil,
-
-			    opts = {
-				  history = true,
-				  delete_check_events = "TextChanged",
-				},
-			},
+			-- {
+			-- 	"L3MON4D3/LuaSnip",
+			-- 	event = "LazyFile",
+			-- 	-- follow latest release.
+			-- 	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+			-- 	-- install jsregexp (optional!).
+			-- 	build = (not LazyVim.is_win()) and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp" or nil,
+			--
+			--     opts = {
+			-- 	  history = true,
+			-- 	  delete_check_events = "TextChanged",
+			-- 	},
+			-- },
 			{
 				"onsails/lspkind.nvim",
 				lazy = false,
@@ -98,7 +98,7 @@ return {
 			---@param opts cmp.ConfigSchema
 			opts = function(_, opts)
 
-				local luasnip = require("luasnip")
+				-- local luasnip = require("luasnip")
 				local cmp = require("cmp")
 
 				opts.mapping = vim.tbl_extend("force", opts.mapping, {
@@ -108,8 +108,8 @@ return {
 							cmp.select_next_item()
 							-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
 							-- this way you will only jump inside the snippet region
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
+						-- elseif luasnip.expand_or_jumpable() then
+						-- 	luasnip.expand_or_jump()
 						elseif has_words_before() then
 							cmp.complete()
 						else
@@ -119,8 +119,8 @@ return {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
+						-- elseif luasnip.jumpable(-1) then
+						-- 	luasnip.jump(-1)
 						else
 							fallback()
 						end
@@ -133,7 +133,7 @@ return {
 			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 			local cmp = require("cmp")
 			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-			local luasnip = require("luasnip")
+			-- local luasnip = require("luasnip")
 
 			local fgdark = "#2E3440"
 
@@ -142,7 +142,7 @@ return {
 				preselect = cmp.PreselectMode.None,
 				snippet = {
 					expand = function(args)
-						luasnip.lsp_expand(args.body)
+						-- luasnip.lsp_expand(args.body)
 						-- vim.fn["UltiSnips#Anon"](args.body)
 					end,
 				},
@@ -176,7 +176,7 @@ return {
 					{ name = "path" },
 					{ name = "nvim_lua" },
 					{ name = "calc" },
-					{ name = "luasnip" },
+					-- { name = "luasnip" },
 					{ name = "treesitter" },
 					{ name = "spell" },
 					-- { name = 'tmux',    option = { all_panes = true, } },  -- this is kinda slow
