@@ -55,15 +55,16 @@ end
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		event = "LazyFile",
+		-- event = "LazyFile",
+		event = "InsertEnter",
 
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-calc",
 			"hrsh7th/nvim-cmp",
+			-- "hrsh7th/cmp-nvim-lua",
+			-- "hrsh7th/cmp-calc",
 			-- "SirVer/ultisnips",
 			-- {
 			-- 	"L3MON4D3/LuaSnip",
@@ -131,12 +132,12 @@ return {
 			setCompHL()
 			cmp.setup({
 				preselect = cmp.PreselectMode.None,
-				snippet = {
-					expand = function(args)
-						-- luasnip.lsp_expand(args.body)
-						-- vim.fn["UltiSnips#Anon"](args.body)
-					end,
-				},
+				-- snippet = {
+				-- 	expand = function(args)
+				-- 		-- luasnip.lsp_expand(args.body)
+				-- 		-- vim.fn["UltiSnips#Anon"](args.body)
+				-- 	end,
+				-- },
 				window = {
 					completion = {
 						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -166,10 +167,10 @@ return {
 					{ name = "buffer" },
 					{ name = "path" },
 					{ name = "nvim_lua" },
-					{ name = "calc" },
-					-- { name = "luasnip" },
 					{ name = "treesitter" },
 					{ name = "spell" },
+					-- { name = "calc" },
+					-- { name = "luasnip" },
 					-- { name = 'tmux',    option = { all_panes = true, } },  -- this is kinda slow
 				}),
 				mapping = cmp.mapping.preset.insert({
