@@ -85,14 +85,6 @@ return {
 					require("lspkind").init()
 				end
 			},
-			{
-				"quangnguyen30192/cmp-nvim-ultisnips",
-				enable = false,
-				config = function()
-					-- optional call to setup (see customization section)
-					require("cmp_nvim_ultisnips").setup {}
-				end,
-			},
 		},
 
 			---@param opts cmp.ConfigSchema
@@ -132,7 +124,6 @@ return {
 			local lspkind = require("lspkind")
 			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 			local cmp = require("cmp")
-			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 			-- local luasnip = require("luasnip")
 
 			local fgdark = "#2E3440"
