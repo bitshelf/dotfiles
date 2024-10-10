@@ -26,11 +26,6 @@ return {
 	  end,
 	},
 	{
-	  "LunarVim/bigfile.nvim",
-	  enable = false,
-	  lazy = false,
-	},
-	{
 	  "echasnovski/mini.indentscope",
 	  version = '*',
 	  -- require('mini.indentscope').setup()
@@ -273,7 +268,6 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
 	enable = false,
     branch = "v3.x",
-	event = "LazyFile",
     cmd = "Neotree",
     keys = {
       {

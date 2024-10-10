@@ -1,7 +1,7 @@
 return {
 	"mg979/vim-visual-multi",
-	-- lazy=false,
-	event = "LazyFile",
+	enabled = false,
+	-- event = "LazyFile",
 	branch = "master",
 	init = function()
 		vim.cmd([[

@@ -1,7 +1,6 @@
 return {
 	  {
 		"hedyhli/outline.nvim",
-		lazy = true,
 		enabled = false,
 		-- event = "VimEnter",
 		cmd = { "Outline", "OutlineOpen" },
@@ -101,7 +100,6 @@ return {
 
 	{
 		"stevearc/aerial.nvim",
-		event = "LazyFile",
 		opts = function()
 
 			local opts = {

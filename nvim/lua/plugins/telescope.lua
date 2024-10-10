@@ -38,7 +38,6 @@ return {
 		"nvim-telescope/telescope.nvim",
 		version = false, -- telescope did only one release, so use HEAD for now
 		cmd = "Telescope",
-		event = "LazyFile",
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",

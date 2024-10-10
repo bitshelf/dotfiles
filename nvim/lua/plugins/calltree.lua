@@ -1,39 +1,28 @@
 return {
   {
-    'ldelossa/litee.nvim',
-    event = "VeryLazy",
-    opts = {
-      notify = { enabled = false },
-      panel = {
-          orientation = "bottom",
-          panel_size = 10,
-      },
-    },
-    config = function(_, opts) require('litee.lib').setup(opts) end
-  },
-
-  {
     "ldelossa/litee-calltree.nvim",
-	ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-	event = "LazyFile",
+	-- ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+	keys = { { "<A-H>", "<cmd>lua vim.lsp.buf.incoming_calls()<cr>",  desc = "calltree" } },
+	-- event = "LazyFile",
 	dependencies = {
 	  "ldelossa/litee.nvim",
-	  config = function()
-		require("litee.lib").setup({
-		  tree = {
-			  icon_set = "codicons"
-		  },
-		  panel = {
-			  orientation = "right",
-			  panel_size  = 60
-		  }
+		opts = {
+			notify = { enabled = false },
 
-		})
-	  end
+			tree = {
+				icon_set = "codicons"
+			},
+
+			panel = {
+				orientation = "right",
+				panel_size = 60,
+			},
+		},
+		config = function(_, opts) require('litee.lib').setup(opts) end
 	},
 
     config = function()
-	  vim.keymap.set("n", "<A-H>", "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", { desc = "calltree", noremap = true, silent = true})
+	  -- vim.keymap.set("n", "<A-H>", "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", { desc = "calltree", noremap = true, silent = true})
       require("litee.calltree").setup({
         -- When retrieving Call Hierarchy items some language servers will respond with
         -- different symbol names then when a document symbol or workspace symbol request

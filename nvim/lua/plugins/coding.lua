@@ -9,9 +9,8 @@ return {
 
   {
 	"amrbashir/nvim-docs-view",
-	event = "LazyFile",
+	-- event = "LazyFile",
 
-	lazy = true,
 	cmd = "DocsViewToggle",
 	opts = {
 	  position = "right",
