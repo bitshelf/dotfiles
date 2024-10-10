@@ -256,7 +256,8 @@ return {
 
   {
 	'luozhiya/fittencode.nvim',
-	event = "LazyFile",
+	-- event = "LazyFile",
+	event = "InsertEnter",
 	config = function()
 		require('fittencode').setup()
 	end,
