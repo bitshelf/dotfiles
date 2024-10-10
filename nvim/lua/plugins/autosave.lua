@@ -1,6 +1,6 @@
 return {
 	"okuuva/auto-save.nvim",
-	event = { "InsertLeave", "TextChanged" },
+	event = { "WinLeave" },
 	-- event = "LazyFile",
 	opts =  {
 		 execution_message = {
