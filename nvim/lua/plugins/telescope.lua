@@ -35,27 +35,16 @@ local project_files = function()
 end
 
 return {
+	{
 		"nvim-telescope/telescope.nvim",
 		version = false, -- telescope did only one release, so use HEAD for now
 		cmd = "Telescope",
 
+		enabled = function()
+			return LazyVim.pick.want() == "telescope"
+		end,
+
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"stevearc/dressing.nvim",
-				require('dressing').setup({
-					select = {
-						get_config = function(opts)
-							if opts.kind == 'codeaction' then
-								return {
-									backend = 'telescope',
-									telescope = require('telescope.themes').get_cursor()
-								}
-							end
-						end
-					}
-				}),
-			},
 			{
 				"LukasPietzschmann/telescope-tabs",
 				config = function()
@@ -244,5 +233,22 @@ return {
 				},
 		}
 	  end
+	},
+	{
+		"neovim/nvim-lspconfig",
+		opts = function()
+			if LazyVim.pick.want() ~= "telescope" then
+			return
+			end
+			local Keys = require("lazyvim.plugins.lsp.keymaps").get()
+			-- stylua: ignore
+			vim.list_extend(Keys, {
+			{ "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, desc = "Goto Definition", has = "definition" },
+			{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "References", nowait = true },
+			{ "gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, desc = "Goto Implementation" },
+			{ "gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, desc = "Goto T[y]pe Definition" },
+			})
+		end,
+	},
 }
 
