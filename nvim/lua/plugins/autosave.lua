@@ -10,7 +10,7 @@ return {
 		  end,
 		},
 		trigger_events = { -- See :h events
-		  immediate_save = { "BufLeave", "FocusLost" },
+		  immediate_save = { "WinLeave", "BufLeave", "FocusLost" },
 		  defer_save = { "InsertLeave", "TextChanged" }, -- vim events that trigger a deferred save (saves after `debounce_delay`)
 		  cancel_defered_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
 		},
