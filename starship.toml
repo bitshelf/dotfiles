@@ -46,7 +46,6 @@ disabled = true
 
 [character]
 success_symbol = "[→](bold green)"
-vicmd_symbol = "[❮](green)"
 error_symbol = "[→](bold green)"
 # success_symbol = "[❯](bold)"
 # error_symbol = "[❯](bold)"
