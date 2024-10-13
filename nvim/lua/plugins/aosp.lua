@@ -2,7 +2,6 @@ return {
   	{
 	  "lzap/vim-selinux",
 	  ft = "te",
-	  -- enabled = false,
 	},
 	{
 	  "bitshelf/aosp-vim",
@@ -10,6 +9,7 @@ return {
 	},
 	{
 	  'google/vim-maktaba',
+	  ft = { "hal", "rc" },
 	},
 	-- {
 	--   -- gn lang hightlight

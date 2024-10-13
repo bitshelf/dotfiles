@@ -14,4 +14,8 @@ return {
   { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.icons", enabled = false },
   { "simrat39/symbols-outline.nvim", enabled = false },
+  { "echasnovski/mini.animate", enabled = false },
+  { "echasnovski/mini.hipatterns", enabled = false },
+  { "norcalli/nvim-colorizer.lua", enabled = false },
+  { "SmiteshP/nvim-navic", enabled = false },
 }

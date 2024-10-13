@@ -1,7 +1,7 @@
 return {
 	{
 	'williamboman/mason-lspconfig.nvim',
-	event = "LazyFile",
+	cmd = "Mason",
 	dependencies = { "williamboman/mason.nvim" },
 	opts = {
 		ensure_installed = {
@@ -16,6 +16,7 @@ return {
 
 	{
 	"neovim/nvim-lspconfig",
+	event = "LazyFile",
 	opts = {
 			diagnostics = {
 				underline = false,

@@ -1,32 +1,16 @@
-vim.cmd([[
-fun! s:MakePair()
-	let line = getline('.')
-	let len = strlen(line)
-	if line[len - 1] == ";" || line[len - 1] == ","
-		normal! lx$P
-	else
-		normal! lx$p
-	endif
-endfun
-inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
-
-" sudo write this
-" cmap W! silent w !sudo tee % >/dev/null
-
-]])
-
-
 return {
 	{
 	  "ntpeters/vim-better-whitespace",
-	  event = "LazyFile",
+	  event = "BufLeave",
 
 	  init = function()
 		vim.g.better_whitespace_enabled = 0
 	  end,
 	},
+
 	{
 	  "echasnovski/mini.indentscope",
+	  event = "LazyFile",
 	  version = '*',
 	  -- require('mini.indentscope').setup()
 	  opts = {
@@ -65,28 +49,8 @@ return {
 	  end,
 	},
 	{
-		"RRethy/vim-illuminate",
-		config = function()
-			require('illuminate').configure({
-				providers = {
-					-- 'lsp',
-					'treesitter',
-					'regex',
-				},
-				delay = 200,
-			    large_file_cutoff = 2000,
-
-			    large_file_overrides = {
-					providers = { "lsp" },
-				 },
-			})
-			vim.cmd("hi IlluminatedWordText guibg=#393E4D gui=none")
-		end
-	},
-
-	{
 		"NvChad/nvim-colorizer.lua",
-		enable = false,
+		enabled = false,
 		opts = {
 			filetypes = { "*" },
 			user_default_options = {
@@ -173,7 +137,6 @@ return {
       return opts
     end,
   },
-	{ 'gcmt/wildfire.vim',  lazy = false, },
 	{
 		"fedepujol/move.nvim",
 		enabled = false,
@@ -197,61 +160,36 @@ return {
 		end
 	},
 	{
-		'wfxr/minimap.vim',
-		enable = false,
-		build = "cargo install --locked code-minimap",
-		cmd = {"Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight"},
-		config = function ()
-		  vim.cmd ("let g:minimap_width = 10")
-		  vim.cmd ("let g:minimap_auto_start = 1")
-		  vim.cmd ("let g:minimap_auto_start_win_enter = 1")
+		"folke/which-key.nvim",
+		event = "LazyFile",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 500
 		end,
-  },
-
-  {
-	"folke/which-key.nvim",
-	init = function()
-	  vim.o.timeout = true
-	  vim.o.timeoutlen = 500
-	end,
-	opts = {
-		plugins = {
+		opts = {
+			plugins = {
 					spelling = true,
 					registers = true,
 					marks = true,
 			},
-		icons = { rules = false, },
-		spec = {
-		  {
-			mode = { "n", "v" },
-			{ "g", group = "+goto" },
-			{ "gs", group = "+surround" },
-			{ "]",  group = "+next" },
-			{ "[",  group = "+prev" },
-			{ "<leader>e",  group = "+edit" },
-			{ "<leader>o",  group = "+symbol" },
-			{ "<leader>g",  group = "+git/goto" },
-			{ "<leader>;",  group = "Telescope commands" },
+			icons = { rules = false, },
+			triggers = {
+				{ "<auto>", mode = "nisotc" },
 			},
-      },
+			spec = {
+			  {
+				mode = { "n", "v"},
+				{ "g", group = "+goto" },
+				{ "gs", group = "+surround" },
+				{ "]",  group = "+next" },
+				{ "[",  group = "+prev" },
+				{ "<leader>e",  group = "+edit" },
+				{ "<leader>o",  group = "+symbol" },
+				{ "<leader>g",  group = "+git/goto" },
+				{ "<leader>;",  group = "Telescope commands" },
+			  },
+			},
 	},
-
-    -- config = function(_, opts)
-    --   local wk = require("which-key")
-    --   wk.setup(opts)
-    -- end,
-  },
-
-  {
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    opts = { options = vim.opt.sessionoptions:get() },
-    -- stylua: ignore
-    keys = {
-      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
-    },
   },
 
   {

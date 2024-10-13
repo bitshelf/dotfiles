@@ -2,6 +2,7 @@ return {
   {
 	"andymass/vim-matchup",
 	event = "LazyFile",
+	enabled = false,
 	setup = function()
 	  vim.g.matchup_matchparen_offscreen = { method = "popup" }
 	end,
@@ -9,7 +10,6 @@ return {
 
   {
 	"amrbashir/nvim-docs-view",
-	-- event = "LazyFile",
 
 	cmd = "DocsViewToggle",
 	opts = {

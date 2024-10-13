@@ -1,8 +1,8 @@
   return {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+	event = "LazyFile",
     opts = function(_, opts)
-      -- table.remove(opts.sections.lualine_c)
+      table.remove(opts.sections.lualine_x)
       table.remove(opts.sections.lualine_z)
     end,
   }
