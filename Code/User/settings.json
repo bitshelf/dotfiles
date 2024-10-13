@@ -12,11 +12,8 @@
     //  "terminal.integrated.defaultProfile.linux": "terminal",
 
     "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font Mono','JetBrainsMonoNL NFM','cascadia code','Operator Mono', 'Inconsolata for Powerline', monospace",
-    "terminal.integrated.shellIntegration.decorationsEnabled":"both",
-    "terminal.integrated.rightClickBehavior": "selectWord",
-    "terminal.integrated.sendKeybindingsToShell": false,
+    "terminal.integrated.shellIntegration.decorationsEnabled": "both",
     "terminal.integrated.splitCwd": "inherited",
-    "terminal.integrated.allowChords": false,
     "terminal.integrated.cursorWidth": 3,
     "terminal.integrated.shellIntegration.history": 102400,
     "terminal.integrated.scrollback": 100000,
@@ -26,6 +23,14 @@
     "terminal.integrated.tabs.enabled":true,
     "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.suggest.enabled": true,
+    "terminal.integrated.enableImages": true,
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.hideOnStartup": "never",
+    "terminal.integrated.ignoreBracketedPasteMode": true,
+    "terminal.integrated.rightClickBehavior": "selectWord",
+    "settingsSync.ignoredSettings": [
+        "terminal.integrated.middleClickBehavior"
+    ],
     "workbench.colorCustomizations": {
         "terminal.selectionBackground": "#9c840b",
         "terminal.findMatchHighlightBorder": "#ff0000",
