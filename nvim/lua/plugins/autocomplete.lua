@@ -55,7 +55,6 @@ end
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		-- event = "LazyFile",
 		event = "InsertEnter",
 
 		dependencies = {
