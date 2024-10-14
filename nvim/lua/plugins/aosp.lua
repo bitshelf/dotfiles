@@ -7,10 +7,6 @@ return {
 	  "bitshelf/aosp-vim",
 	  ft = { "hal", "rc" },
 	},
-	{
-	  'google/vim-maktaba',
-	  ft = { "hal", "rc" },
-	},
 	-- {
 	--   -- gn lang hightlight
 	--   -- 'kalcutter/vim-gn',
