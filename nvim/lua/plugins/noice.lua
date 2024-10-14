@@ -67,6 +67,7 @@ return {
 		{ find = "%d lines <ed %d time[s]?" },
 		{ find = "%d lines >ed %d time[s]?" },
 		{ find = "{ %d }" },
+		{ find = "semantic_tokens" },
 		{ event = "notify", find = "No information available" },
 		{ event = "msg_show", find = "fewer lines" },
 		{ event = "msg_show", find = "more lines" },
