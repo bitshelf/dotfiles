@@ -1,13 +1,13 @@
-local isabled = function()
-  if vim.version().major == 0 and vim.version().minor < 10 then
-	return false
-  end
-end
+-- local isabled = function()
+--   if vim.version().major == 0 and vim.version().minor < 10 then
+-- 	return false
+--   end
+-- end
 
 return {
 	"Bekaboo/dropbar.nvim",
 	event = "LazyFile",
-	enabled = isabled(),
+	-- enabled = isabled(),
 
 	config = function()
 		local api = require("dropbar.api")
