@@ -1,7 +1,9 @@
 /Android Open Source Project/
 /asuite/
 /baidunetdisk/
+/bash_completion/
 /bin/
+/chezmoi/
 /clash/
 /clash-verge/
 /clash_win/
@@ -56,3 +58,5 @@
 /vlc/
 /zellij/plugins/
 /yazi/plugins/
+/zed/.tmp*
+/.gsd-keyboard.settings-ported

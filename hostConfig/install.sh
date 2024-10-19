@@ -3,13 +3,13 @@
 function install_host {
 	touch $HOME/.hushlogin
 	echo "source ${PWD}/terminal.sh" >> ~/.bashrc
-	#ln -sf ${PWD}/vimrc ~/.vimrc
-	# ln -sf ${PWD}/rustconfig ~/.cargo/config
-	ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
 	echo "with_proxy(){
 	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 \"\$@\"
 	}" >> ~/.bashrc
-	curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.config/git/git-completion.bash
+	#ln -sf ${PWD}/vimrc ~/.vimrc
+	# ln -sf ${PWD}/rustconfig ~/.cargo/config
+	# ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
+	# curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.config/git/git-completion.bash
 }
 
 function install_node {
@@ -27,7 +27,6 @@ function install_node {
 }
 
 function install_rust {
-	# install rust
 	curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
 	. "$HOME/.cargo/env"
 
@@ -78,7 +77,7 @@ function install_lazygit {
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 	tar xf lazygit.tar.gz lazygit
-	sudo install lazygit /usr/local/bin
+	install lazygit ~/.local/bin/
 	rm lazygit.tar.gz lazygit -rf
 }
 

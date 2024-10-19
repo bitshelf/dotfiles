@@ -61,10 +61,6 @@ if [[ -n "$PS1" ]]; then
     stty -ixon
 fi
 
-#
-# broot
-#source /home/rpdzkj/.config/broot/launcher/bash/br
-
 # starship
 export STARSHIP_LOG=error
 
@@ -83,13 +79,20 @@ export DELTA_FEATURES=+side-by-side
 # difft
 export DFT_DISPLAY=side-by-side-show-both
 
-
-# system PATH
-[ -r /usr/share/bash-completion/completions/git ] && source  /usr/share/bash-completion/completions/git
+# Git config
+# if [ -f ~/.config/bash_completion/git-completion.bash ]; then
+# 	source ~/.config/bash_completion/git-completion.bash
+# fi
+# [ -r /usr/share/bash-completion/completions/git ] && source  /usr/share/bash-completion/completions/git
 #source $HOME/.local/lib/git-core/git-sh-prompt
-[ -r ~/.config/${HOST_CONFIG}/rg.bash ] && source  ~/.config/${HOST_CONFIG}/rg.bash
-[ -r ~/.config/${HOST_CONFIG}/fzf.bash ] && source  ~/.config/${HOST_CONFIG}/fzf.bash
-[ -r ~/.config/${HOST_CONFIG}/chezmoi.bash ] && source  ~/.config/${HOST_CONFIG}/chezmoi.bash
+export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
+
+# fzf
+[ -r ~/.config/bash_completion/fzf.bash ] && source  ~/.config/bash_completion/fzf.bash
+
+# completions
+[ -r ~/.config/bash_completion/rg.bash ] && source ~/.config/bash_completion/rg.bash
+[ -r ~/.config/bash_completion/chezmoi.bash ] && source  ~/.config/bash_completion/chezmoi.bash
 # [ -r ~/.local/share/blesh/ble.sh ] && source ~/.local/share/blesh/ble.sh
 
 # atuin
@@ -122,12 +125,6 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-# Git config
-if [ -f ~/.config/git/git-completion.bash ]; then
-	source ~/.config/git/git-completion.bash
-fi
-export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
 # if ! hash nvm 2>/dev/null; then
 # 	export NVM_DIR="$HOME/.local/.nvm"
