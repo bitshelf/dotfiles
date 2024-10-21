@@ -80,19 +80,19 @@ export DELTA_FEATURES=+side-by-side
 export DFT_DISPLAY=side-by-side-show-both
 
 # Git config
-# if [ -f ~/.config/bash_completion/git-completion.bash ]; then
-# 	source ~/.config/bash_completion/git-completion.bash
+# if [ -f ~/.config/completion_bash/git-completion.bash ]; then
+# 	source ~/.config/completion_bash/git-completion.bash
 # fi
 # [ -r /usr/share/bash-completion/completions/git ] && source  /usr/share/bash-completion/completions/git
 #source $HOME/.local/lib/git-core/git-sh-prompt
 export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
 # fzf
-[ -r ~/.config/bash_completion/fzf.bash ] && source  ~/.config/bash_completion/fzf.bash
+[ -r ~/.config/completion_bash/fzf.bash ] && source  ~/.config/completion_bash/fzf.bash
 
 # completions
-[ -r ~/.config/bash_completion/rg.bash ] && source ~/.config/bash_completion/rg.bash
-[ -r ~/.config/bash_completion/chezmoi.bash ] && source  ~/.config/bash_completion/chezmoi.bash
+[ -r ~/.config/completion_bash/rg.bash ] && source ~/.config/completion_bash/rg.bash
+[ -r ~/.config/completion_bash/chezmoi.bash ] && source  ~/.config/completion_bash/chezmoi.bash
 # [ -r ~/.local/share/blesh/ble.sh ] && source ~/.local/share/blesh/ble.sh
 
 # atuin
