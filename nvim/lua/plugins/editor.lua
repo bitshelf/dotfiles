@@ -1,7 +1,7 @@
 return {
 	{
 	  "ntpeters/vim-better-whitespace",
-	  event = "BufLeave",
+	  event = "LazyFile",
 
 	  init = function()
 		vim.g.better_whitespace_enabled = 0
