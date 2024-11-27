@@ -72,8 +72,10 @@ disabled = true
 
 [directory]
 #style = "blue"
-read_only = " "
-truncation_length = 11
+read_only = " 🔒"
+truncation_length = 0
+before_repo_root_style = "bold cyan"
+repo_root_style = "underline bold cyan"
 truncate_to_repo = false
 
 [git_branch]
