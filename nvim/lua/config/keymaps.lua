@@ -12,11 +12,10 @@ vim.keymap.set({'n','x'}, "ZQ", "<cmd>qa!<CR>", { silent = true, desc = "visual 
 vim.keymap.set({'n','x'}, "ZZ", "<cmd>wqa<CR>", { silent = true ,desc = "visual quit" })
 vim.keymap.set('n', '<leader>l', "<cmd>UndotreeToggle<cr>", { desc = "UndotreeToggle", silent = true, nowait = true })
 
-local line_rhs = function()
-	return require('vim._comment').operator() .. '_'
-end
-vim.keymap.set({ 'n', 'x' }, '<c-/>', line_rhs, { expr = true, desc = 'Toggle comment' })
-vim.keymap.set({ 'n', 'x' }, '<c-_>', line_rhs, { expr = true, desc = 'Toggle comment' })
+vim.keymap.set({'n','i'}, "<c-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment line" })
+vim.keymap.set("x", "<c-/>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment visualmode" })
+vim.keymap.set({'n','i'}, "<c-_>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment line" })
+vim.keymap.set("x", "<c-_>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment visualmode" })
 
 -- remove lazyvim terminal keybind
 vim.keymap.set("t", "<c-h>", "<c-h>", { buffer = buf, nowait = true })
