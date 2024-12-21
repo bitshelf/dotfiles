@@ -12,11 +12,13 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     -- import any extras modules here
-	{ import = "lazyvim.plugins.extras.editor.telescope" },
+	-- { import = "lazyvim.plugins.extras.editor.telescope" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
-    { import = "lazyvim.plugins.extras.coding.luasnip" },
+    { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- { import = "lazyvim.plugins.extras.coding.luasnip" },
 	{ import = "lazyvim.plugins.extras.editor.aerial" },
 	{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
+	{ import = "lazyvim.plugins.extras.ui.mini-indentscope" },
     -- { import = "lazyvim.plugins.extras.lang.java" },
     -- { import = "lazyvim.plugins.extras.lang.rust" },
 

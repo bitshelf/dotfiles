@@ -1,13 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    priority = 1000,
-    build = ":TSUpdate",
-    auto_install = true,
-    config = function()
-      require("nvim-treesitter.configs").setup({
-		sync_install = false,
+	opts = {
         ensure_installed = {
 			"bash",
 			"bp",
@@ -30,7 +24,7 @@ return {
 			"vim",
 			"lua",
 			"devicetree",
-			-- "blueprint",
+			"blueprint",
 			"gn",
 			"query",
 			"kdl",
@@ -38,49 +32,49 @@ return {
 			"yaml",
         },
 
-        highlight = {
-          enable = true,
-          --disable = { "devicetree",}, -- list of language that will be disabled
-          disable = function(lang, buf)
-            local max_filesize = 50 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-              return true
-            end
-          end,
-          additional_vim_regex_highlighting = false,
-        },
+        -- highlight = {
+        --   enable = true,
+        --   --disable = { "devicetree",}, -- list of language that will be disabled
+        --   disable = function(lang, buf)
+        --     local max_filesize = 50 * 1024 -- 100 KB
+        --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        --     if ok and stats and stats.size > max_filesize then
+        --       return true
+        --     end
+        --   end,
+        --   additional_vim_regex_highlighting = false,
+        -- },
 
-        indent = {
-          enable = false,
-        },
+        -- indent = {
+        --   enable = false,
+        -- },
 
-        rainbow = {
-        	enable = false,
-        	extended_mode = true,
-        },
+        -- rainbow = {
+        -- 	enable = false,
+        -- 	extended_mode = true,
+        -- },
+        --
+        -- matchup = {
+        -- 	enable = true,
+        -- },
+        --
+        -- context_commentstring = {
+        -- 	enable = true,
+        -- },
+        --
+        -- autotag = {
+        -- 	enable = true,
+        -- },
 
-        matchup = {
-        	enable = true,
-        },
-
-        context_commentstring = {
-        	enable = true,
-        },
-
-        autotag = {
-        	enable = true,
-        },
-
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = '+',
-            node_incremental = '+',
-            node_decremental = '-',
-            -- scope_incremental = '+',
-          },
-        },
+        -- incremental_selection = {
+        --   enable = true,
+        --   keymaps = {
+        --     init_selection = '+',
+        --     node_incremental = '+',
+        --     node_decremental = '-',
+        --     -- scope_incremental = '+',
+        --   },
+        -- },
 
 		textobjects = {
 			select = {
@@ -202,7 +196,6 @@ return {
 					["]R"] = "@return.inner",
 					["]L"] = "@statement.*",
 					["]N"] = "@number.*",
-					["]H"] = "@assignment.outer",
 				},
 				goto_previous_start = {
 					["[f"] = "@function.outer",
@@ -218,7 +211,6 @@ return {
 					["[r"] = "@return.inner",
 					["[l"] = "@statement.*",
 					["[n"] = "@number.*",
-					["[h"] = "@assignment.outer",
 				},
 				goto_previous_end = {
 					["[F"] = "@function.outer",
@@ -256,8 +248,7 @@ return {
 				},
 			},
 		},
-      })
-    end,
+	},
   },
 	-- {
 	--   "nvim-treesitter/nvim-treesitter-context",

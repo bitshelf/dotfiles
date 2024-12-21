@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "fzf"
 vim.g.root_spec = { "lsp", {".repo", ".git", "lua" }, "cwd" }
 vim.g.autoformat = false
 vim.g.loaded_python3_provider = 0
