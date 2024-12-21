@@ -17,7 +17,6 @@
     "terminal.integrated.cursorWidth": 3,
     "terminal.integrated.shellIntegration.history": 102400,
     "terminal.integrated.scrollback": 100000,
-    "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontSize": 15,
     "terminal.integrated.lineHeight": 1.25,
     "terminal.integrated.tabs.enabled":true,
@@ -338,3 +337,4 @@
     "C_Cpp.refactoring.includeHeader": "never",
     "editor.inlayHints.enabled": "offUnlessPressed",
 }
+    "window.customTitleBarVisibility": "auto",
