@@ -7,6 +7,8 @@ deps = [
 		{ use = "Lil-Dank/lazygit", rev = "c82794f" },
 		{ use = "ndtoan96/ouch", rev = "b869886" },
 		{ use = "hankertrix/augment-command", rev = "369f992" },
+		{ use = "yazi-rs/plugins:smart-enter", rev = "7afba3a" },
+		{ use = "Rolv-Apneseth/starship", rev = "247f49d" },
 	]
 
 [flavor]

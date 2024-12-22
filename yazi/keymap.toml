@@ -1,5 +1,7 @@
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
 [[manager.prepend_keymap]]
-on   = [ "<C-s>" ]
+on   = [ "<S>" ]
 run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 
@@ -41,7 +43,12 @@ on   = [ "J" ]
 run  = [ "leave", "arrow 1", "enter" ]
 desc = "Move down in the parent directory"
 
+# [[manager.prepend_keymap]]
+# on = [ "l" ]
+# run = "plugin augment-command --args='enter'"
+# desc = "Enter a directory and skip directories with only a single subdirectory"
+
 [[manager.prepend_keymap]]
-on = [ "l" ]
-run = "plugin augment-command --args='enter'"
-desc = "Enter a directory and skip directories with only a single subdirectory"
+on   = "l"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"

@@ -6,6 +6,7 @@ function install_host {
 	echo "with_proxy(){
 	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 \"\$@\"
 	}" >> ~/.bashrc
+	sudo snap install chezmoi --classic
 	#ln -sf ${PWD}/vimrc ~/.vimrc
 	# ln -sf ${PWD}/rustconfig ~/.cargo/config
 	# ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json

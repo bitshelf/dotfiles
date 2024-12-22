@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 -- vim.g.lazyvim_picker = "telescope"
 vim.g.lazyvim_picker = "fzf"
 vim.g.root_spec = { "lsp", {".repo", ".git", "lua" }, "cwd" }
@@ -38,7 +36,6 @@ vim.o.indentexpr = ""
 -- vim.o.foldmethod = 'indent'
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.showmode = true
 vim.o.ignorecase = true
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.inccommand = "split"
