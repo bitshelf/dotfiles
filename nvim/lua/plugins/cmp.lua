@@ -1,8 +1,5 @@
 return {
   'saghen/blink.cmp',
-  event = "LazyFile",
-  -- optional: provides snippets for the snippet source
-  dependencies = 'rafamadriz/friendly-snippets',
 
   opts = {
     keymap = { 
