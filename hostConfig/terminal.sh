@@ -100,9 +100,11 @@ export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 # atuin
 # eval "$(atuin init bash --disable-up-arrow)"
 
-# yazi
-bind -r "\C-g"
-bind -m emacs-standard -x '"\C-g": yazi '
+# # yazi
+# bind -r "\C-g"
+# bind -m emacs-standard -x '"\C-g": yazi'
+# # bind -m vi-command -x '"\C-g": yazi'
+# # bind -m vi-insert -x '"\C-g": yazi'
 
 # mcfly
 eval "$(mcfly init bash)"
