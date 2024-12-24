@@ -73,6 +73,8 @@ fi
 eval "$(starship init bash)"
 #eval "$(zoxide init bash)"
 
+#readonly PROMPT_COMMAND
+
 # delta
 export DELTA_FEATURES=+side-by-side
 
@@ -98,19 +100,18 @@ export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 # atuin
 # eval "$(atuin init bash --disable-up-arrow)"
 
+# yazi
+bind -r "\C-g"
+bind -m emacs-standard -x '"\C-g": yazi '
+
 # mcfly
+eval "$(mcfly init bash)"
 export MCFLY_RESULTS_SORT=LAST_RUN
 export MCFLY_DISABLE_MENU=true
 export MCFLY_PROMPT='→'
 export MCFLY_HISTORY_LIMIT=100000
 export MCFLY_RESULTS=30
 # export MCFLY_FUZZY=2
-eval "$(mcfly init bash)"
-
-#readonly PROMPT_COMMAND
-
-bind -r "\C-g"
-bind -m emacs-standard -x '"\C-g": yazi '
 
 # Completion settings
 #source <(procs --gen-completion-out bash)
