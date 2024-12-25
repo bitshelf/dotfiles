@@ -8,5 +8,11 @@ return {
 		['<CR>'] = { 'accept', 'fallback' },
 		['<C-y>'] = { 'select_and_accept' },
 	},
+
+    completion = {
+		ghost_text = {
+			enabled = false,
+		},
+    },
   },
 }
