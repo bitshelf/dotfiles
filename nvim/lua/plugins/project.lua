@@ -3,7 +3,7 @@ return {
 	event = "LazyFile",
     config = function()
 	local opts = {silent = true, nowait = true}
-	vim.keymap.set('n', '<leader>gi', ':ProjectRoot<cr>', { desc = "ProjectRoot", silent = true, nowait = true })
+	vim.keymap.set('n', '<leader>gr', ':ProjectRoot<cr>', { desc = "ProjectRoot", silent = true, nowait = true })
 	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", { desc = "file dir", silent = true, nowait = true })
 
 	-- Open new file adjacent to current file
