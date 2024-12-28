@@ -12,8 +12,10 @@ return {
 			["--no-scrollbar"] = true,
 		},
 		defaults = {
-			-- formatter = "path.filename_first",
-			formatter = "path.dirname_first",
+			file_icons		= false,
+			git_icons		= false,
+			color_icons		= false,
+			formatter		= "path.dirname_first",
 		},
 		previewers = {
 			builtin = {
@@ -75,26 +77,11 @@ return {
 
 		git = {
 			files = {
-				-- prompt        = 'GitFiles❯ ',
-				-- cmd           = 'git ls-files --exclude-standard',
-				-- multiprocess  = true,           -- run command in a separate process
-				-- git_icons     = false,           -- show git icons?
-				-- file_icons    = false,           -- show file icons (true|"devicons"|"mini")?
-				-- color_icons   = true,           -- colorize file|git icons
 				cwd_header = true
 			},
-			-- status = {
-			-- 	prompt        = 'GitStatus❯ ',
-			-- 	cmd           = "git -c color.status=false --no-optional-locks status --porcelain=v1 -u",
-			-- 	multiprocess  = true,           -- run command in a separate process
-			-- 	-- file_icons    = false,
-			-- 	-- git_icons     = false,
-			-- 	color_icons   = true,
-			-- },
-			icons = {
-				["M"]        = { icon = "★", color = "red" },
-				["D"]        = { icon = "✗", color = "red" },
-				["A"]        = { icon = "+", color = "green" },
+			status = {
+				preview_pager = false,
+				no_header  = true,
 			},
 		},
 
@@ -114,7 +101,6 @@ return {
 			glob_separator  = "%s%-%-",
 			prompt          = "❯ ",
 			no_header       = true,
-			-- no_header_i     = true,
 
 			actions = {
 				["alt-i"] = { actions.toggle_ignore },
