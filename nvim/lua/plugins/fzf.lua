@@ -73,9 +73,35 @@ return {
 			},
 		},
 
+		git = {
+			files = {
+				-- prompt        = 'GitFiles❯ ',
+				-- cmd           = 'git ls-files --exclude-standard',
+				-- multiprocess  = true,           -- run command in a separate process
+				-- git_icons     = false,           -- show git icons?
+				-- file_icons    = false,           -- show file icons (true|"devicons"|"mini")?
+				-- color_icons   = true,           -- colorize file|git icons
+				cwd_header = true
+			},
+			-- status = {
+			-- 	prompt        = 'GitStatus❯ ',
+			-- 	cmd           = "git -c color.status=false --no-optional-locks status --porcelain=v1 -u",
+			-- 	multiprocess  = true,           -- run command in a separate process
+			-- 	-- file_icons    = false,
+			-- 	-- git_icons     = false,
+			-- 	color_icons   = true,
+			-- },
+			icons = {
+				["M"]        = { icon = "★", color = "red" },
+				["D"]        = { icon = "✗", color = "red" },
+				["A"]        = { icon = "+", color = "green" },
+			},
+		},
+
 	    files = {
 			cwd_prompt = false,
 			no_header  = true,
+			-- no_header_i     = true,
 			actions = {
 				["alt-i"] = { actions.toggle_ignore },
 				["alt-h"] = { actions.toggle_hidden },
@@ -87,8 +113,8 @@ return {
 			glob_flag       = "--iglob",
 			glob_separator  = "%s%-%-",
 			prompt          = "❯ ",
-			-- no_header       = true,
-			no_header_i     = true,
+			no_header       = true,
+			-- no_header_i     = true,
 
 			actions = {
 				["alt-i"] = { actions.toggle_ignore },
@@ -98,13 +124,13 @@ return {
 
 	    lsp = {
 			symbols = {
-			symbol_hl = function(s)
-				return "TroubleIcon" .. s
-			end,
-			symbol_fmt = function(s)
-				return s:lower() .. "\t"
-			end,
-			child_prefix = false,
+				symbol_hl = function(s)
+					return "TroubleIcon" .. s
+				end,
+				symbol_fmt = function(s)
+					return s:lower() .. "\t"
+				end,
+				child_prefix = false,
 			},
 			code_actions = {
 				previewer = vim.fn.executable("delta") == 1 and "codeaction_native" or nil,
