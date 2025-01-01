@@ -65,23 +65,23 @@ require("lazy").setup({
   install = { colorscheme = { "tokyonight" } },
   checker = { enabled = true },
 
-  ui = {
-	icons = {
-		cmd = "⌘",
-		config = "🛠",
-		event = "📅",
-		ft = "📂",
-		init = "⚙",
-		keys = "🗝",
-		plugin = "🔌",
-		runtime = "💻",
-		require = "🌙",
-		source = "📄",
-		start = "🚀",
-		task = "📌",
-		lazy = "💤 ",
-	},
-  },
+ --  ui = {
+	-- icons = {
+	-- 	cmd = "⌘",
+	-- 	config = "🛠",
+	-- 	event = "📅",
+	-- 	ft = "📂",
+	-- 	init = "⚙",
+	-- 	keys = "🗝",
+	-- 	plugin = "🔌",
+	-- 	runtime = "💻",
+	-- 	require = "🌙",
+	-- 	source = "📄",
+	-- 	start = "🚀",
+	-- 	task = "📌",
+	-- 	lazy = "💤 ",
+	-- },
+ --  },
 
   change_detection = {
     -- automatically check for config file changes and reload the ui
