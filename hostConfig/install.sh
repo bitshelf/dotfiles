@@ -71,11 +71,16 @@ function install_vim {
 }
 
 function install_yazi {
-	cargo install -f --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
+	cargo install yazi-fm yazi-cli
 	ya pack -a Rolv-Apneseth/starship
 	ya pack -a Lil-Dank/lazygit
 	ya pack -a yazi-rs/plugins:no-status
 	ya pack -a yazi-rs/plugins:max-preview
+	ya pack -a yazi-rs/plugins:git
+	ya pack -a yazi-rs/plugins:smart-filter
+	ya pack -a ndtoan96/ouch
+	ya pack -a hankertrix/augment-command
+	ya pack -a yazi-rs/plugins:smart-enter
 }
 
 function install_lazygit {

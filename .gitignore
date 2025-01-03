@@ -22,6 +22,7 @@
 /gnome-initial-setup-done
 /Google/
 /google-chrome/
+/.gsd-keyboard.settings-ported
 /gtk-3.0/
 /ibus/
 /JetBrains/
@@ -57,7 +58,7 @@
 /update-notifier/
 /user-dirs.dirs
 /vlc/
-/zellij/plugins/
+/yazi/package.toml
 /yazi/plugins/
 /zed/.tmp*
-/.gsd-keyboard.settings-ported
+/zellij/plugins/
