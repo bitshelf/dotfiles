@@ -7,10 +7,6 @@ function install_host {
 	   HTTPS_PROXY=socks5://localhost:7897 HTTP_PROXY=socks5://localhost:7897 \"\$@\"
 	}" >> ~/.bashrc
 	sudo snap install chezmoi --classic
-	#ln -sf ${PWD}/vimrc ~/.vimrc
-	# ln -sf ${PWD}/rustconfig ~/.cargo/config
-	# ln -sf ${PWD}/coc-settings.json	 ~/.vim/coc-settings.json
-	# curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.config/git/git-completion.bash
 }
 
 function install_node {
@@ -24,7 +20,15 @@ function install_node {
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 	nvm install --lts
+}
 
+function install_ctag {
+	git clone https://github.com/universal-ctags/ctags.git --depth=1
+	cd ctags
+	./autogen.sh
+	./configure
+	make
+	sudo make install
 }
 
 function install_rust {
@@ -95,7 +99,7 @@ function install_all {
 	install_nvim
 	install_yazi
 	install_lazygit
-	install_ble
+	install_ctag
 }
 
 OPTIONS="$@"
