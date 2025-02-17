@@ -36,35 +36,13 @@ return {
 	-- 	end
 	-- },
 	--
-	-- {
-	-- 	"folke/which-key.nvim",
-	-- 	init = function()
-	-- 		vim.o.timeout = true
-	-- 		vim.o.timeoutlen = 500
-	-- 	end,
-	-- 	opts = {
-	-- 		plugins = {
-	-- 				spelling = true,
-	-- 				registers = true,
-	-- 				marks = true,
-	-- 		},
-	-- 		icons = { rules = false, },
-	-- 		triggers = {
-	-- 			{ "<auto>", mode = "nisotc" },
-	-- 		},
-	-- 		spec = {
-	-- 		  {
-	-- 			mode = { "n", "v"},
-	-- 			{ "g", group = "+goto" },
-	-- 			{ "gs", group = "+surround" },
-	-- 			{ "]",  group = "+next" },
-	-- 			{ "[",  group = "+prev" },
-	-- 			{ "<leader>e",  group = "+edit" },
-	-- 			{ "<leader>o",  group = "+symbol" },
-	-- 			{ "<leader>g",  group = "+git/goto" },
-	-- 			{ "<leader>;",  group = "Telescope commands" },
-	-- 		  },
-	-- 		},
-	-- },
- --  },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			triggers = {
+				{ "<auto>", mode = "nisotc" },
+			},
+		},
+	},
 }
