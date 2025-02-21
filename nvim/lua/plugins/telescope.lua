@@ -41,7 +41,7 @@ return {
 		cmd = "Telescope",
 
 		enabled = function()
-			return LazyVim.pick.want() == "telescope"
+		        return LazyVim.pick.picker.name == "telescope"
 		end,
 
 		dependencies = {
