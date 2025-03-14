@@ -10,26 +10,30 @@ on   = [ "<Esc>" ]
 run  = "close"
 desc = "Cancel input"
 
+# [[manager.prepend_keymap]]
+# on = [ "l" ]
+# run = "plugin augment-command --args='enter'"
+# desc = "Enter a directory and skip directories with only a single subdirectory"
+
+# [[manager.prepend_keymap]]
+# on   = [ "S" ]
+# run = "search --via=rga"
+# desc = "Search files by content via ripgrep-all"
+
+[[manager.prepend_keymap]]
+on   = "l"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
 [[manager.prepend_keymap]]
 on   = "T"
 run  = "plugin --sync max-preview"
 desc = "Maximize or restore preview"
 
 [[manager.prepend_keymap]]
-on   = [ "g", "i" ]
-run  = "plugin lazygit"
-desc = "run lazygit"
-
-[[manager.prepend_keymap]]
 on   = "F"
 run  = "plugin smart-filter"
 desc = "Smart filter"
-
-[[manager.prepend_keymap]]
-on = [ "g", "r" ]
-run = '''
-	shell 'ya emit cd --str "$(git rev-parse --show-toplevel)"'
-'''
 
 # Use K to move up in the parent directory
 [[manager.prepend_keymap]]
@@ -53,12 +57,18 @@ on   = [ "<C-b>" ]
 run  = "seek -5"
 desc = "Seek up 5 units in the preview"
 
-# [[manager.prepend_keymap]]
-# on = [ "l" ]
-# run = "plugin augment-command --args='enter'"
-# desc = "Enter a directory and skip directories with only a single subdirectory"
+[[manager.prepend_keymap]]
+on   = [ "g", "i" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
 
 [[manager.prepend_keymap]]
-on   = "l"
-run  = "plugin smart-enter"
-desc = "Enter the child directory, or open the file"
+on   = [ "g", "c" ]
+run  = "plugin vcs-files"
+desc = "Show Git file changes"
+
+[[manager.prepend_keymap]]
+on = [ "g", "r" ]
+run = '''
+	shell 'ya emit cd --str "$(git rev-parse --show-toplevel)"'
+'''
