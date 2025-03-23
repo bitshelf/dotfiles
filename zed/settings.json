@@ -10,9 +10,27 @@
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "vim_mode": true,
+  "autosave": "on_focus_change",
+  "git_status": true,
+  "format_on_save": "off",
+
   "theme": {
     "mode": "system",
     "light": "One Dark",
     "dark": "One Dark"
+  },
+
+  "auto_install_extensions": {
+    "dockerfile": true,
+    "docker-compose": false,
+    "lua": true
+  },
+
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false
+    },
+    "hunk_style": "staged_hollow"
   }
 }
