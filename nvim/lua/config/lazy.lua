@@ -58,9 +58,9 @@ require("lazy").setup({
   --   server = "https://nvim-neorocks.github.io/rocks-binaries/",
   -- },
 
-  -- defaults = {
-  --   version = "*", -- try installing the latest stable version for plugins that support semver
-  -- },
+  defaults = {
+    version = "*", -- try installing the latest stable version for plugins that support semver
+  },
 
   install = { colorscheme = { "tokyonight" } },
   checker = { enabled = true },
