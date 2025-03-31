@@ -6,6 +6,7 @@ return {
 			"bash-language-server",
 			"clangd",
 			"lua-language-server",
+			"rust-analyzer",
 			"pyright",
 			"vtsls"
 			},

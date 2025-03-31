@@ -6,6 +6,7 @@
 
 return {
 	"Bekaboo/dropbar.nvim",
+	version = "*",
 	event = "LazyFile",
 	-- enabled = isabled(),
 
