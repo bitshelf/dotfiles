@@ -10,7 +10,7 @@ Diagnostics:
 CompileFlags:
   Add: [-ferror-limit=0, -D__clangd__, -Wno-unknown-warning-option, ]
   Remove: [-march=*, -mabi=*, -mcpu=*,-mapcs,-mno-sched-prolog,
-          -fno-ipa-sra,-mno-thumb-interwork,-fno-var-tracking-ssignments,
+          -fno-ipa-sra,-mno-thumb-interwork,-fno-var-tracking-ssignments,-femit-struct-debug-baseonly,
           -fconserve-stack,-mthumb-interwork,-mword-relocations,
           -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang,
           -fno-allow-store-data-races,-fno-var-tracking-assignments,-mpc-relative-literal-loads,
