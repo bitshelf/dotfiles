@@ -21,9 +21,12 @@
   },
 
   "auto_install_extensions": {
+    "cmake": true,
     "dockerfile": true,
     "docker-compose": false,
-    "lua": true
+    "lua": true,
+    "kconfig": true,
+    "Make": true
   },
 
   "git": {
