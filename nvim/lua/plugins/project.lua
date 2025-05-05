@@ -3,13 +3,13 @@ return {
 	event = "LazyFile",
     config = function()
 	local opts = {silent = true, nowait = true}
-	vim.keymap.set('n', '<leader>gr', ':ProjectRoot<cr>', { desc = "ProjectRoot", silent = true, nowait = true })
-	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", { desc = "file dir", silent = true, nowait = true })
+	vim.keymap.set('n', '<leader>gr', ':ProjectRoot<cr>', vim.tbl_extend('force', opts, { desc = 'ProjectRoot' }))
+	vim.keymap.set("n", "<leader>.", ":cd %:p:h<cr>", vim.tbl_extend('force', opts, { desc = "file dir" }))
 
 	-- Open new file adjacent to current file
-	vim.keymap.set("n", "<leader>ee", ':e <C-R>=expand("%:p:h") . "/" <cr>', { desc = "open file" })
+	vim.keymap.set("n", "<leader>ee", ':e <C-R>=expand("%:p:h") . "/" <cr>', { desc = "open file", silent = false })
 	-- vim.cmd([[
-	-- 	nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+	-- 	nnoremap <leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
 	-- ]])
 
     require("project_nvim").setup {

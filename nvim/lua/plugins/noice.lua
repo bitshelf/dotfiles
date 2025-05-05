@@ -1,6 +1,7 @@
 return {
   {
     "folke/noice.nvim",
+	branch = "main",
 
     opts = {
       lsp = {
@@ -48,19 +49,19 @@ return {
 				{ find = "%d lines yanked" },
 				{ find = "clipboard:" },
 				{ find = "Ignoring invalid" },
-				{ find = "treesitter" },
 				{ find = "completion" },
 				{ find = "UltiSnips" },
 				{ find = "%d lines <ed %d time[s]?" },
 				{ find = "%d lines >ed %d time[s]?" },
 				{ find = "{ %d }" },
 				{ find = "semantic_tokens" },
-				{ event = "notify", find = "No information available" },
 				{ event = "msg_show", find = "fewer lines" },
 				{ event = "msg_show", find = "more lines" },
 				{ event = "msg_show", find = "^/" },
 				{ event = "msg_show", find = "written" },
+				{ event = "msg_show", find = "treesitter" },
 				{ event = "notify", find = "Compilation completed" },
+				{ event = "notify", find = "No information available" },
             },
           },
 		  opts = { skip = true },
