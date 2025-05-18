@@ -338,3 +338,5 @@
     "editor.inlayHints.enabled": "offUnlessPressed",
 }
     "window.customTitleBarVisibility": "auto",
+    "terminal.integrated.suggest.enabled": false,
+    "terminal.integrated.suggest.inlineSuggestion": "alwaysOnTopExceptExactMatch",
