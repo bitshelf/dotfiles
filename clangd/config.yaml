@@ -1,4 +1,5 @@
 Diagnostics:
+  Limit: 1000
   Suppress: "*"
   # Suppress: [undeclared_var_use, pp_file_not_found]
   UnusedIncludes: "None"
@@ -19,3 +20,5 @@ CompileFlags:
 InlayHints:
   ParameterNames: true
   DeducedTypes: true
+Index:
+  Background: Build
