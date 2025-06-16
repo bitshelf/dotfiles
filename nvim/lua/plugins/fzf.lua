@@ -1,5 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
+  branch = "main",
   opts = function(_, opts)
     local actions = require("fzf-lua.actions")
 
@@ -16,18 +17,6 @@ return {
 			color_icons		= false,
 			formatter		= "path.dirname_first",
 		},
-		previewers = {
-			builtin = {
-				extensions = {
-					["png"] = img_previewer,
-					["jpg"] = img_previewer,
-					["jpeg"] = img_previewer,
-					["gif"] = img_previewer,
-					["webp"] = img_previewer,
-				},
-				ueberzug_scaler = "fit_contain",
-			},
-		},
 
 		-- Custom LazyVim option to configure vim.ui.select
 		ui_select = function(fzf_opts, items)
@@ -37,7 +26,7 @@ return {
 					title = " " .. vim.trim((fzf_opts.prompt or "Select"):gsub("%s*:%s*$", "")) .. " ",
 					title_pos = "center",
 				},
-			}, 
+			},
 
 			fzf_opts.kind == "codeaction" and {
 				winopts = {
