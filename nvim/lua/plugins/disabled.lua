@@ -1,5 +1,4 @@
 return {
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "stevearc/conform.nvim", enabled = false },
   { "zbirenbaum/copilot.lua", enabled = false },
   { "echasnovski/mini.comment", enabled = false },
