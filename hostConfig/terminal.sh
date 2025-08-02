@@ -10,6 +10,7 @@ export LANG=en_US.UTF-8
 shopt -s checkwinsize
 shopt -s autocd
 shopt -s cdspell
+shopt -s extglob
 
 export HISTCONTROL=ignoreboth
 # ignorespace: 忽略空格开头的命令
@@ -44,8 +45,6 @@ alias ls='lsd'
 # alias cat='bat'
 alias vi='nvim'
 alias tldr='tldr  -L zh'
-#alias vim='nvim'
-#alias cp='xcp'
 
 alias l='ls -l'
 alias la='ls -a'
@@ -138,6 +137,9 @@ fi
 # with_proxy(){
 #    HTTPS_PROXY=socks5://localhost:7890 HTTP_PROXY=socks5://localhost:7890 "$@"
 # }
+
+complete -f -X '*.@(tex|bk|pdf|ymal|log|root|joblib)' p python python3
+complete -f -X '*.@(o|so|so.!(conf|*/*)|a|[rs]pm|gif|jp?(e)g|mp3|mp?(e)g|avi|asf|ogg|class|foo|bar|pdf)' v vi vim nvim
 
 rehash(){
 
