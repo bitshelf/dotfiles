@@ -7,6 +7,7 @@ return {
 			"clangd",
 			"lua-language-server",
 			"rust-analyzer",
+			"starpls",
 			"pyright",
 			"vtsls"
 			},
