@@ -1,0 +1,644 @@
+" set runtimepath-=$ConfigFolder/.vim
+"    \ runtimepath^=$ConfigFolder/.local/share/nvim/site runtimepath^=$ConfigFolder/.vim
+"    \ runtimepath-=$ConfigFolder/.vim/after
+"    \ runtimepath+=$ConfigFolder/.local/share/nvim/site/after runtimepath+=$ConfigFolder/.vim/after
+" let &packpath = &runtimepath
+" set runtimepath=$ConfigFolder/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$ConfigFolder/.vim/after
+" set packpath=$ConfigFolder/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$ConfigFolder/.vim/after
+
+scriptencoding utf-8
+
+" Setting up vim-plug
+let iCanHazPlug=1
+let plug_vim=expand('~/.config/vim/autoload/plug.vim')
+if !filereadable(plug_vim)
+    echo "Installing vim-plug..."
+    echo ""
+    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let iCanHazPlug=0
+endif
+
+"" 手动加载 plug.vim
+"if filereadable(expand('~/.vim/autoload/plug.vim'))
+"  source ~/.vim/autoload/plug.vim
+"else
+"  echo "vim-plug not found!"
+"endif
+
+if exists('$VIM_TERMINAL')
+  echoerr 'Do not run Vim inside a Vim terminal'
+  quit
+endif
+
+if has('autocmd')
+  " 为了可以重新执行 vimrc，开头先清除当前组的自动命令
+  au!
+endif
+
+if has('gui_running')
+  " 下面两行仅为占位使用；请填入你自己的字体
+  set guifont='CaskaydiaCove Nerd Font Mono'
+  set guifontwide='CaskaydiaCove Nerd Font Mono'
+
+  " 不延迟加载菜单（需要放在下面的 source 语句之前）
+  let do_syntax_sel_menu = 1
+  let do_no_lazyload_menus = 1
+endif
+let mapleader = "\<space>"
+
+if !has('nvim')
+  source $VIMRUNTIME/vimrc_example.vim
+endif
+
+" 启用 man 插件
+source $VIMRUNTIME/ftplugin/man.vim
+
+set enc=utf-8
+"set autochdir
+set fileencodings=ucs-bom,utf-8,gb18030,latin1
+set formatoptions+=mM
+set keywordprg=:Man
+set scrolloff=1
+set spelllang+=cjk
+" set tags=./kernel/tags,./tags;,tags,/usr/local/etc/systags
+set path=./**
+set nobackup
+set hidden
+set signcolumn=yes
+set cursorline
+set langmenu=zh_CN.UTF-8
+autocmd FileType * set formatoptions-=o
+
+if v:version >= 900
+  set wildoptions=pum
+  colorscheme habamax
+endif
+
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/vim/undodir
+  if !isdirectory(&undodir)
+    call mkdir(&undodir, 'p', 0700)
+  endif
+endif
+
+if has('mouse')
+  if has('gui_running') || (&term =~ 'xterm' && !has('mac'))
+    set mouse=i
+  else
+    "set mouse=nvi
+    set mouse=i
+  endif
+endif
+
+if !has('gui_running')
+  " 设置文本菜单
+  if has('wildmenu')
+    set wildmenu
+    set cpoptions-=<
+    set wildcharm=<C-Z>
+    nnoremap <F10>      :emenu <C-Z>
+    inoremap <F10> <C-O>:emenu <C-Z>
+  endif
+
+  " 识别终端的真彩支持
+  if has('termguicolors') &&
+        \($COLORTERM == 'truecolor' || $COLORTERM == '24bit')
+    set termguicolors
+  endif
+endif
+
+call plug#begin('~/.config/vim/plugged')
+  " Make sure you use single quotes
+
+  " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+  Plug 'junegunn/vim-easy-align'
+
+  " Any valid git URL is allowed
+  Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+  " Multiple Plug commands can be written in a single line using | separators
+  " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+  " On-demand loading
+  Plug 'preservim/nerdtree'
+
+  " Using a non-default branch
+  " Plug 'ycm-core/YouCompleteMe'
+  "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+  " customs
+  " Plug 'junegunn/fzf' ", { 'dir': '~/.local/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+  "Plug 'liuchengxu/vista.vim'
+  Plug 'majutsushi/tagbar'
+  Plug 'mbbill/undotree'
+  Plug 'mg979/vim-visual-multi'
+  Plug 'preservim/nerdcommenter'
+  Plug 'skywind3000/asyncrun.vim'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
+  Plug 'vim-scripts/SyntaxAttr.vim'
+  Plug 'yegappan/mru'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'github/copilot.vim'
+  Plug 'voldikss/vim-floaterm'
+  "Plug 'Bakudankun/qline.vim'
+
+call plug#end()
+
+"   command
+"   PlugInstall: Install plugins
+"   PlugUpdate: Install or update plugins
+"   PlugUpgrade: Upgrade vim-plug itself
+
+if iCanHazPlug == 0
+    echo "Installing vim-plug, please ignore key map error messages"
+    echo ""
+    :PlugInstall
+endif
+
+" Nerdtree
+nnoremap <C-S-e> :exec 'NERDTreeToggle' <CR>
+" nnoremap <C-S-e> :NERDTreeToggle <CR>
+
+" auto open or close NERDTree
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+
+" Tagbar
+nmap <Leader>oo :TagbarToggle<CR>
+" 自动打开 Tagbar 侧边栏
+" autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen() "
+nnoremap <F9>      :TagbarToggle<CR>
+inoremap <F9> <C-O>:TagbarToggle<CR>
+
+nnoremap ZQ      :qa!<CR>
+nnoremap ZZ      :wqa<CR>
+
+"ignore typing errors
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
+
+" float terminal
+nnoremap   <silent>   <C-\>   :FloatermToggle<CR>
+tnoremap   <silent>   <C-\>   <C-\><C-n>:FloatermToggle<CR>
+
+" Ignored in completion
+set suffixes=.bak,~,.h,.info,.swp,.obj,.class
+set wildignore=*.o,*.obj,*.bak,*.exe,*.so,*.class,*.hi,*.jpg,*.png,*.zip,*.tar,*.tar.gz
+
+" Hidden character toggling
+set listchars=tab:»\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+
+" sudo write this
+cmap W! silent w !sudo tee % >/dev/null
+ca w!! w !sudo tee "%"
+
+" comment keybind
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCompactSexyComs = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+nnoremap <C-/> <plug>NERDCommenterToggle
+vnoremap <C-/> <plug>NERDCommenterToggle
+nnoremap <C-_> <plug>NERDCommenterToggle
+vnoremap <C-_> <plug>NERDCommenterToggle
+let g:NERDCustomDelimiters = {
+    \ 'dts': { 'left': '//', 'leftAlt': '//' },
+    \ 'c': { 'left': '//', 'leftAlt': '//' },
+\ }
+
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+" let g:gitgutter_set_sign_backgrounds = 1
+" let g:gitgutter_sign_allow_clobber = 1
+
+" statusline
+"let g:loaded_airline = 1
+"let g:loaded_lightline = 1
+
+" cscope
+nmap <C-x>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-x>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-x>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-x>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-x>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-x>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-x>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-x>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-x>a :cs find a <C-R>=expand("<cword>")<CR><CR>
+
+if has("cscope")
+      "set csprg=/usr/bin/cscope
+      set csto=0
+      set cst
+      set nocsverb
+      set cspc=3
+
+      if filereadable(expand('%'))
+        exe 'cd'  expand('%:h')
+        set tags=./tags;,tags,/usr/local/etc/systags
+        let cscope_file=findfile("cscope.out", ".;")
+        let cscope_pre=matchstr(cscope_file, ".*/")
+        "let clangd_file=findfile("compile_commands.json", ".;")
+        exe 'cd' '-'
+
+        if !empty(cscope_file) && filereadable(cscope_file)
+             exe "cs add" cscope_file cscope_pre
+        endif
+
+        "if !empty(clangd_file) 
+        "    let g:ycm_clangd_args=clangd_file
+        "endif
+       elseif filereadable("cscope.out")
+           cs add cscope.out
+           set tags=./tags;,tags,/usr/local/etc/systags
+       "else search cscope.out elsewhere
+       elseif $CSCOPE_DB != ""
+          cs add $CSCOPE_DB
+          set tags=./tags;,tags,/usr/local/etc/systags
+       endif
+
+endif
+
+"set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
+
+" 修改光标上下键一次移动一个屏幕行
+nnoremap <Up>        gk
+inoremap <Up>   <C-O>gk
+nnoremap <Down>      gj
+inoremap <Down> <C-O>gj
+
+" 切换窗口的键映射
+" nnoremap <C-Tab>   <C-W>w
+" inoremap <C-Tab>   <C-O><C-W>w
+" nnoremap <C-S-Tab> <C-W>W
+" inoremap <C-S-Tab> <C-O><C-W>W
+
+" Vista
+"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+"let g:vista_default_executive = 'ctags'
+"let g:vista_fzf_preview = ['right:50%']
+"let g:vista_executive_for = {
+"  \ 'cpp': 'vim_lsp',
+"  \ }
+
+" 检查光标下字符的语法属性的键映射
+nnoremap <Leader>a :call SyntaxAttr()<CR>
+if has('unix') && !has('gui_running')
+  " Unix 终端下使用两下 Esc 来离开终端作业模式
+  tnoremap <Esc><Esc> <C-\><C-N>
+else
+  " 其他环境则使用 Esc 来离开终端作业模式
+  tnoremap <Esc>      <C-\><C-N>
+  tnoremap <C-V><Esc> <Esc>
+endif
+
+" 自定义快捷键
+nnoremap <silent> <C-P> :GFiles<CR>
+"nnoremap <C-`> :term ++rows=7<CR>
+"nnoremap <C-j> :term ++rows=7<CR>
+set splitbelow
+set splitright
+
+" 停止搜索高亮的键映射
+nnoremap <silent> <F2>      :nohlsearch<CR>
+inoremap <silent> <F2>      :nohlsearch<CR>
+
+" vim-powered terminal in split window
+map <Leader>te :term ++close<cr>
+tmap <Leader>te <c-w>:term ++close<cr>
+
+" vim-powered terminal in new tab
+map <Leader>T :tab term ++close<cr>
+tmap <Leader>T <c-w>:tab term ++close<cr>
+
+"---------------alrLine Config--------------
+"Windows Ubuntu airline乱码
+"安装power-line字体
+"sudo apt-get install fonts-powerline
+  " status bar colors
+  let g:airline_theme="jellybeans"
+  let g:airline_powerline_fonts = 1  " 如没有安装合适的字体，则应置成 0
+  let g:airline#extensions#tabline#enabled = 1 "允许修改默认Tab样式
+  let g:airline#extensions#tabline#buffer_nr_show = 0 "buffer显示编号
+  let g:airline#extensions#tabline#overflow_marker = '…'
+  let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
+  let g:airline#extensions#tabline#show_tab_nr = 0
+  let g:airline#extensions#whitespace#enabled = 0
+  let g:airline#extensions#tabline#show_close_button = 1
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let w:airline_skip_empty_sections              = 1
+  "let g:airline_section_b                        = '%{fugitive#head()}'
+  let g:airline_section_c                        = ''
+  let g:airline_section_x                        = '%{&filetype}'
+  "let g:airline_section_warning                  = ''
+
+  if !exists('g:airline_symbols')
+          let g:airline_symbols = {}
+  endif
+
+  let g:airline_symbols.space = "\ua0"
+  let g:airline_exclude_filename = []
+  let g:Powerline_symbols='fancy'
+  let Powerline_symbols='fancy'
+  let g:airline_powerline_fonts = 1 " 使用powerline打过补丁的字体
+  let g:bufferline_echo=0
+  set laststatus=2 " 永远显示状态栏
+  set t_Co=256
+  set fillchars+=stl:\ ,stlnc:\
+
+
+ let g:c_space_errors = 1 " hightlight space
+ let g:c_gnu = 1
+ let g:c_no_cformat = 1
+ let g:c_no_curly_error = 1
+ if exists('g:c_comment_strings')
+   unlet g:c_comment_strings
+ endif
+
+if has('autocmd')
+  function! GnuIndent()
+    setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+    setlocal shiftwidth=2
+    setlocal tabstop=8
+  endfunction
+
+" 用于 YouCompleteMe 的设定
+  "let g:ycm_enable_diagnostic_highlighting = 0
+  "let g:ycm_enable_diagnostic_signs = 0
+  "let g:ycm_show_diagnostics_ui = 0
+
+  "let g:ycm_auto_hover = ''
+  "let g:ycm_complete_in_comments = 1
+  "let g:ycm_filetype_whitelist = {
+        "\ 'c': 1,
+        "\ 'dts': 1,
+        "\ 'cpp': 1,
+        "\ 'java': 1,
+        "\ 'python': 1,
+        "\ 'vim': 1,
+        "\ 'sh': 1,
+        "\ }
+
+  "" auto completion
+  "let g:ycm_semantic_triggers =  {
+   "\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+   "\ 'cs,lua,javascript': ['re!\w{2}'],
+   "\ }
+
+  "let g:ycm_goto_buffer_command = 'split-or-existing-window'
+  "let g:ycm_key_invoke_completion = '<C-Z>'
+  "let g:ycm_use_clangd = 1
+  "let g:ycm_show_diagnostics_ui = 0
+  ""nnoremap <Leader>gd :YcmCompleter GoToDefinition<CR>
+  "nnoremap <Leader>fi :YcmCompleter FixIt<CR>
+  "nnoremap gt :YcmCompleter GoTo<CR>
+  "nnoremap gd :YcmCompleter GoToDefinition<CR>
+  "nnoremap gh :YcmCompleter GoToDeclaration<CR>
+  "nnoremap gr :YcmCompleter GoToReferences<CR>
+
+  ""Toggle YouCompleteMe on and off with <leader>gf
+  "function Toggle_ycm()
+      "if g:ycm_show_diagnostics_ui == 0
+          "let g:ycm_auto_trigger = 1
+          "let g:ycm_show_diagnostics_ui = 1
+          "let g:ycm_enable_diagnostic_highlighting = 1
+          "let g:ycm_enable_diagnostic_signs = 1
+          ":YcmRestartServer
+          ":e
+          ":echo "YCM on"
+      "elseif g:ycm_show_diagnostics_ui == 1
+          "let g:ycm_auto_trigger = 0
+          "let g:ycm_show_diagnostics_ui = 0
+          ":YcmRestartServer
+          ":e
+          ":echo "YCM off"
+      "endif
+  "endfunction
+  "nnoremap <silent> <leader>go :call Toggle_ycm() <CR>
+
+  au FileType c,cpp,objc  setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 cinoptions=:0,g0,(0,w1
+  au FileType json        setlocal expandtab shiftwidth=2 softtabstop=2
+  au FileType vim         setlocal expandtab shiftwidth=2 softtabstop=2
+
+  au FileType help        nnoremap <buffer> q <C-W>c
+
+" au BufRead /usr/include/*  call GnuIndent()
+endif
+
+" fzf vim setting
+" set rtp+=~/.fzf " setting use which fzf
+let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
+let g:fzf_preview_window = []
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+" Path completion with custom source command
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+" inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+
+" Word completion with custom spec with popup layout option
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" " coc config
+
+" " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+" " utf-8 byte sequence
+" set encoding=utf-8
+" " Some servers have issues with backup files, see #649
+" set nowritebackup
+
+" " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" " delays and poor user experience
+" set updatetime=300
+
+" " Always show the signcolumn, otherwise it would shift the text each time
+" " diagnostics appear/become resolved
+" set signcolumn=yes
+
+" " coc configuration
+" if 0
+" " Use tab for trigger completion with characters ahead and navigate
+" " NOTE: There's always complete item selected by default, you may want to enable
+" " no select by `"suggest.noselect": true` in your configuration file
+" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" " other plugin before putting this into your config
+" inoremap <silent><expr> <TAB>
+"       \ coc#pum#visible() ? coc#pum#next(1) :
+"       \ CheckBackspace() ? "\<Tab>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" " Make <CR> to accept selected completion item or notify coc.nvim to format
+" " <C-g>u breaks current undo, please make your own choice
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" function! CheckBackspace() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
+" " Use <c-space> to trigger completion
+" if has('nvim')
+"   inoremap <silent><expr> <c-space> coc#refresh()
+" else
+"   inoremap <silent><expr> <c-@> coc#refresh()
+" endif
+
+" " Use `[g` and `]g` to navigate diagnostics
+" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+" let g:coc_disable_startup_warning = 1
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" " GoTo code navigation
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" " Use K to show documentation in preview window
+" nnoremap <silent> H :call ShowDocumentation()<CR>
+
+" function! ShowDocumentation()
+"   if CocAction('hasProvider', 'hover')
+"     call CocActionAsync('doHover')
+"   else
+"     call feedkeys('H', 'in')
+"   endif
+" endfunction
+
+" " Highlight the symbol and its references when holding the cursor
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" " Symbol renaming
+" nmap <leader>rn <Plug>(coc-rename)
+
+" " Formatting selected code
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+" augroup mygroup
+"   autocmd!
+"   " Setup formatexpr specified filetype(s)
+"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"   " Update signature help on jump placeholder
+"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" augroup end
+
+" " Applying code actions to the selected code block
+" " Example: `<leader>aap` for current paragraph
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" " Remap keys for applying code actions at the cursor position
+" nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" " Remap keys for apply code actions affect whole buffer
+" nmap <leader>as  <Plug>(coc-codeaction-source)
+" " Apply the most preferred quickfix action to fix diagnostic on the current line
+" nmap <leader>qf  <Plug>(coc-fix-current)
+
+" " Remap keys for applying refactor code actions
+" nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+" xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+" nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+" " Run the Code Lens action on the current line
+" nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" " Map function and class text objects
+" " NOTE: Requires 'textDocument.documentSymbol' support from the language server
+" xmap if <Plug>(coc-funcobj-i)
+" omap if <Plug>(coc-funcobj-i)
+" xmap af <Plug>(coc-funcobj-a)
+" omap af <Plug>(coc-funcobj-a)
+" xmap ic <Plug>(coc-classobj-i)
+" omap ic <Plug>(coc-classobj-i)
+" xmap ac <Plug>(coc-classobj-a)
+" omap ac <Plug>(coc-classobj-a)
+
+" " Use CTRL-S for selections ranges
+" " Requires 'textDocument/selectionRange' support of language server
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" " Add `:Format` command to format current buffer
+" command! -nargs=0 Format :call CocActionAsync('format')
+
+" " Add `:Fold` command to fold current buffer
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" " Add `:OR` command for organize imports of the current buffer
+" command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" " Add (Neo)Vim's native statusline support
+" " NOTE: Please see `:h coc-status` for integrations with external plugins that
+" " provide custom statusline: lightline.vim, vim-airline
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" " Mappings for CoCList
+" " Show all diagnostics
+" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" " Manage extensions
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" " Show commands
+" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" " Find symbol of current document
+" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" " Search workspace symbols
+" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" " Do default action for next item
+" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" " Do default action for previous item
+" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" " Resume latest coc list
+" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+" if !exists("g:UltiSnipsExpandTrigger")
+"     let g:UltiSnipsExpandTrigger = "<C-space>"
+" endif
+" endif
