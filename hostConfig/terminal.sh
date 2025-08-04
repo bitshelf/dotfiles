@@ -89,11 +89,11 @@ export DFT_DISPLAY=side-by-side-show-both
 export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
 # fzf
-[ -r ~/.config/completion_bash/fzf.bash ] && source  ~/.config/completion_bash/fzf.bash
+# [ -r ~/.config/completion_bash/fzf.bash ] && source  ~/.config/completion_bash/fzf.bash
 
 # completions
 [ -r ~/.config/completion_bash/rg.bash ] && source ~/.config/completion_bash/rg.bash
-[ -r ~/.config/completion_bash/chezmoi.bash ] && source  ~/.config/completion_bash/chezmoi.bash
+# [ -r ~/.config/completion_bash/chezmoi.bash ] && source  ~/.config/completion_bash/chezmoi.bash
 # [ -r ~/.local/share/blesh/ble.sh ] && source ~/.local/share/blesh/ble.sh
 
 # atuin
