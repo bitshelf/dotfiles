@@ -99,23 +99,15 @@ export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 # atuin
 # eval "$(atuin init bash --disable-up-arrow)"
 
-# # yazi
-# bind -r "\C-g"
-# bind -m emacs-standard -x '"\C-g": yazi'
-# # bind -m vi-command -x '"\C-g": yazi'
-# # bind -m vi-insert -x '"\C-g": yazi'
-
 # mcfly
 eval "$(mcfly init bash)"
 export MCFLY_RESULTS_SORT=LAST_RUN
 export MCFLY_DISABLE_MENU=true
+export MCFLY_DELETE_WITHOUT_CONFIRM=true
 export MCFLY_PROMPT='→'
-export MCFLY_HISTORY_LIMIT=100000
+export MCFLY_HISTORY_LIMIT=1000
 export MCFLY_RESULTS=30
 # export MCFLY_FUZZY=2
-
-# Completion settings
-#source <(procs --gen-completion-out bash)
 
 # set PATH so it includes user's private ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then

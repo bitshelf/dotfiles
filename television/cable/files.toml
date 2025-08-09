@@ -1,0 +1,28 @@
+[metadata]
+name = "files"
+description = "A channel to select files and directories"
+requirements = ["fd", "bat"]
+
+[source]
+command = "fd -t f"
+
+[preview]
+command = "bat -n --color=always '{}'"
+env = { BAT_THEME = "Catppuccin Mocha" }
+
+[ui]
+preview_panel = { "size" = 70, "scrollbar" = true }
+
+[ui.features]
+preview_panel = { enabled = true, visible = true }
+remote_control = { enabled = true, visible = false }
+help_panel = { enabled = false, visible = false }
+status_bar = { enabled =false, visible = false }
+
+[keybindings]
+# shortcut = "f1"
+scroll_preview_half_page_down = "ctrl-f"
+scroll_preview_half_page_up = "ctrl-b"
+# toggle_remote_control = "alt-x" # Like execute-extended-command
+# toggle_help = "ctrl-h"
+
