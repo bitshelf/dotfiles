@@ -1,5 +1,4 @@
 Diagnostics:
-  Limit: 1000
   Suppress: "*"
   # Suppress: [undeclared_var_use, pp_file_not_found]
   UnusedIncludes: "None"
@@ -16,7 +15,7 @@ CompileFlags:
           -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang,
           -fno-allow-store-data-races,-fno-var-tracking-assignments,-mpc-relative-literal-loads,
           -forward-unknown-to-host-compiler, --expt-*, -gencode*, --generate-code*, -Xfatbin*,
-          -arch=*, -rdc=*,-mstack-protector-guard*,-mbranch-protection*, ]
+          -arch=*, -rdc=*,-mstack-protector-guard*,-mbranch-protection*, -ffixed-r9 ]
 InlayHints:
   ParameterNames: true
   DeducedTypes: true

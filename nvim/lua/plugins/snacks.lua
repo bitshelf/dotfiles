@@ -11,7 +11,7 @@ return {
     input = { enabled = true },
     picker = { enabled = true },
     quickfile = { enabled = true },
-    statuscolumn = { enabled = true },
+    statuscolumn = { enabled = false },
     scope = { enabled = true },
     scroll = { enabled = false },
     words = { enabled = true },

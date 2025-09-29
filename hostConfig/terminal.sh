@@ -51,7 +51,7 @@ alias la='ls -a'
 alias ll='ls -la'
 alias lt='ls --tree'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-# export LS_COLORS="$(vivid generate molokai)"
+export LS_COLORS="$(vivid generate tokyonight-night)"
 
 # prevent Ctrl-S from freezing the terminal to use the shortcut in vim.
 # only in interactive shells
@@ -69,6 +69,7 @@ if [ "x$TERM_PROGRAM" = "xvscode" ]; then
 fi
 
 # prompt settings
+# export SERVER=....
 eval "$(starship init bash)"
 #eval "$(zoxide init bash)"
 
@@ -89,7 +90,7 @@ export DFT_DISPLAY=side-by-side-show-both
 export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
 # fzf
-# [ -r ~/.config/completion_bash/fzf.bash ] && source  ~/.config/completion_bash/fzf.bash
+[ -r ~/.config/completion_bash/fzf.bash ] && source  ~/.config/completion_bash/fzf.bash
 
 # completions
 [ -r ~/.config/completion_bash/rg.bash ] && source ~/.config/completion_bash/rg.bash
@@ -99,14 +100,14 @@ export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 # atuin
 # eval "$(atuin init bash --disable-up-arrow)"
 
-# mcfly
-eval "$(mcfly init bash)"
-export MCFLY_RESULTS_SORT=LAST_RUN
-export MCFLY_DISABLE_MENU=true
-export MCFLY_DELETE_WITHOUT_CONFIRM=true
-export MCFLY_PROMPT='→'
-export MCFLY_HISTORY_LIMIT=1000
-export MCFLY_RESULTS=30
+# # mcfly
+# eval "$(mcfly init bash)"
+# export MCFLY_RESULTS_SORT=LAST_RUN
+# export MCFLY_DISABLE_MENU=true
+# export MCFLY_DELETE_WITHOUT_CONFIRM=true
+# export MCFLY_PROMPT='→'
+# export MCFLY_HISTORY_LIMIT=1000
+# export MCFLY_RESULTS=30
 # export MCFLY_FUZZY=2
 
 # set PATH so it includes user's private ~/.local/bin if it exists

@@ -5,8 +5,7 @@ fi
 
 # bash integration
 # eval "$(fzf --bash)"
-FZF_ALT_C_COMMAND=  eval "$(fzf --bash)"
-
+FZF_ALT_C_COMMAND= eval "$(fzf --bash)"
 
 EXCLUDE_DIRS=(\
 	-E tools \
@@ -55,10 +54,10 @@ export FZF_DEFAULT_OPTS="
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 # remove fzf history key-binding
-bind -r "\C-r"
+# bind -r "\C-r"
 
 # fzf history
-# FZF_CTRL_R_OPTS="--layout=reverse --preview 'echo {}' --preview-window down:3:hidden:wrap"
+FZF_CTRL_R_OPTS="--layout=reverse --preview 'echo {}' --preview-window down:3:hidden:wrap"
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
@@ -124,7 +123,6 @@ ff() {
 # bind -m vi-command '"\C-x": "\C-z\C-x\C-z"'
 # bind -m vi-insert '"\C-x": "\C-z\C-x\C-z"'
 
-
 # dir
 cdd() {
   local dir
@@ -140,16 +138,6 @@ fe() {
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vi} "${files[@]}"
 }
-
-# key-binding <C-t> for fzf
-# if (( BASH_VERSINFO[0] > 4 )); then
-# 	bind -r "\C-t"
-# 	if [[ "${FZF_CTRL_T_COMMAND-x}" != "" ]]; then
-# 		bind -m emacs-standard -x '"\C-t": fe'
-# 		bind -m vi-command -x '"\C-t": fe'
-# 		bind -m vi-insert -x '"\C-t": fe'
-# 	fi
-# fi
 
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,
