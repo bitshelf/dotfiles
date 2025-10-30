@@ -59,7 +59,9 @@
 /user-dirs.dirs
 /vlc/
 /vim/
+/yazi/flavors/
 /yazi/package.toml
 /yazi/plugins/
+/uv/uv-receipt.json
 /zed/.tmp*
 /zellij/plugins/

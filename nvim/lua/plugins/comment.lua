@@ -5,7 +5,7 @@ return {
 	-- 	event = "LazyFile",
 	-- 	opts = {
 	-- 		lang = {
-	-- 			devicetree = { "// %s", "/* %s */" },
+	-- 			dts = { "// %s", "/* %s */" },
 	-- 		},
 	-- 	},
 
@@ -28,8 +28,8 @@ return {
 			ft.set('dts','//%s')
 
 			local api = require("Comment.api")
-			vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"), { buffer = buf, nowait = true, desc = "comment linewise" })
-			vim.keymap.set("n", "<leader>cu", api.locked("uncomment.linewise.current"), { buffer = buf, nowait = true, desc = "uncomment linewise" })
+			vim.keymap.set("n", "<leader>cn", api.locked("comment.linewise.current"), { nowait = true, desc = "comment linewise" })
+			vim.keymap.set("n", "<leader>cu", api.locked("uncomment.linewise.current"), { nowait = true, desc = "uncomment linewise" })
 
 			-- need move keymap.lua
 			-- vim.keymap.set({'n','i'}, "<c-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { noremap = true, silent = true, nowait = true, desc = "Toggle Comment line" })

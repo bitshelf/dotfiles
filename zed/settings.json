@@ -7,12 +7,35 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
+  // "proxy": "socks5h://localhost:7897",
+  "restore_on_startup": "last_session",
+  "restore_on_file_reopen": true,
+  "close_on_file_delete": false,
+
+  // Git
+  "edit_predictions": {
+    "mode": "eager"
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false
+    },
+    "hunk_style": "staged_hollow"
+  },
+
+  // Editor
+  "buffer_font_family": "Cascadia Code NF",
   "vim_mode": true,
-  "autosave": "on_focus_change",
-  "git_status": true,
-  "format_on_save": "off",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "scrollbar": {
+    "show": "auto"
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
 
   "theme": {
     "mode": "system",
@@ -20,20 +43,125 @@
     "dark": "One Dark"
   },
 
-  "auto_install_extensions": {
-    "cmake": true,
-    "dockerfile": true,
-    "docker-compose": false,
-    "lua": true,
-    "kconfig": true,
-    "Make": true
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true
   },
 
-  "git": {
-    "git_gutter": "tracked_files",
-    "inline_blame": {
-      "enabled": false
+  "minimap": {
+    "show": "auto",
+    "thumb": "always",
+    "thumb_border": "left_open",
+    "current_line_highlight": null
+  },
+
+  // Search
+  "search": {
+    "regex": true
+  },
+
+  // terminal
+  "terminal": {
+    "cursor_shape": "block",
+    "copy_on_select": false,
+    "keep_selection_on_copy": true,
+    "font_family": "Cascadia Code NF",
+    "toolbar": {
+      "breadcrumbs": true
     },
-    "hunk_style": "staged_hollow"
-  }
+    "scrollbar": {
+      "show": "auto"
+    }
+  },
+
+  // File
+  "file_finder": {
+    "file_icons": true // Show/hide file icons
+  },
+  "format_on_save": "off",
+  "autosave": "on_focus_change",
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/output",
+    "**/out",
+    "**/prebuilts",
+    "**/rockdev/",
+    "**/.repo"
+  ],
+
+  "file_types": {
+    "Blueprint": ["*bp", "BUILD", "BUILD.gn"],
+    "Kconfig": ["Config.in", "*rc"]
+  },
+
+  // Languages
+  "auto_install_extensions": {
+    "bitbake": true,
+    "blueprint": true,
+    "cargo-tom":true,
+    "comment":true,
+    "crates-lsp":true,
+    "ctags":true,
+    "neocmake": true,
+    "devicetree": true,
+    "dockerfile": true,
+    "docker-compose":true,
+    "kotlin": true,
+    "git-firefly": true,
+    "lua": true,
+    "java": true,
+    "kconfig":true,
+    "make": true,
+    "qml": true,
+    "ssh-config":true,
+    "xml":true
+  },
+
+  "languages": {
+    "C": {
+      "tab_size": 8,
+      "format_on_save": "off",
+    },
+    "Make": {
+      "hard_tabs": true
+    },
+    "Plain Text": {
+      "soft_wrap": "preferred_line_length"
+    },
+    "JSON": {
+      "format_on_save": "off"
+    }
+  },
+
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "arguments": [
+          "--log=error",
+          "--enable-config",
+          "--background-index",
+          "--pch-storage=memory",
+          "--fallback-style=GNU",
+          "--all-scopes-completion",
+          "--offset-encoding=utf-16",
+          "--header-insertion=never",
+          "--completion-style=detailed",
+          "--function-arg-placeholders=0",
+          "--header-insertion-decorators",
+          // "--compile-commands-dir=${workspaceFolder}/}"
+        ]
+      }
+    }
+  },
+
+  "vim": {
+    "use_smartcase_find": true
+  },
 }

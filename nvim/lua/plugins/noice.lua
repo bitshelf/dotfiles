@@ -1,6 +1,7 @@
 return {
   {
     "folke/noice.nvim",
+	event = "LazyFile",
 	branch = "main",
 
     opts = {

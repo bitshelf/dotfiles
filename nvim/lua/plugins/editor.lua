@@ -38,7 +38,7 @@ return {
 	--
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		event = "LazyFile",
 		opts = {
 			triggers = {
 				{ "<auto>", mode = "nisotc" },

@@ -29,11 +29,11 @@ require("lazy").setup({
 
     { import = "lazyvim.plugins.extras.coding.blink" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
+	{ import = "lazyvim.plugins.extras.ui.edgy" },
 	{ import = "lazyvim.plugins.extras.editor.aerial" },
 	{ import = "lazyvim.plugins.extras.editor.fzf" },
 	{ import = "lazyvim.plugins.extras.editor.illuminate" },
 	{ import = "lazyvim.plugins.extras.editor.snacks_explorer" },
-	{ import = "lazyvim.plugins.extras.ui.edgy" },
 	{ import = "lazyvim.plugins.extras.ui.mini-indentscope" },
 	{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
 	{ import = "lazyvim.plugins.extras.util.octo" },
