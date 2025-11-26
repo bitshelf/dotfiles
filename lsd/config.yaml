@@ -1,7 +1,7 @@
 header: false
-indicators: true
 hyperlink: never
 literal: true
+indicators: false
 
 # == Icons ==
 icons:
